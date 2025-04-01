@@ -1,0 +1,244 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 09.12 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}] Для нахождения фундаментальной системы решений (ФСР) данной однородной системы линейных уравнений, начнем с записи системы в матричном виде:
+    
+    $$Ax = 0 \implies
+    \begin{pmatrix}
+    1 & -2 & -1 & 2 \\
+    -1 & 2 & 2 & -7
+    \end{pmatrix}
+    \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+    x_4
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    0 \\
+    0
+    \end{pmatrix}
+    $$
+    
+    Теперь мы можем привести матрицу $A$ к улучшенному ступенчатому виду:
+    $$A = \begin{pmatrix}
+    1 & -2 & -1 & 2 \\
+    -1 & 2 & 2 & -7
+    \end{pmatrix} \implies \begin{pmatrix}
+        1 & -2 & -1 & 2 \\
+        0 & 0 & 1 & -5
+        \end{pmatrix} \implies $$
+
+    $$\implies \begin{pmatrix}
+        1 & -2 & 0 & -3 \\
+        0 & 0 & 1 & -5
+        \end{pmatrix} \implies \case{x_1 = 3x_4+2x_2 \\ x_3 = 5x_4} \implies$$
+    
+    $$\implies x = \mat{3x_4+2x_2 \\ x_2 \\ 5x_4 \\ x_4}, \quad x_2, x_4 \in \RR$$
+    При этом:
+    $$x = \mat{3x_4+2x_2 \\ x_2 \\ 5x_4 \\ x_4} = \mat{3 \\ 0 \\ 5 \\ 1}x_4+\mat{2\\1\\0\\0}x_2 \text{ - ФСР}$$
+    \textbf{Ответ: } $\left\{\mat{3 \\ 0 \\ 5 \\ 1}, \mat{2\\1\\0\\0} \right\}$\\
+
+    \item[\textbf{№2}]Чтобы найти базис в пространстве $ U = \langle u_{1}, u_{2}, u_{3}, u_{4} \rangle $, нам нужно определить линейную независимость векторов $ u_{1}, u_{2}, u_{3}, u_{4} $ и, возможно, отобрать из них базис.
+    
+    Составим матрицу из векторов
+    $$A = \mat{u_1 \; u_2 \; u_3 \; u_4}= \begin{pmatrix}
+        1 & 2 & 1 & 0 \\
+        0 & 1 & 1 & 1 \\
+        0 & 1 & 1 & 1 \\
+        -1 & 0 & 1 & 3 \\
+        0 & 1 & 1 & 4
+        \end{pmatrix}
+        $$
+    Приведем матрицу к ступенчатому виду с помощью элементарных преобразований столбцов:
+    $$A= \begin{pmatrix}
+        1 & 2 & 1 & 0 \\
+        0 & 1 & 1 & 1 \\
+        0 & 1 & 1 & 1 \\
+        -1 & 0 & 1 & 3 \\
+        0 & 1 & 1 & 4
+        \end{pmatrix}
+        \implies \begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 1 \\
+            0 & 1 & 1 & 1 \\
+            -1 & 2 & 1 & 3 \\
+            0 & 1 & 1 & 4
+            \end{pmatrix}
+            \implies \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 1 & 1 & 1 \\
+                0 & 1 & 1 & 1 \\
+                -1 & 2 & 2 & 3 \\
+                0 & 1 & 1 & 4
+                \end{pmatrix} \implies$$
+    $$\implies \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 1 \\
+        0 & 1 & 0 & 1 \\
+        -1 & 2 & 0 & 3 \\
+        0 & 1 & 0 & 4
+        \end{pmatrix} \implies \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 1 & 0 \\
+            0 & 1 & 1 & 0 \\
+            -1 & 2 & 3 & 0 \\
+            0 & 1 & 4 & 0
+            \end{pmatrix} \implies \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                -1 & 2 & 1 & 0 \\
+                0 & 1 & 3 & 0
+                \end{pmatrix} = \mat{e_1 \; e_2 \; e_3 \; 0}$$
+    После преобразований линейная оболочка векторов не поменялась следовательно:
+    $$\langle e_1, e_2, e_3 \rangle = U$$
+    При этом они находяться в ступенчатом виде, следовательно, они линейно независимы. Поэтому $\{e_1, e_2, e_3\}$ - базис пространства $U$
+    \\\textbf{Ответ: } $\left\{\mat{1 \\ 0 \\ 0 \\ -1\\ 0}, \mat{0 \\ 1\\ 1\\ 2\\3}, \mat{0 \\ 0 \\0 \\ 1 \\ 3} \right\}$\\
+
+    \item[\textbf{№3}]Запишем векторы в виде матрицы:
+    $$A = \begin{pmatrix}
+        1 & 1 & 0 & 3 & 5 \\
+        0 & 1 & -1 & 3 & 2 \\
+        -1 & 1 & -2 & 3 & -1
+        \end{pmatrix}$$
+    
+    Теперь применим элементарные преобразования строк для приведения матрицы к ступенчатому виду.
+    $$A = \begin{pmatrix}
+        1 & 1 & 0 & 3 & 5 \\
+        0 & 1 & -1 & 3 & 2 \\
+        -1 & 1 & -2 & 3 & -1
+        \end{pmatrix} \implies \begin{pmatrix}
+            1 & 1 & 0 & 3 & 5 \\
+            0 & 1 & -1 & 3 & 2 \\
+            0 & 2 & -2 & 6 & 4
+            \end{pmatrix}\implies \begin{pmatrix}
+                1 & 1 & 0 & 3 & 5 \\
+                0 & 1 & -1 & 3 & 2 \\
+                0 & 0 & 0 & 0 & 0
+                \end{pmatrix}$$
+    
+    Теперь мы видим, что векторы $ u_1 $ и $ u_2 $ являются линейно независимыми, а векторы $ u_3, u_4, u_5 $ можно выразить через них.
+    
+    Выразим $u_3$:
+    $$u_3 = u_1-u_2$$
+    Выразим $u_4$:
+    $$u_4 = 3u_2$$
+    Выразим $u_5$:
+    $$u_5 = 3u_1 + 2u_2$$
+    \textbf{Ответ: }$u_1, u_2$ - базис. $\case{u_3 = u_1-u_2\\u_4 = 3u_2\\u_5 = 3u_1 + 2u_2}$\\
+
+    \item[\textbf{№4}]Запишем векторы в матричном виде:
+    $$A = \begin{pmatrix}
+        1 & 1 & 2 \\
+        8 & -7 & -4 \\
+        12 & 0 & 8 \\
+        7 & 1 & 3
+        \end{pmatrix}$$
+    Приведём её к ступенчатому виду, преобразованиями строк:
+    $$A = \begin{pmatrix}
+        1 & 1 & 2 \\
+        8 & -7 & -4 \\
+        12 & 0 & 8 \\
+        7 & 1 & 3
+        \end{pmatrix} \implies \begin{pmatrix}
+            1 & 1 & 2 \\
+            0 & -15 & -20 \\
+            0 & -12 & -16 \\
+            0 & -6 & -11
+            \end{pmatrix} \implies 
+                \begin{pmatrix}
+                1 & 1 & 2 \\
+                0 & -3 & -4 \\
+                0 & -3 & -4 \\
+                0 & -6 & -11
+                \end{pmatrix} \implies A = \begin{pmatrix}
+                    1 & 1 & 2 \\
+                    0 & 1 & \frac{4}{3} \\
+                    0 & 0 & 1 \\
+                    0 & 0 & 0
+                    \end{pmatrix}$$
+    $$\implies \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0
+        \end{pmatrix}$$
+    
+    Следовательно, $v_1, v_2, v_3$ - линейно независимы. Теперь дополним их до базиса $\RR^4$.
+    Опять запишем её в матричном виде и приведём к ступенчатому виду преобразованиями столбцов:
+    $$A = \begin{pmatrix}
+        1 & 1 & 2 \\
+        8 & -7 & -4 \\
+        12 & 0 & 8 \\
+        7 & 1 & 3
+        \end{pmatrix} \r \begin{pmatrix}
+            1 & 0 & 0 \\
+            8 & -15 & -20 \\
+            12 & -12 & -16 \\
+            7 & -6 & -11
+            \end{pmatrix} \r \begin{pmatrix}
+                1 & 0 & 0 \\
+                8 & -5 & 0 \\
+                12 & -4 & 0 \\
+                7 & -2 & -3
+                \end{pmatrix}$$
+    Следовательно, векторы $v_1, v_2, v_3$ нужно дополнить до базиса вектором:
+    $$e_3 = \mat{0\\0\\1\\0}$$
+    \textbf{Ответ: }$v_1, v_2, v_3, e_3$
+\end{enumerate}
+\end{document}

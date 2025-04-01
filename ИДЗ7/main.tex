@@ -1,0 +1,365 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+\newcommand{\Ker}[1]{\operatorname{Ker}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+\renewcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{ИДЗ №7 (вариант 12) (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]$Q(x_1, x_2, x_3) = -81x_1^2 - 40x_2^2 - 102x_3^2 + 108x_1x_2 + 126x_1x_3 - 92x_2x_3$
+    
+    Напишем матрицу квадратичной формы:
+    $$\mat{
+        -81 & 54 & 63\\
+        54 & -40 & -46 \\
+        63 & -46 & -102    
+    }$$
+    Приведём эту матрицу к диагональному виду симметричным методом гауса (программа 1.py):
+    $$
+    \mat{
+        -81 & 54 & 63 & | & 1 & 0 & 0\\
+        54 & -40 & -46 & | & 0 & 1 & 0\\
+        63 & -46 & -102 & | & 0 & 0 & 1   
+    } \implies
+    \begin{pmatrix}
+        -1 & 0 & 0 & | & \frac{1}{9} & 0 & 0 \\
+        0 & -1 & 0 & | & \frac{1}{3} & \frac{1}{2} & 0 \\
+        0 & 0 & -1 & | & \frac{1}{63} & -\frac{1}{7} & \frac{1}{7}
+        \end{pmatrix}
+    $$
+    Следовательно, справа  получилась транспонированная матрица перехода к новому базису, в котором будет этот нормальный вид. 
+    Значит новый базис:
+    $$e_1' = \f{1}{9}e_1, \quad e_2' = \f{1}{3}e_1 + \f{1}{2}e_2, \quad e_3' = \f{1}{63}e_1-\f{1}{7}e_2+\f{1}{7}e_3$$
+    Поэтому нормальный вид квадратичной формы $Q$ будет:
+    $$Q(x) = -x_1'^2-x_2'^2-x_3'^2$$
+    Где
+    $$x_1' = \f{1}{9}x_1, \quad x_2' = \f{1}{3}x_1 + \f{1}{2}x_2, \quad x_3' = \f{1}{63}x_1-\f{1}{7}x_2+\f{1}{7}x_3$$
+
+    \item[\textbf{№2}]\small{\( Q(x_1, x_2, x_3) = 7x_1^2 + (8b + 10)x_2^2 + (2b - 9)x_3^2 - 10x_1x_2 + 4x_1x_3 + 2(4b - 2)x_2x_3 \)}
+    
+    Напишем матрицу квадратичной формы:
+    $$\mat{
+        7 & -5 & 2\\
+        -5 & 8b+10 & 4b-2 \\
+        2 & 4b-2 & 2b-9    
+    }$$
+    Найдём угловые миноры:
+    $$\delta_1 = 7, \quad \delta_2 = 56b+45, \quad \delta_3 = -414b - 433$$
+    Рассмотрим случаи:
+    \begin{enumerate}
+        \item[1)]$b = -\f{45}{56}$:
+        $$\begin{pmatrix}
+            7 & -5 & 2 \\
+            -5 & \frac{25}{7} & -\frac{73}{14} \\
+            2 & -\frac{73}{14} & -\frac{297}{28}
+            \end{pmatrix}$$
+        Симметричным методом гауса находим нормальный вид (программа 2.py):
+        $$Q(x) = x_1'^2-x_2'^2+x_3'^2$$
+
+        \item[2)]$b \neq -\f{45}{56}$
+        Так как $\delta_1 \neq 0$ и $\delta_2 \neq 0$, то применим метод Якоби:
+        $$Q(x) = 7x_1'^2+\f{56b+45}{7}x_2'^2+ \f{-414b - 433}{56b+45}x_3'^2$$
+        Рассмотрим случаи:
+        \begin{enumerate}
+            \item[2.1)]$b = -\f{433}{414}$
+            
+            Просто подставим и приведём к нормальному виду:
+            $$Q(x) = x_1'^2-x_2'^2$$
+
+            \item[2.2)] $b < -\f{433}{414} $
+            $$\case{
+                \f{56b+45}{7} < 0\\
+                \f{-414b - 433}{56b+45} < 0
+            } \implies Q(x) = x_1'^2-x_2'^2-x_3'^2$$
+            \item[2.3)] $b \in (-\f{433}{414}; -\f{45}{56}) $
+            $$\case{
+                \f{56b+45}{7} < 0\\
+                \f{-414b - 433}{56b+45} > 0
+            } \implies Q(x) = x_1'^2-x_2'^2+x_3'^2$$
+            \item[2.3)] $b > -\f{45}{56} $
+            $$\case{
+                \f{56b+45}{7} > 0\\
+                \f{-414b - 433}{56b+45} < 0
+            } \implies Q(x) = x_1'^2+x_2'^2-x_3'^2$$\\
+
+        \end{enumerate}
+    \end{enumerate}
+
+    \textbf{Ответ: }$Q(x) = \case{
+        x_1'^2+x_2'^2-x_3'^2 & \text{ при } b > -\f{433}{414}\\
+        x_1'^2-x_2'^2-x_3'^2 & \text{ при } b < -\f{433}{414}\\
+        x_1'^2-x_2'^2& \text{ при } b = -\f{433}{414}\\
+    }$\\
+
+    \item[\textbf{№3}]\[ Q(f) = \int_{1}^{3} f^2 \, dx - \int_{2}^{4} f^2 \, dx. \]
+    
+    \begin{enumerate}
+        \item[a)]Чтобы доказать, что \(Q\) является квадратичной формой, нужно найти симметричную билинейную форму \(B\), такую что
+        \[
+        Q(f)=B(f,f) \quad \text{для всех } f\in V.
+        \]
+        Положим
+        \[
+        B(f,g)=\int_{1}^{3} f(x)g(x)\,dx - \int_{2}^{4} f(x)g(x)\,dx.
+        \]
+        Так как интеграл является линейным оператором, то для любых \( f, g, h \in V \) и любого скаляра \(\alpha\) выполняются:
+        \[
+        B(\alpha f + g, h) = \alpha B(f,h) + B(g,h),
+        \]
+        и аналогично по второму аргументу. Кроме того, поскольку перемножение функций коммутативно, получаем
+        \[
+        B(f,g)=B(g,f).
+        \]
+        Проверим, что \(Q\) выражается через \(B\):
+
+        Подставляя \(g=f\), получаем:
+        \[
+        B(f,f)=\int_{1}^{3} f(x)^2\,dx - \int_{2}^{4} f(x)^2\,dx = Q(f).
+        \]
+        Таким образом, \(Q(f)=B(f,f)\) для всех \(f\in V\).
+
+        Так как \(B\) является симметричной билинейной формой, функция \(Q\) представляется в виде \(Q(f)=B(f,f)\) и, следовательно, является квадратичной формой на \(V\).\\
+        
+        \item[b)]
+        Рассмотрим стандартный базис в \(V=\mathbb{R}[x]_{\le3}\):
+        \[
+        e_1(x)=1,\quad e_2(x)=x,\quad e_3(x)=x^2,\quad e_4(x)=x^3.
+        \]
+        Ассоциированная билинейная форма имеет вид
+        \[
+        B(f,g)=\int_{1}^{3}f(x)g(x)\,dx-\int_{2}^{4}f(x)g(x)\,dx.
+        \]
+        Её матрица \(A=[a_{ij}]\) в базисе \((e_1,e_2,e_3,e_4)\) задаётся элементами
+        \[
+        a_{ij}=B(e_i,e_j)=\int_{1}^{3}x^{i+j-2}\,dx-\int_{2}^{4}x^{i+j-2}\,dx,\quad i,j=1,\dots,4.
+        \]
+        Составим эту матрицу по этой формуле и преобразуем её симметричным методом Гауса:
+        $$A = \begin{pmatrix}
+            0 & -2 & -10 & -40 \\
+            -2 & -10 & -40 & -150 \\
+            -10 & -40 & -150 & -\frac{1652}{3} \\
+            -40 & -150 & -\frac{1652}{3} & -2010
+            \end{pmatrix} \implies \begin{pmatrix}
+                -2090 & -152 & -\frac{1682}{3} & -2050 \\
+                -152 & -10 & -40 & -150 \\
+                -\frac{1682}{3} & -40 & -150 & -\frac{1652}{3} \\
+                -2050 & -150 & -\frac{1652}{3} & -2010
+            \end{pmatrix}$$
+        Найдём угловые миноры:
+        $$\delta_1 = -2090, \quad \delta_2 = -2204, \quad \delta_3 = \f{3280}{9}, \quad \delta_4 = \f{16}{9}$$
+        Следовательно нормальный вид квадратичной формы $Q$:
+        $$Q(x) = -x_1'^2+x_2'^2-x_3'^2+x_4'^2$$
+
+        
+
+        Если бы существовал базис \( e=(e_1',e_2',e_3',e_4') \), в котором матрица квадратичной формы \( Q \) имела вид
+        \[
+        71x_1^2+22x_1x_2+94x_1x_3+44x_1x_4+28x_2^2-38x_2x_3+116x_2x_4+68x_3^2-90x_3x_4+50x_4^2,
+        \]
+        то соответствующая симметричная матрица имела бы вид:
+        \[
+        M=\begin{pmatrix}
+        71 & 11 & 47 & 22\\[1mm]
+        11 & 28 & -19 & 58\\[1mm]
+        47 & -19 & 68 & -45\\[1mm]
+        22 & 58 & -45 & 50
+        \end{pmatrix}
+        \]
+        Найдём угловые миноры:
+        $$\delta_1 = 71, \quad \delta_2 = 1867,\quad \delta_3 = 19827, \quad \delta_4 = -1437601$$
+        Следовательно нормальный вид квадратичной формы $Q$ был бы:
+        $$Q(x) = y_1^2+y_2^2+y_3^2-y_4^2$$
+
+        Получается, что отрицательный индекс инерции равен 1, но у квадратичной формы $Q$ он равен 2.
+        Следовательно, не существует такого базиса, в котором квадратичная форма $Q$ принимает такой вид.
+
+        \textbf{Ответ: } не существует\\
+
+    \end{enumerate}
+
+    \item[\textbf{№4}]
+    Чтобы определить значения параметров \(a\) и \(b\), при которых билинейная форма \(\beta(x, y)\) задает скалярное произведение в \(\mathbb{R}^3\), необходимо выполнение следующих условий: симметричность матрицы формы и положительная определенность.
+    
+    Составим матрицу билинейной формы:
+    $$\mat{
+        -9b+49 & 3b-15 & -1.5a+8.5\\
+        3b-15 & 2 & 2b-8\\
+        -3b+17 & 2b-8 & 3
+    }$$
+
+    \begin{enumerate}
+        \item[1)]Симметричность матрицы
+        
+        Коэффициенты при \(x_1 y_3\) и \(x_3 y_1\) должны быть равны:
+        \[
+        -1.5a + 8.5 = -3b + 17
+        \]
+        Решая это уравнение, получаем:
+        \[
+        a = 2b - \frac{17}{3}
+        \]
+
+        \item[2)]Положительная определенность матрицы
+        
+        \begin{itemize}
+            \item Первый ведущий минор:
+            \[
+            -9b + 49 > 0 \Rightarrow b < \frac{49}{9}
+            \]
+        
+            \item Второй ведущий минор:
+            \[
+            \begin{vmatrix}
+            -9b + 49 & 3b - 15 \\
+            3b - 15 & 2
+            \end{vmatrix} = -9b^2 + 72b - 127 > 0 \Rightarrow 
+                \frac{12 - \sqrt{17}}{3} < b < \frac{12 + \sqrt{17}}{3}
+            \]
+        
+            \item Третий ведущий минор:
+            \[
+            det(B) = -b^2 + 8b - 15 > 0 \Rightarrow 3 < b < 5
+            \]
+        \end{itemize}
+    \end{enumerate}
+
+    Объединим условия:
+    $$\case{
+        a = 2b - \frac{17}{3}\\
+        b < \frac{49}{9}\\
+        \frac{12 - \sqrt{17}}{3} < b < \frac{12 + \sqrt{17}}{3}\\
+        3 < b < 5
+    } \implies \begin{cases}
+        a = 2b - \dfrac{17}{3}, \\
+        3 < b < 5.
+        \end{cases}$$
+
+    \textbf{Ответ: } $\begin{cases}
+        a = 2b - \dfrac{17}{3}, \\
+        3 < b < 5.
+        \end{cases}$\\
+
+
+    \item[\textbf{№4}]
+    Существует ли система из трёх векторов в $\RR^3$, матрица Грама которой равна
+    \[
+    \begin{pmatrix}
+    13 & 20 & -66 \\
+    20 & 41 & -122 \\
+    -66 & -122 & 376
+    \end{pmatrix}?
+    \]
+
+    Матрица Грама должна быть неотрицательно определённой. Проверим её главные миноры:
+    \[
+    \begin{cases}
+    \delta_1 = 13 > 0, \\
+    \delta_2 = \begin{vmatrix} 13 & 20 \\ 20 & 41 \end{vmatrix} = 13 \cdot 41 - 20^2 = 533 - 400 = 133 > 0, \\
+    \delta_3 = det(G) = 0.
+    \end{cases}
+    \]
+    Матрица $G$ неотрицательно определена и вырожденная, что соответствует линейно зависимым векторам.
+    
+    Поскольку матрица Грама вырожденная, векторы линейно зависимы. Предположим, что третий вектор $c$ выражается через первые два:
+    \[
+    c = \alpha a + \beta b, \quad \alpha, \beta \in \RR
+    \]
+    Найдём $\alpha$ и $\beta$, для этого решим следующую систему:
+    $$\case{
+        (c, c) = (\alpha a + \beta b, \alpha a + \beta b) = \alpha^2(a,a) + 2\alpha\beta(a,b) + \beta^2(b,b) = 376\\
+        (c, a) = \alpha(a, b) + \beta(b, b) = -66\\
+        (c, b) = \alpha(a, b)+ \beta(b, b) = -122
+    }$$
+    Это равносильно:
+    $$\case{
+        13\alpha^2 + 40\alpha\beta + 41\beta^2 = 376\\
+        13\alpha+20\beta = -66\\
+        20\alpha+41\beta = -122
+    } \implies \alpha= -2, \quad \beta = -2$$
+    Получаем:
+    \[
+    c = -2a - 2b.
+    \]
+    Зададим вектор $a$ так, чтобы $(a, a) = 13$:
+   \[
+   a = (\sqrt{13}, 0, 0).
+   \]
+   Вектор $b$ должен удовлетворять условиям $(a, b) = 20$ и $(b, b) = 41$. Пусть:
+   \[
+   b = \left( \frac{20}{\sqrt{13}}, \sqrt{\frac{133}{13}}, 0 \right).
+   \]
+   Тогда вектор $c$ выражается как:
+   \[
+   c = -2a - 2b = \left( -\frac{66}{\sqrt{13}}, -2\sqrt{\frac{133}{13}}, 0 \right).
+   \]
+   Проверим, что скалярные произведения векторов $a$, $b$, $c$ совпадают с элементами матрицы Грама:
+   \[
+   \begin{cases}
+   (a, a) = 13, \\
+   (a, b) = 20, \\
+   (a, c) = -66, \\
+   (b, b) = 41, \\
+   (b, c) = -122, \\
+   (c, c) = 376.
+   \end{cases}
+   \]
+    \textbf{Ответ:} Да, такая система векторов существует. Пример:
+    \[
+    \mathbf{a} = \left( \sqrt{13},\ 0,\ 0 \right), \quad
+    \mathbf{b} = \left( \frac{20}{\sqrt{13}},\ \sqrt{\frac{133}{13}},\ 0 \right), \quad
+    \mathbf{c} = \left( -\frac{66}{\sqrt{13}},\ -2\sqrt{\frac{133}{13}},\ 0 \right)
+    \]
+
+\end{enumerate}
+\end{document}

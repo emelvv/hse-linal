@@ -1,0 +1,423 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+\newcommand{\Ker}[1]{\operatorname{Ker}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+\renewcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 12.03 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Найдём базис пространства \( U^\perp \) для 
+    \[ U = \langle (1, 0, 2, 1)^T, (2, 1, 0, 3)^T, (0, 1, -2, 1)^T \rangle \subseteq 
+    \mathbb{R}^4 \]
+    Для этого найдём ФСР системы:
+    $$\case{
+        (1,0,2,1) \cdot (x,y,z,t) = x + 2z + t = 0\\
+        (2,1,0,3) \cdot (x,y,z,t) = 2x + y + 3t = 0\\
+        (0,1,-2,1) \cdot (x,y,z,t) = y - 2z + t = 0
+    }$$ 
+    Запишем матрицу ОСЛУ:
+    $$\mat{
+        1 & 0 & 2 & 1& | & 0\\
+        2 & 1 & 0 & 3 & | & 0\\
+        0 & 1 & -2 & 1& | & 0
+    } \implies \text{УСВ: } \mat{1 & 0 & 0 & 1 & | & 0 \\
+    0 & 1 & 0 & 1 & | & 0 \\
+    0 & 0 & 1 & 0 & | & 0}$$
+    $$\case{
+        x = -t\\
+        y = -t\\
+        z = 0
+    }$$
+    Базис пространства \( U^\perp \):
+    $$U^\perp = \langle (-1, -1, 0, 1)^T \rangle$$
+    \textbf{Ответ: } $(-1, -1, 0, 1)^T$\\
+
+    \item[\textbf{№2}] Найдём базис \( U^\perp \), если \( U \subseteq \mathbb{R}^4 \) задано уравнением 
+    \[ 5x_1 + 6x_2 + 7x_3 + 8x_4 = 0  \implies x_1 = -\f{6}{5}x_2 -\f{7}{5}x_3 - \f{8}{5}x_4 \implies \dim U = 3\]
+    У пространства \( U^\perp \) размерность:
+    $$\dim (U^\perp) = 3- 1 = 1$$
+    Значит в его базисе ровно один вектор:
+    $$(a, b, c, d)$$
+    При этом должно выполняться:
+    $$(a, b, c, d) \cdot (x_1, x_2, x_3, x_4) = 0$$
+    Следовательно, нужно решить систему:
+    $$\case{
+        5x_1 + 6x_2 + 7x_3 + 8x_4 = 0 \\
+        ax_1+bx_2 +cx_3+dx_4 = 0
+    }\implies (a, b, c, d, e) = (5, 6, 7, 8)$$
+    \textbf{Ответ: } $(5, 6, 7, 8)$ \\
+
+    \item[\textbf{№3}]Проверим ортогональность векторов:
+    $$\text{\((1, 1, 1, 2)^T\) и \((1, 2, 3, -3)^T\)}$$
+    Для этого найдём их скалярное произведение:
+    $$(1, 1, 1, 2)^T \cdot (1, 2, 3, -3)^T = 1+2+3 - 6 = 0$$
+    Значит, они ортогональны. Теперь дополним их до ортонормированного базиса \(\mathbb{R}^4\).
+    \begin{itemize}
+        \item \textbf{Первый вектор}:  
+        \(\|\mathbf{v}_1\| = \sqrt{1^2 + 1^2 + 1^2 + 2^2} = \sqrt{7}\).  
+        Нормированный:
+        \[
+        \mathbf{e}_1 = \frac{1}{\sqrt{7}}(1, 1, 1, 2).
+        \]
+
+        \item \textbf{Второй вектор}:  
+        \(\|\mathbf{v}_2\| = \sqrt{1^2 + 2^2 + 3^2 + (-3)^2} = \sqrt{23}\).  
+        Нормированный:
+        \[
+        \mathbf{e}_2 = \frac{1}{\sqrt{23}}(1, 2, 3, -3).
+        \]
+    \end{itemize}
+    Решим систему уравнений для векторов, ортогональных \(\mathbf{v}_1\) и \(\mathbf{v}_2\):
+    \[
+    \begin{cases}
+    x_1 + x_2 + x_3 + 2x_4 = 0, \\
+    x_1 + 2x_2 + 3x_3 - 3x_4 = 0.
+    \end{cases}
+    \]
+    Приведём матрицу ОСЛУ к УСВ:
+    \[
+    \mat{1& 1& 1& 2\\1 & 2& 3 & -3}
+    \implies
+    \mat{1 & 0 & -1 & 7 \\ 0 & 1 & 2 & -5}
+    \]
+    Общее решение:
+    \[
+    \mathbf{x} = x_3 \begin{pmatrix}1 \\ -2 \\ 1 \\ 0\end{pmatrix} + x_4 \begin{pmatrix}-7 \\ 5 \\ 0 \\ 1\end{pmatrix}.
+    \]
+    Базис ортогонального дополнения: \(\mathbf{w}_3 = (1, -2, 1, 0)\), \(\mathbf{w}_4 = (-7, 5, 0, 1)\).
+
+    \begin{itemize}
+        \item \textbf{Третий вектор}:  
+        \(\mathbf{w}_3 = (1, -2, 1, 0)\).  
+        Нормированный:
+        \[
+        \mathbf{e}_3 = \frac{1}{\sqrt{6}}(1, -2, 1, 0).
+        \]
+
+        \item \textbf{Четвёртый вектор}:  
+        Ортогонализируем \(\mathbf{w}_4\) относительно \(\mathbf{w}_3\):
+        \[
+        \mathbf{w}_4' = \mathbf{w}_4 - \frac{\mathbf{w}_4 \cdot \mathbf{w}_3}{\mathbf{w}_3 \cdot \mathbf{w}_3} \mathbf{w}_3 = (-7, 5, 0, 1) + \frac{17}{6}(1, -2, 1, 0).
+        \]
+        После упрощения:
+        \[
+        \mathbf{w}_4' = \left(-\frac{25}{6}, -\frac{2}{3}, \frac{17}{6}, 1\right).
+        \]
+        Нормированный:
+        \[
+        \mathbf{e}_4 = \frac{1}{\sqrt{\frac{161}{6}}} \left(-\frac{25}{6}, -\frac{2}{3}, \frac{17}{6}, 1\right) = \frac{1}{\sqrt{161}}(-25, -4, 17, 6).
+        \]
+    \end{itemize}
+
+    \textbf{Ответ:}$$ \left\{
+        \frac{1}{\sqrt{7}}(1, 1, 1, 2), \quad
+        \frac{1}{\sqrt{23}}(1, 2, 3, -3), \quad
+        \frac{1}{\sqrt{6}}(1, -2, 1, 0), \quad
+        \frac{1}{\sqrt{161}}(-25, -4, 17, 6)
+        \right\}$$\\
+    
+    \item[\textbf{№4}]Найдём ортонормальный базис подпространства \(\langle 1, x, x^2, x^3 \rangle\) в \(\mathbb{R}[x]_{\leqslant 4}\) со скалярным произведением
+    \[ (f, g) = \int_{-1}^{1} f(t)g(t)dt. \]
+    Пусть:
+    $$v_1 = 1, \quad v_2 = x, \quad v_3 = x^2, \quad v_4 = x^3$$
+    \begin{itemize}
+        \item \textbf{Первый вектор}:  
+        \(\|\mathbf{v}_1\| = \sqrt{\int_{-1}^{1} 1^2 dt} = \sqrt{2}\)
+
+        Нормированный:
+        \[
+        \mathbf{e}_1 = \f{1}{\sqrt{2}}
+        \]
+        \item \textbf{Второй вектор}: 
+        $$v_2 \cdot v_1 = \int_{-1}^{1} x dx = 0, \quad v_1 \cdot v_1 = \int_{-1}^{1} 1 dx = 2$$
+        \[
+        v_2' = v_2 - \f{v_2 \cdot v_1}{v_1 \cdot v_1}v_1 =  x
+        \]
+        \[\|v_2'\| = \sqrt{\int_{-1}^{1} x^2 dx} = \sqrt{\f{2}{3}}\]
+        Нормированный:
+        \[\mathbf{e}_2 = \sqrt{\f{3}{2}}x\]
+
+        \item \textbf{Третий вектор}: 
+        $$v_3 \cdot v_2 = \int_{-1}^{1} x^3dx = 0, \quad v_3
+         \cdot v_1 = \int_{-1}^{1} x^2dx = \f{2}{3}, \quad v_1 \cdot v_1 = \int_{-1}^{1} 1dt = 2$$
+        $$v_3' = v_3 - \f{v_3 \cdot v_2}{v_2 \cdot v_2} v_2 - \f{v_3 \cdot v_1}{v_1\cdot v_1}v_1 = x^2 -\f{1}{3}$$
+        $$\|v_3'\| = \sqrt{\f{2\sqrt{10}}{15}}$$
+        Нормированный:
+        \[\mathbf{e}_3 =\f{3\sqrt{10}}{4}(x^2-\f{1}{3})\]
+
+        \item \textbf{Четвёртый вектор}:
+        $$v_4' = v_4 - \f{v_4 \cdot v_3}{v_3 \cdot v_3}v_3 - 
+        \f{v_4 \cdot v_2}{v_2 \cdot v_2}v_2 - \f{v_4 \cdot v_1}{v_1 \cdot v_1}v_1 = x^3 - \frac{3}{5}x$$
+        $$\|v_4'\| = \sqrt{\int_{-1}^1 \left(x^3 - \frac{3}{5}x\right)^2 dx} = \frac{2\sqrt{14}}{35}$$
+
+        Нормированный:
+        \[\mathbf{e}_4 =\frac{5\sqrt{14}}{4} \left(x^3 - \frac{3}{5}x\right)\]
+    \end{itemize}
+    \textbf{Ответ:}
+    $$\left\{
+        \frac{1}{\sqrt{2}},
+        \frac{\sqrt{3}}{\sqrt{2}} x,
+        \frac{3\sqrt{10}}{4} \left(x^2 - \frac{1}{3}\right),
+        \frac{5\sqrt{14}}{4} \left(x^3 - \frac{3}{5}x\right)
+        \right\}$$\\
+    
+    \item[\textbf{№5}]
+    Рассмотрим евклидово пространство \(\mathbb{R}^3\) со стандартным скалярным произведением. Найдём проекцию вектора \( v = (0, 0, 1)^T \) на подпространство \( S = \langle (1, 0, 1)^T, (0, 1, 2)^T \rangle \) тремя способами.
+    
+    \begin{enumerate}
+        \item[5.1.]Применим процесс ортогонализации Грама-Шмидта:
+        \[
+        f_1 = (1, 0, 1)^T,
+        \]
+        \[
+        f_2 = (0, 1, 2)^T - \frac{(f_1, (0, 1, 2)^T)}{(f_1, f_1)} f_1 = (-1, 1, 1)^T.
+        \]
+        Найдём проекцию вектора \( v \) на \( S \):
+        \[
+        \text{pr}_S v = \frac{(v, f_1)}{(f_1, f_1)} f_1 + \frac{(v, f_2)}{(f_2, f_2)} f_2.
+        \]
+        Вычислим скалярные произведения:
+        \[
+        (v, f_1) = 1, \quad (f_1, f_1) = 2, \quad (v, f_2) = 1, \quad (f_2, f_2) = 3.
+        \]
+        Подставим:
+        \[
+        \text{pr}_S v = \frac{1}{2} (1, 0, 1)^T + \frac{1}{3} (-1, 1, 1)^T = \left(\frac{1}{6}, \frac{1}{3}, \frac{5}{6}\right)^T.
+        \]
+
+        \item[5.2.]Составим матрицу \( A \), столбцы которой — базис \( S \):
+        \[
+        A = \begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 1 & 2 \end{pmatrix}.
+        \]
+        Вычислим \( A^T A \) и \((A^T A)^{-1}\):
+        \[
+        A^T A = \begin{pmatrix} 2 & 2 \\ 2 & 5 \end{pmatrix}, \quad (A^T A)^{-1} = \frac{1}{6} \begin{pmatrix} 5 & -2 \\ -2 & 2 \end{pmatrix}.
+        \]
+        Найдём \( A^T v \):
+        \[
+        A^T v = \begin{pmatrix} 1 \\ 2 \end{pmatrix}.
+        \]
+        Вычислим проекцию:
+        \[
+        \text{pr}_S v = A(A^T A)^{-1} A^T v = \begin{pmatrix} \frac{1}{6} \\ \frac{1}{3} \\ \frac{5}{6} \end{pmatrix}.
+        \]
+
+        \item[5.3.]Найдём базис \( S^\perp \). Решим систему:
+        \[
+        \begin{cases}
+        x + z = 0, \\
+        y + 2z = 0.
+        \end{cases}
+        \]
+        Базис \( S^\perp \): \( w = (-1, -2, 1)^T \).
+
+        Найдём проекцию \( v \) на \( S^\perp \):
+        \[
+        \text{pr}_{S^\perp} v = \frac{(v, w)}{(w, w)} w = \frac{1}{6} (-1, -2, 1)^T.
+        \]
+        Найдём проекцию на \( S \):
+        \[
+        \text{pr}_S v = v - \text{pr}_{S^\perp} v = (0, 0, 1)^T - \left(-\frac{1}{6}, -\frac{1}{3}, \frac{1}{6}\right)^T = \left(\frac{1}{6}, \frac{1}{3}, \frac{5}{6}\right)^T.
+        \]
+        
+    \end{enumerate}
+    \textbf{Ответ: }
+    Проекция вектора \( v \) на подпространство \( S \) равна:
+    \[
+    \text{pr}_S v = \begin{pmatrix} \dfrac{1}{6} & \dfrac{1}{3} & \dfrac{5}{6} \end{pmatrix}^T
+    \]\\
+
+    \item[\textbf{№6}]Найдём ортогональную проекцию многочлена \( x^4 \) на подпространство \(\langle 1, x, x^2, x^3 \rangle\) в \(\mathbb{R}[x]_{\leqslant 4}\) со скалярным произведением
+    \[
+    (f, g) = \int_{-1}^{1} f(t)g(t)dt.
+    \]
+    Ищем проекцию в виде \( p(x) = a + bx + cx^2 + dx^3 \). Разность \( x^4 - p(x) \) должна быть ортогональна каждому базисному вектору подпространства. Это даёт систему уравнений:
+
+    \begin{enumerate}
+        \item[1)]
+        Для базисного вектора \(1\):
+        \[
+        \int_{-1}^{1} (x^4 - a - bx - cx^2 - dx^3) \, dx = 0.
+        \]
+        Вычисляем интеграл:
+        \[
+        \int_{-1}^{1} x^4 \, dx - a \int_{-1}^{1} 1 \, dx - c \int_{-1}^{1} x^2 \, dx = 0.
+        \]
+        Подставляем значения:
+        \[
+        \frac{2}{5} - 2a - \frac{2}{3}c = 0 \implies a + \frac{1}{3}c = \frac{1}{5}.
+        \]
+
+        \item[2)]Для базисного вектора \(x\):
+        \[
+        \int_{-1}^{1} (x^4 - a - bx - cx^2 - dx^3)x \, dx = 0.
+        \]
+        Вычисляем интеграл:
+        \[
+        \int_{-1}^{1} x^5 \, dx - b \int_{-1}^{1} x^2 \, dx - d \int_{-1}^{1} x^4 \, dx = 0.
+        \]
+        Подставляем значения:
+        \[
+        0 - \frac{2}{3}b - \frac{2}{5}d = 0 \implies \frac{1}{3}b + \frac{1}{5}d = 0.
+        \]
+
+        \item[3)]Для базисного вектора \(x^2\):
+        \[
+        \int_{-1}^{1} (x^4 - a - bx - cx^2 - dx^3)x^2 \, dx = 0.
+        \]
+        Вычисляем интеграл:
+        \[
+        \int_{-1}^{1} x^6 \, dx - a \int_{-1}^{1} x^2 \, dx - c \int_{-1}^{1} x^4 \, dx = 0.
+        \]
+        Подставляем значения:
+        \[
+        \frac{2}{7} - \frac{2}{3}a - \frac{2}{5}c = 0 \implies \frac{1}{3}a + \frac{1}{5}c = \frac{1}{7}.
+        \]
+
+        \item[4)]Для базисного вектора \(x^3\):
+        \[
+        \int_{-1}^{1} (x^4 - a - bx - cx^2 - dx^3)x^3 \, dx = 0.
+        \]
+        Вычисляем интеграл:
+        \[
+        \int_{-1}^{1} x^7 \, dx - b \int_{-1}^{1} x^4 \, dx - d \int_{-1}^{1} x^6 \, dx = 0.
+        \]
+        Подставляем значения:
+        \[
+        0 - \frac{2}{5}b - \frac{2}{7}d = 0 \implies \frac{1}{5}b + \frac{1}{7}d = 0.
+        \]
+    \end{enumerate}
+
+    Решаем систему для \(a\) и \(c\):
+    \[
+    \begin{cases}
+    a + \frac{1}{3}c = \frac{1}{5}, \\
+    \frac{1}{3}a + \frac{1}{5}c = \frac{1}{7}.
+    \end{cases}
+    \]
+    Решением являются:
+    \[
+    a = -\frac{3}{35}, \quad c = \frac{6}{7}.
+    \]
+
+    Решаем систему для \(b\) и \(d\):
+    \[
+    \begin{cases}
+    \frac{1}{3}b + \frac{1}{5}d = 0, \\
+    \frac{1}{5}b + \frac{1}{7}d = 0.
+    \end{cases}
+    \]
+    Решением являются:
+    \[
+    b = 0, \quad d = 0.
+    \]
+
+    Ортогональная проекция многочлена \( x^4 \) на подпространство \(\langle 1, x, x^2, x^3 \rangle\) равна:
+    \[
+    p(x) = \dfrac{6}{7}x^2 - \dfrac{3}{35}
+    \]
+
+    \item[\textbf{№7}]Докажем, что $(U + W)^\perp = U^\perp \cap W^\perp$\textbf{:}
+    
+    \begin{enumerate}
+        \item $(U + W)^\perp \subseteq U^\perp \cap W^\perp$\textbf{:}
+        
+        Пусть $x \in (U + W)^\perp$. Тогда для всех $u \in U$, $w \in W$:
+        \[
+        \langle x, u + w \rangle = 0
+        \]
+        В частности:
+        \begin{itemize}
+            \item При $w = 0$: $\langle x, u \rangle = 0$ для всех $u \in U$ $\Rightarrow$ $x \in U^\perp$
+            \item При $u = 0$: $\langle x, w \rangle = 0$ для всех $w \in W$ $\Rightarrow$ $x \in W^\perp$
+        \end{itemize}
+        Следовательно, $x \in U^\perp \cap W^\perp$.
+
+        \item $U^\perp \cap W^\perp \subseteq (U + W)^\perp$\textbf{:}
+        
+        Пусть $x \in U^\perp \cap W^\perp$. Тогда:
+        \[
+        \langle x, u \rangle = 0 \quad \forall u \in U, \quad \langle x, w \rangle = 0 \quad \forall w \in W
+        \]
+        Для любого $u + w \in U + W$:
+        \[
+        \langle x, u + w \rangle = \langle x, u \rangle + \langle x, w \rangle = 0 + 0 = 0
+        \]
+        Следовательно, $x \in (U + W)^\perp$.
+    \end{enumerate}
+
+    Докажем, что $(U \cap W)^\perp = U^\perp + W^\perp$\textbf{:}
+
+    \begin{enumerate}
+        \item $U^\perp + W^\perp \subseteq (U \cap W)^\perp$\textbf{:}
+        
+        Пусть $x = a + b$, где $a \in U^\perp$, $b \in W^\perp$. Для любого $v \in U \cap W$:
+        \[
+        \langle x, v \rangle = \langle a, v \rangle + \langle b, v \rangle = 0 + 0 = 0
+        \]
+        Следовательно, $x \in (U \cap W)^\perp$.
+
+        \item$(U \cap W)^\perp \subseteq U^\perp + W^\perp$\textbf{:}
+        
+        В конечномерном пространстве ($\dim V < \infty$) воспользуемся свойством $(S^\perp)^\perp = S$. Применим первый результат к $U^\perp$ и $W^\perp$:
+        \[
+        (U^\perp + W^\perp)^\perp = (U^\perp)^\perp \cap (W^\perp)^\perp = U \cap W
+        \]
+        Взяв ортогональное дополнение обеих частей:
+        \[
+        (U \cap W)^\perp = \left((U^\perp + W^\perp)^\perp\right)^\perp = U^\perp + W^\perp
+        \]
+    \end{enumerate}
+\end{enumerate}
+\end{document}

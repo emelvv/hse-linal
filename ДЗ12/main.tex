@@ -1,0 +1,404 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 18.12 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Для нахождения ФСР однородных систем линейных уравнений, мы будем использовать метод Гаусса для приведения системы к ступенчатому виду. 
+    \begin{enumerate}
+        \item[1.1.]$
+        \case{
+        x_{1}-2 x_{2}+4 x_{3}+3 x_{4}+x_{6}  =0 \\
+        3 x_{4}+2 x_{5}+17 x_{6}  =0 \\
+        2 x_{1}-4 x_{2}+8 x_{3}+2 x_{5}-5 x_{6}  =0  \\
+        3 x_{4}-2 x_{5}-x_{6}  =0 
+        }
+        $\\
+        Запишем в виде матрицы СЛУ:
+        $$A =
+        \begin{pmatrix}
+        1 & -2 & 4 & 3 & 0 & 1 & | & 0 \\
+        0 & 0 & 0 & 3 & 2 & 17 & | & 0 \\
+        2 & -4 & 8 & 0 & 2 & -5 & | & 0 \\
+        0 & 0 & 0 & 3 & -2 & -1 & | & 0
+        \end{pmatrix}
+        \implies\begin{pmatrix}
+            1 & -2 & 4 & 3 & 0 & 1 & | & 0 \\
+            2 & -4 & 8 & 0 & 2 & -5 & | & 0 \\
+            0 & 0 & 0 & 3 & 2 & 17 & | & 0 \\
+            0 & 0 & 0 & 3 & -2 & -1 & | & 0
+            \end{pmatrix}$$
+        $$
+        \implies\begin{pmatrix}
+            2 & -4 & 8 & 6 & 0 & 2 & | & 0 \\
+            2 & -4 & 8 & 0 & 2 & -5 & | & 0 \\
+            0 & 0 & 0 & 3 & 2 & 17 & | & 0 \\
+            0 & 0 & 0 & 0 & -4 & -18 & | & 0
+            \end{pmatrix}
+        \implies \begin{pmatrix}
+            1 & -2 & 4 & 3 & 0 & 1 & | & 0 \\
+            0 & 0 & 0 & -6 & 2 & -7 & | & 0 \\
+            0 & 0 & 0 & 3 & 2 & 17 & | & 0 \\
+            0 & 0 & 0 & 0 & -2 & -9 & | & 0
+            \end{pmatrix}$$
+        
+        $$
+        \implies \begin{pmatrix}
+            1 & -2 & 4 & 0 & -2 & -16 & | & 0 \\
+            0 & 0 & 0 & 0 & 6 & 27 & | & 0 \\
+            0 & 0 & 0 & 3 & 2 & 17 & | & 0 \\
+            0 & 0 & 0 & 0 & -2 & -9 & | & 0
+            \end{pmatrix}
+        \implies  \begin{pmatrix}
+            1 & -2 & 4 & 0 & 0 & -25 & | & 0 \\
+            0 & 0 & 0 & 3 & 0 & 8 & | & 0 \\
+            0 & 0 & 0 & 0 & 0 & 9 & | & 0 \\
+            0 & 0 & 0 & 0 & -2 & -9 & | & 0
+        \end{pmatrix}
+        $$
+        $$
+        \implies \begin{pmatrix}
+            1 & -2 & 4 & 0 & 0 & -7 & | & 0 \\
+            0 & 0 & 0 & 3 & 0 & 8 & | & 0 \\
+            0 & 0 & 0 & 0 & 0 & 0 & | & 0\\
+            0 & 0 & 0 & 0 & -2 & 9 & | & 0 
+        \end{pmatrix}
+        \implies 
+            \begin{pmatrix}
+            1 & -2 & 4 & 0 & 0 & -7 &| & 0 \\
+            0 & 0 & 0 & 1 & 0 & \frac{8}{3} &| & 0 \\
+            0 & 0 & 0 & 0 & 1 & \frac{9}{2} & | &0 \\
+            0 & 0 & 0 & 0 & 0 & 0 & | & 0
+            \end{pmatrix}
+        $$
+        Следовательно:
+        $$x= \mat{2x_2-4x_3+7x_6 \\ x_2 \\ x_3\\-\f{8}{3}x_6 \\ -\f{9}{2}x_6} = \mat{2 \\ 1 \\ 0\\0\\ 0}x_2+\mat{-4 \\ 0 \\ 1\\0 \\ 0}x_3+\mat{7 \\ 0\\ 0\\-\f{8}{3} \\ -\f{9}{2}}x_6$$
+        \textbf{Ответ: }$\mat{2 \\ 1 \\ 0\\0\\ 0},\mat{-4 \\ 0 \\ 1\\0 \\ 0},\mat{7 \\ 0\\ 0\\-\f{8}{3} \\ -\f{9}{2}}$\\\\
+
+        \item[1.2.]$
+        x_{1}+2 x_{2}+3 x_{3}=0
+        $\\
+        $$x= \mat{-2x_{2}-3x_{3}\\x_2\\x_3} = \mat{-2\\1\\0}x_2 + \mat{-3\\0\\1}x_3$$
+        \textbf{Ответ: }$\mat{-2\\1\\0}, \mat{-3\\0\\1}$\\\\
+
+        \item[1.3.]$\case{
+            x_{2}+5 x_{3}+5 x_{4}  =0  \\
+            5 x_{3}+2 x_{4}  =0 
+            }$\\
+        Составим матрицу СЛУ:
+        $$
+        \begin{pmatrix}
+        0 & 1 & 5 & 5 &| & 0 \\
+        0 & 0 & 5 & 2 & | &0
+        \end{pmatrix}
+        $$
+        Приведем к улучшенному ступенчатому виду:
+        $$
+        \begin{pmatrix}
+        0 & 1 & 0 & 3 & | & 0 \\
+        0 & 0 & 1 & \frac{2}{5} & | & 0
+        \end{pmatrix}
+        $$
+
+        $$x = \mat{0 \\ -3x_4 \\ -\f{2}{5}x_4 \\ x_4} = \mat{0 \\ -3 \\ -\f{2}{5} \\ 1}x_4$$
+        \textbf{Ответ: }$\mat{0 \\ -3 \\ -\f{2}{5} \\ 1}$\\
+
+
+        \item[1.4.]$
+        \case{
+        x_{1}+3 x_{2}  =0 \\
+        2 x_{1}+x_{2} =0  \\
+        x_{1}-x_{2}  =0 
+        }\\
+        $\\
+        Составим матрицу СЛУ:
+        $$
+        \begin{pmatrix}
+        1 & 3 & | & 0 \\
+        2 & 1 & | &0 \\
+        1 & -1 & | &0
+        \end{pmatrix}
+        $$
+        Приведем к улучшенному ступенчатому виду:
+        $$
+        \begin{pmatrix}
+            1 & 3 & | & 0 \\
+            2 & 1 & | &0 \\
+            1 & -1 & | &0
+            \end{pmatrix}\implies \begin{pmatrix}
+        1 & 3 & | & 0 \\
+        0 & -5 & | & 0 \\
+        0 & 0 & | & 0
+        \end{pmatrix} \implies\begin{pmatrix}
+            1 & 0 & | &0 \\
+            0 & 1 & | &0 \\
+            0 & 0 & | &0
+            \end{pmatrix}
+        $$
+        Следовательно:
+        $$\text{ФСР нету, единственное решение: } x=\mat{0\\0}$$
+        \textbf{Ответ: } нету
+    \end{enumerate}
+
+    \item[\textbf{№2}]Рассмотрим многочлен $ f(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 $ степени не выше 3. Мы ищем подпространство, состоящее из многочленов, удовлетворяющих условиям $ f(1) = 0 $ и $ f'(1) = 0 $.
+    1. **Первое условие**: $ f(1) = 0 $
+
+    Подставим $ x = 1 $:
+    $$
+    f(1) = a_0 + a_1 \cdot 1 + a_2 \cdot 1^2 + a_3 \cdot 1^3 = a_0 + a_1 + a_2 + a_3 = 0
+    $$
+    Найдем производную $ f'(x) $:
+    $$
+    f'(x) = a_1 + 2a_2 x + 3a_3 x^2
+    $$
+    Подставим $ x = 1 $:
+    $$
+    f'(1) = a_1 + 2a_2 \cdot 1 + 3a_3 \cdot 1^2 = a_1 + 2a_2 + 3a_3 = 0
+    $$
+    Теперь у нас есть система уравнений:
+    $$
+    \begin{cases}
+    a_0 + a_1 + a_2 + a_3 = 0 \\
+    a_1 + 2a_2 + 3a_3 = 0
+    \end{cases} (*)
+    $$
+    Составим матрицу СЛУ:
+    $$\mat{1 & 1 & 1 & 1 & | & 0\\
+    0& 1 &2 &3 & |&0}\implies \text{ УСВ: } \mat{1 & 0 & -1 & -2 & | & 0 \\
+    0 & 1 & 2 & 3 & | & 0}$$
+
+    Общее решение: $\mat{a_3+2a_4\\-2a_3-3a_4\\a_3\\a_4} = \mat{1\\-2\\1\\0}a_3+\mat{2\\-3\\0\\1}a_4$ \\
+    ФСР: $\mat{1\\-2\\1\\0}, \mat{2\\-3\\0\\1}$\\\\
+    Следовательно базис искомого подпространства будет:
+    $$
+        1-2x+x^2=0, \quad
+        2-3x+x^3=0
+    $$
+    
+    Размерность подпространства равна количеству векторов в базисе, то есть:
+    $$
+    \text{dim} = 2.
+    $$
+
+    \item[\textbf{№3}]Для доказательства того, что множество матриц $ X $ пространства матриц $ n \times n $, для которых $ \operatorname{tr}(X Y) = 0 $ при некоторой фиксированной матрице $ Y $, является подпространством, необходимо проверить три условия:
+
+    1. Наличие нулевого элемента.\\
+    2. Замкнутость относительно сложения.\\
+    3. Замкнутость относительно умножения на скаляр.\\
+
+    \begin{enumerate}
+        \item[1)]
+        Рассмотрим нулевую матрицу:
+        $$
+        \operatorname{tr}(0 \cdot Y) = \operatorname{tr}(0) = 0.
+        $$
+        Таким образом, нулевая матрица принадлежит множеству.\\
+        
+        \item[2)]
+        Пусть $ X_1 $ и $ X_2 $ - матрицы, для которых $ \operatorname{tr}(X_1 Y) = 0 $ и $ \operatorname{tr}(X_2 Y) = 0 $. Рассмотрим их сумму:
+        $$
+        \operatorname{tr}((X_1 + X_2) Y) = \operatorname{tr}(X_1 Y) + \operatorname{tr}(X_2 Y) = 0 + 0 = 0.
+        $$
+        Следовательно, $ X_1 + X_2 $ также принадлежит множеству.\\
+    
+        \item[3)]
+        Пусть $ X $ - матрица, для которой $ \operatorname{tr}(X Y) = 0 $, и $ c $ - скаляр. Рассмотрим матрицу $ cX $:
+        $$
+        \operatorname{tr}(cX Y) = c \operatorname{tr}(X Y) = c \cdot 0 = 0.
+        $$
+        Следовательно, $ cX $ также принадлежит множеству.\\
+    \end{enumerate}
+    
+    
+    Таким образом, множество матриц $ X $ является подпространством.
+
+    Теперь найдём базис и размерность для $ n=2 $ и $ Y=\begin{pmatrix} 2 & 3 \\ 5 & 4 \end{pmatrix} $
+    
+    Рассмотрим матрицы $ X = \begin{pmatrix} a & b \\ c & d \end{pmatrix} $. Условие $ \operatorname{tr}(X Y) = 0 $ можно записать как:
+    $$
+    \operatorname{tr}\left(\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} 2 & 3 \\ 5 & 4 \end{pmatrix}\right) = \operatorname{tr}\left(\begin{pmatrix} 2a + 5b & 3a + 4b \\ 2c + 5d & 3c + 4d \end{pmatrix}\right).
+    $$
+
+    Это равняется:
+    $$
+    (2a + 5b) + (3c + 4d) = 0.
+    $$
+
+    Таким образом, у нас есть линейное уравнение:
+    $$
+    2a + 5b + 3c + 4d = 0.
+    $$
+
+    Теперь можем выбрать свободные переменные $ a, b, c $ и выразить $ d $ через них. 
+
+    Выберем базисные векторы:\\
+    1. $ a = 1, b = 0, c = 0 $ → $ d = -\frac{2}{4} = -\frac{1}{2} $ → $ \begin{pmatrix} 1 & 0 \\ 0 & -\frac{1}{2} \end{pmatrix} $\\
+    2. $ a = 0, b = 1, c = 0 $ → $ d = -\frac{5}{4} $ → $ \begin{pmatrix} 0 & 1 \\ 0 & -\frac{5}{4} \end{pmatrix} $\\
+    3. $ a = 0, b = 0, c = 1 $ → $ d = -\frac{3}{4} $ → $ \begin{pmatrix} 0 & 0 \\ 1 & -\frac{3}{4} \end{pmatrix} $
+
+    Таким образом, базис подпространства:
+    $$
+    \left\{ \begin{pmatrix} 1 & 0 \\ 0 & -\frac{1}{2} \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ 0 & -\frac{5}{4} \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 1 & -\frac{3}{4} \end{pmatrix} \right\}.
+    $$
+    $$\text{Размерность: } 3$$\\
+
+
+    \item[\textbf{№4}]Для того чтобы выбрать линейно независимую систему из векторов $ v_1, v_2, v_3, v_4 $ и дополнить её до базиса $ \mathbb{R}^5 $, мы можем использовать метод Гаусса для нахождения линейной зависимости между векторами.
+
+    Составим матрицу из векторов:
+    $$
+    A = \begin{pmatrix}
+    -2 & -2 & 2 & 9 \\
+    1 & 3 & 1 & -2 \\
+    -3 & -5 & 1 & 4 \\
+    2 & 7 & 3 & -3 \\
+    3 & 4 & -2 & -8
+    \end{pmatrix} 
+    \implies \text{ УСВ: }
+    \begin{pmatrix}
+        1 & 0 & -2 & 0 \\
+        0 & 1 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}
+    $$
+
+    Следовательно, мы видим, что $v_3$ выражается через остальные. А значит линейно-независимый набор будет состоять из векторов:
+    $$v_1, v_2, v_4$$
+    И чтобы их дополнить до базиса $\RR^5$, нужно взять векторы:
+    $$e_4 = \mat{0\\0\\0\\1\\0} \text{ и } e_5 = \mat{0\\0\\0\\0\\1}$$
+    \textbf{Ответ: } $v_1, v_2, v_4, e_4, e_5$
+
+    \item[\textbf{№5}]Для нахождения базиса в подпространстве $ U $, заданном линейной оболочкой матриц, мы можем использовать метод Гаусса для нахождения линейной зависимости между матрицами.
+
+    
+    Дано множество матриц:
+    $$
+    A_1 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \quad A_2 = \begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}, \quad A_3 = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}, \quad A_4 = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad A_5 = \begin{pmatrix} 0 & 1 \\ 2 & 3 \end{pmatrix}
+    $$
+    Преобразуем каждую матрицу в столбец и составим из них одну большую. Приведём её к УСВ
+    $$\mat{1&2&1&1&0\\
+    0&1&1&2&1\\
+    0&1&1&3&2\\
+    -1&0&1&4&3} \implies \text{ УСВ: }
+    \begin{pmatrix}
+        1 & 0 & -1 & 0 & 1 \\
+        0 & 1 & 1 & 0 & -1 \\
+        0 & 0 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 0 & 0
+    \end{pmatrix}$$
+    Мы видим, что 3я и 4ая матрица выражается через остальные. Значит:
+    $$A_3, A_4 \in \langle A_1, A_2, A_5\rangle \implies  \langle A_1, A_2, A_5\rangle =  \langle A_1, A_2, A_3, A_4, A_5\rangle$$
+    Поэтому $A_1, A_2, A_5$ - базис в $U$\\
+
+    \underbar{Найдём какой-нибудь другой базис в $U$:}
+
+    Приведём ту же матрицу к СВ, но теперь преобразованиями стобцов:
+    $$\mat{1&2&1&1&0\\
+    0&1&1&2&1\\
+    0&1&1&3&2\\
+    -1&0&1&4&3} \implies \text{ СВ: }
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 \\
+        -1 & 1 & 1 & 0 & 0
+    \end{pmatrix}$$
+
+    После таких преобразований линейная оболочка не поменялась, а значит в $U$ есть базис:
+    $$\mat{1 & 0 \\ 0 & -1}, \mat{0 & 1 \\0 & 1}, \mat{0 & 0 \\ 1 & 1}$$
+
+    \textbf{Ответ: } 5.1:  $\mat{1 & 0 \\ 0 & -1}, \mat{0 & 1 \\0 & 1}, \mat{0 & 0 \\ 1 & 1}$\\
+    5.2: $A_1, A_2, A_5$\\
+    
+    \item[\textbf{№6}]$ A = \begin{pmatrix} 5 & 2 & -3 & 1 \\ \lambda & 1 & -4 & 3 \\ 4 & 3 & -1 & -2 \end{pmatrix} $\\\\
+    Для нахождения ранга матрицы $A$ в зависимости от параметра $ \lambda $, мы будем использовать метод Гаусса для приведения матрицы к ступенчатому виду.
+    $$
+    A = \begin{pmatrix} 5 & 2 & -3 & 1 \\ \lambda & 1 & -4 & 3 \\ 4 & 3 & -1 & -2 \end{pmatrix} \implies \begin{pmatrix}
+        1 & -1 & -2 & 3 \\
+        0 & 7 & 7 & -14 \\
+        \lambda & 1 & -4 & 3
+        \end{pmatrix}  \implies 
+    $$
+    $$    
+        \implies\begin{pmatrix}
+            1 & 0 & -1 & 1 \\
+            0 & 1 & 1 & -2 \\
+            0 & \lambda + 1 & 2\lambda - 4 & 3 - 3\lambda
+        \end{pmatrix}  \implies
+        \begin{pmatrix}
+            1 & 0 & -1 & 1 \\
+            0 & 1 & 1 & -2 \\
+            0 & 0 & \lambda - 5 & 5 - \lambda
+            \end{pmatrix}                         
+    $$\\
+    Получаем, что, если $\lambda = 5$:
+    $$\text{rk}A = 2$$
+    Иначе:
+    $$\begin{pmatrix}
+        1 & 0 & -1 & 1 \\
+        0 & 1 & 1 & -2 \\
+        0 & 0 & \lambda - 5 & 5 - \lambda
+        \end{pmatrix} \implies \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & -1 \\
+            0 & 0 & 1 & -1
+            \end{pmatrix}
+    \implies \text{rk}A = 3$$
+
+    \textbf{Ответ:}$\case{\lambda = 5: \text{rk}A = 2\\
+    \lambda \neq 5: \text{rk}A = 3}$
+
+\end{enumerate}
+\end{document}

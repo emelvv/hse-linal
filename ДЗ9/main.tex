@@ -1,0 +1,313 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 20.11 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{1.}]\begin{enumerate}
+        \item[1.1] Доказать: $0 \cdot x = \overline{0} \;\; \forall x\in V$
+        $$0x = (0-0)x= 0x-0x = \overline{0}$$
+
+        \item[1.2] Доказать: $(-\alpha)\cdot x = - ( \alpha \cdot x) \;\; \forall \alpha \in \RR \;\; \forall x\in V$
+        $$\alpha-\alpha = 0 \r 1\cdot \alpha-\alpha = 0 \r  -\alpha = -1\cdot \alpha$$
+        $$(-\alpha)\cdot x =(-1 \cdot \alpha)\cdot x = -1 \cdot (\alpha\cdot x) = -(\alpha\cdot x)$$
+    \end{enumerate}
+
+    \item[\textbf{2.}]
+    \begin{enumerate}
+        \item[2.2] $U = \{(x,2y,x+y)^T \in \RR^3 \mid x,y \in \RR\}$\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$:
+            $$x, y = 0: (0, 0, 0) \in U$$
+            \item[(2)]Замкнутость относительно сложения:
+            $$(x_1, 2y_1, x_1+y_1)^T + (x_2, 2y_2, x_2+y_2)^T =$$
+            $$= (x_2 + x_1, 2y_2 + 2y_1, x_2+y_2+x_1+y_1)^T \in U$$
+            \item[(3)]Замкнутость относительно умножения на скаляр:
+            $$(x, 2y, x+y)^T \in U, \; c \in \RR$$
+            $$c(x, 2y, x+y)^T = (xc, 2yc, xc+yc)^T \in U$$
+        \end{enumerate}
+        \textbf{Следовательно, $U$ подпространство $\RR^\NN$}\\
+
+        $U = \{(x, y, x, y, \dots)^T \in \RR^3 \mid x,y \in \RR\}$\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$:
+            $$x, y = 0: (0, 0, 0, 0, \dots) \in U$$
+            \item[(2)]Замкнутость относительно сложения:
+            $$(x_1, y_1, x_1, y_1, \dots)^T + (x_2, y_2, x_2, y_2, \dots)^T =$$
+            $$= (x_1 + x_2, y_1 + y_2, \dots)^T \in U$$
+            \item[(3)]Замкнутость относительно умножения на скаляр:
+            $$(x, y, x, y, \dots)^T \in U, \; c \in \RR$$
+            $$c(x, y, x, y, \dots)^T = (cx, cy, cx, cy, \dots)^T \in U$$
+        \end{enumerate}
+        \textbf{Следовательно, $U$ подпространство $\RR^\NN$}\\
+
+        \item[2.2]$U = \{(x_1, \ldots, x_n)^T  \in \RR^n \mid x_1 \ne 0, \ldots, x_n \ne 0\}$\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$
+            $$(0, \ldots, 0)^T \notin U$$
+        \end{enumerate}
+        Первое условие не выполняется.\\
+        \textbf{Следовательно, $U$ не подпространство $\RR^\NN$}\\
+        
+        $U = \{(x_1, \ldots, x_n)^T  \in \RR^n \mid x_1 \ge x_2 \ge \ldots \ge x_n\}$\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$:
+            $$x_1, \ldots, x_n = 0: (0, 0, 0, 0, \dots) \in U$$
+            \item[(2)]Замкнутость относительно сложения:
+            $$(x_1, \ldots, x_n)^T + (y_1, \ldots, y_n)^T =$$
+            $$= (x_1+y_1, \ldots, x_n+y_n)^T \in? \; U$$
+            Сложение может нарушить порядок убывания.
+        \end{enumerate}
+        Второе условие не выполняется.\\
+        \textbf{Следовательно, $U$ не подпространство $\RR^\NN$}\\
+
+        \item[2.3]$U = \{(x_1, \ldots, x_n)^T  \in \RR^n \mid x_1, \ldots, x_n \in \ZZ\}$;\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$:
+            $$x_1, \ldots, x_n = 0: (0, 0, 0, 0, \dots) \in U$$
+            \item[(2)]Замкнутость относительно сложения:
+            $$(x_1, \ldots, x_n)^T + (y_1, \ldots, y_n)^T =$$
+            $$= (x_1+y_1, \ldots, x_n+y_n)^T \in \; U$$
+            \item[(3)]Замкнутость относительно умножения на скаляр:
+            $$(x_1, \ldots, x_n)^T \in U, \; c \in \RR$$
+            $$c(x_1, \ldots, x_n)^T = (cx_1, \ldots, cx_n)^T \in? \; U$$
+            При $c \in \RR \backslash \QQ$ числа перестанут быть целыми.
+        \end{enumerate}
+        Третье условие не выполняется.\\
+        \textbf{Следовательно, $U$ не подпространство $\RR^\NN$}\\
+
+        $U = \{(x, x^3, x^5, \ldots, x^{2n-1})^T \mid x \in \RR\}$;\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$:
+            $$x = 0: (0, 0, 0, 0, \dots) \in U$$
+            \item[(2)]Замкнутость относительно сложения:
+            $$(x_1, x_1^3, x_1^5, \ldots, x_1^{2n-1})^T + (x_2, x_2^3, x_2^5, \ldots, x_1^{2n-1})^T =$$
+            $$= (x_1+x_2, x_1^3+x_2^3, x_1^5+x_2^5, \ldots, x_1^{2n-1}+x_2^{2n-1})^T \in? \; U$$
+            При $x_1 = 1$ и $x_2 = 1$:
+            $$(1, \ldots, 1)^T+(1, \ldots, 1)^T = (2, \ldots, 2)^T \notin U$$
+        \end{enumerate}
+        Второе условие не выполняется.\\
+        \textbf{Следовательно, $U$ не подпространство $\RR^\NN$}\\
+
+        $U = \{(x, x)^T \mid x \in \RR\} \cup \{(x, -x)^T \mid x \in \RR\}$\\
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевой вектор $\overline{0} \in U$:
+            $$x= 0: (0, 0)^T \in U$$
+            \item[(2)]Замкнутость относительно сложения:
+            $$(x, x)^T + (y, y)^T = (x+y, x+y)^T \in U$$
+            $$(x, x)^T + (y, -y)^T = (x+y, x-y)^T \in? \; U$$
+            При $x = 1$ и $y= 1$:
+            $$(1, 1)^T + (1, -1)^T = (2, 0) \notin U$$
+            
+        \end{enumerate}
+        Второе условие не выполняется.\\
+        \textbf{Следовательно, $U$ не подпространство $\RR^\NN$}\\
+    \end{enumerate}
+
+    \item[\textbf{3}]
+    \begin{enumerate}
+        \item[3.1]Множество симметрических матриц; множество кососимметрических матриц
+        \begin{enumerate}
+            \item[1)]Симметрические матрицы. Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая матрица симметрична.
+                \item[(2)]Сумма двух симметричных матриц \( A \) и \( B \) также симметрична, так как $$ (A + B)^T = A^T + B^T = A + B $$
+                \item[(3)]Умножение симметричной матрицы \( A \) на скаляр \( \alpha \) сохраняет симметричность: $$(\alpha A)^T = \alpha A^T = \alpha A$$ 
+            \end{enumerate}
+            \textbf{Следовательно, множество симметрических матриц является подпространством $V$}\\
+
+            \item[2)]Кососимметрические матрицы. Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая матрица кососимметрична.
+                \item[(2)]Сумма двух кососимметричных матриц \( A \) и \( B \) также кососимметрична, так как $$ (A + B)^T = A^T + B^T = -A - B = -(A + B) $$
+                \item[(3)]Умножение кососимметричной матрицы \( A \) на скаляр \( \alpha \) сохраняет кососимметричность:  $$(\alpha A)^T = \alpha A^T = \alpha (-A) = -(\alpha A)$$ 
+            \end{enumerate}
+            \textbf{Следовательно, множество кососимметрических матриц является подпространством $V$}\\\\
+        \end{enumerate}
+
+        \item[3.2]Множество матриц со следом 0. Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)] Нулевая матрица имеет след 0
+            \item[(2)] Если \( A \) и \( B \) имеют след 0, то
+            $$\operatorname{Tr}(A + B) = \operatorname{Tr}(A) + \operatorname{Tr}(B) = 0 + 0 = 0$$
+            \item[(3)]Если \( \alpha \in F \) и \( \operatorname{Tr}(A) = 0 \), то 
+            $$\operatorname{Tr}(\alpha A) = \alpha \operatorname{Tr}(A) = \alpha \cdot 0 = 0$$
+        \end{enumerate}
+        \textbf{Следовательно, множество матриц со следом 0 является подпространством $V$}\\\\
+
+        \item[3.3]Множество невырожденных матриц; множество вырожденных матриц
+        \begin{enumerate}
+            \item[1)]Невырожденные матрицы. Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая матрица вырожденная (\( det(0) = 0 \)), следовательно, множество невырожденных матриц не содержит нулевую матрицу и не является подпространством.
+            \end{enumerate}
+            Первое условие не выполняется.\\
+            \textbf{Следовательно, множество невырожденных матриц не является подпространством $V$}\\\\
+            
+            \item[1)]Невырожденные матрицы. Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая матрица вырожденная.
+                \item[(2)]Сумма двух вырожденных матриц может не быть вырожденной (например, \( A \) и \( -A \) вырожденные, но \( A + (-A) = 0 \) - невырожденная).
+            \end{enumerate}
+            Второе условие не выполняется.\\
+            \textbf{Следовательно, множество вырожденных матриц не является подпространством $V$}\\\\
+        \end{enumerate}
+    \end{enumerate}
+
+    \item[\textbf{4.}]
+    \begin{enumerate}
+        \item[4.1]Функции с фиксированным значением в точке \( 5 \)
+        \begin{enumerate}
+            \item[1)]Множество функций, значение которых в точке \( 5 \) равно \( 0 \). Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая функция \( f(x) = 0 \) принадлежит \( U \), потому что \( f(5) = 0 \)
+                \item[(2)]Если \( f(5) = 0 \) и \( g(5) = 0 \), то $$ (f + g)(5) = f(5) + g(5) = 0 + 0 = 0 $$
+                \item[(3)]Если \( f(5) = 0 \) и \( \alpha \in \mathbb{R} \), то 
+                $$(\alpha f)(5) = \alpha f(5) = \alpha \cdot 0 = 0 $$
+            \end{enumerate}
+            \textbf{Следовательно, множество функций, значение которых в точке \( 5 \) равно \( 0 \),  является подпространством $V$}\\\\
+
+            \item[2)]Множество функций, значение которых в точке \( 5 \) равно \( 1 \). Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая функция \( f(x) = 0 \) не принадлежит \( U \), так как \( f(5) \neq 1 \).
+            \end{enumerate}
+            Первое условие не выполняется.\\
+            \textbf{Следовательно, множество функций, значение которых в точке \( 5 \) равно \( 1 \), не является подпространством $V$}\\\\
+        \end{enumerate}
+
+        \item[4.2]Возрастающие и неубывающие функции
+        \begin{enumerate}
+            \item[1)]Множество строго возрастающих функций. Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая функция \( f(x) = 0 \) не строго возрастает (\( f(x_1) = f(x_2) \)).
+            \end{enumerate}
+            Первое условие не выполняется.\\
+            \textbf{Следовательно, множество строго возрастающих функций, не является подпространством $V$}\\\\
+
+            \item[2)]Множество неубывающих функций. Проверим условия подпространства:
+            \begin{enumerate}
+                \item[(1)]Нулевая функция \( f(x) = 0 \) не убывает.
+                \item[(2)]Если \( f \) и \( g \) не убывают, то \( (f + g)(x_1) \leq (f + g)(x_2) \) сохраняется, так как:
+                $$ f(x_1) + g(x_1) \leq f(x_2) + g(x_2)$$
+                \item[(3)]Если \( f \) не убывает и \( \alpha \geq 0 \), то \( (\alpha f)(x_1) \leq (\alpha f)(x_2) \). Если \( \alpha < 0 \), порядок меняется, и функция может стать убывающей.
+            \end{enumerate}
+            Третье условие не выполняется.\\
+            \textbf{Следовательно, множество неубывающих функций, не является подпространством $V$}\\\\
+        \end{enumerate}
+
+        \item[4.3]Нестрого монотонные функции\\
+        $U = \{f \mid f \text{ не убывает}\} \cup \{f \mid f \text{ не возрастает}\}.$
+        Проверим условия подпространства:
+        \begin{enumerate}
+            \item[(1)]Нулевая функция \( f(x) = 0 \) принадлежит \( U \), так как она одновременно не убывает и не возрастает.
+            \item[(2)]Если \( f \) не убывает и \( g \) не возрастает, то \( f + g \) может не быть ни неубывающей, ни невозрастающей. Например, если \( f(x) = \ln{x} \) (не убывает), \( g(x) = -2^x \) (не возрастает), то:
+            $$(f + g)(x) = ln(x)-2^x \text{ (немонотонная)}$$
+        \end{enumerate}
+        Второе условие не выполняется.\\
+        Третье условие не выполняется.\\
+        \textbf{Следовательно, множество нестрого монотонных функции, не является подпространством $V$}\\\\
+    \end{enumerate}
+
+    \item[\textbf{5.}] Чтобы определить, при каких значениях параметра \( a \) вектор \((0, 6, -1, a)^T\) является линейной комбинацией векторов \((1, 3, -2, 1)^T\), \((2, 0, -3, 4)^T\) и \((3, 3, -5, 5)^T\), нужно решить систему уравнений:
+    \[
+    (0, 6, -1, a)^T = x_1(1, 3, -2, 1)^T + x_2(2, 0, -3, 4)^T + x_3(3, 3, -5, 5)^T
+    \]
+    \[
+    \case{
+    0 = x_1 + 2x_2 + 3x_3, \\
+    6 = 3x_1 + 0x_2 + 3x_3, \\
+    -1 = -2x_1 - 3x_2 - 5x_3, \\
+    a = x_1 + 4x_2 + 5x_3.
+    }
+    \]
+    Запишем в виде СЛУ:
+    \[A = 
+    \mat{
+    1 & 2 & 3 & | & 0 \\
+    3 & 0 & 3 & | & 6 \\
+    -2 & -3 & -5 & | & -1 \\
+    1 & 4 & 5 & | & a
+    }
+    \]
+    $$\case{
+        A_{(2)} - 3A_{(1)}\\
+        A_{(3)} + 2A_{(1)}\\
+        A_{(4)} - A_{(1)}
+    }\r \mat{
+        1 & 2 & 3 & | & 0 \\
+        0 & -6 & -6 & | & 6 \\
+        0 & 1 & 1 & | & -1 \\
+        0 & 2 & 2 & | & a
+        } = \mat{
+            1 & 2 & 3 & | & 0 \\
+            0 & 1 & 1 & | & -1 \\
+            0 & 2 & 2 & | & a
+            }$$
+    $$A_{(3)} - 2A_{(2)} \r \mat{
+        1 & 2 & 3 & | & 0 \\
+        0 & 1 & 1 & | & -1 \\
+        0 & 0 & 0 & | & a+2
+        }$$
+    При $a \neq -2$: нет решений \\
+    При $a = -2$: есть решения 
+
+    \((0, 6, -1, a)^T\) является линейной комбинацией векторов \((1, 3, -2, 1)^T\), \((2, 0, -3, 4)^T\) и \((3, 3, -5, 5)^T\) только, когда существует решение этой системы.
+    То есть при $0 =a+2 \r a = -2$
+
+    \textbf{Ответ:} $a = -2$
+\end{enumerate}
+\end{document}

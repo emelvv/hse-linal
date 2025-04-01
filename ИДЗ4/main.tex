@@ -1,0 +1,456 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{ИДЗ №4, 11 вариант (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]$A = \left(\begin{array}{cc}
+        17 + 19i & 8 + 8i \\
+        -40 - 40i & -19 - 17i
+        \end{array}\right) \in M_{2 \times 2}(\CC)$\\\\
+    Чтобы найти значения $ x \in \mathbb{C} $, при которых матрица $ A - x E $ необратима, необходимо найти такие $ x $, при которых определитель матрицы равен нулю. Здесь $ E $ — единичная матрица $ 2 \times 2 $.
+
+    Матрица $ A - x E $ будет выглядеть следующим образом:
+
+    $$
+    A - x E = \left(\begin{array}{cc}
+    (17 + 19i) - x & 8 + 8i \\
+    -40 - 40i & (-19 - 17i) - x
+    \end{array}\right)
+    $$
+    
+    Теперь вычислим определитель этой матрицы:
+
+    $$
+    det(A - x E) = det\left(\begin{array}{cc}
+    (17 + 19i) - x & 8 + 8i \\
+    -40 - 40i & (-19 - 17i) - x
+    \end{array}\right)
+    $$
+    $$
+    det(A - x E) = \left(17 + 19i - x\right)\left(-19 - 17i - x\right) - (8 + 8i)(-40 - 40i)
+    $$
+    Теперь упростим каждую часть:\\
+    \begin{enumerate}
+        \item[1)]Вычислим $ \left(17 + 19i - x\right)\left(-19 - 17i - x\right) $:\\
+        Раскроем скобки:
+        $$
+        (17 + 19i)(-19 - 17i) - (17 + 19i)x - (-19 - 17i)x + x^2
+        $$
+        Сначала вычислим $(17 + 19i)(-19 - 17i)$:
+        $$
+        (17 + 19i)(-19 - 17i) = 17 \cdot (-19) + 17 \cdot (-17i) + 19i \cdot (-19) + 19i \cdot (-17i)
+        $$
+        $$
+        = -323 - 289i - 361i - 323i^2= - 289i - 361i = 0 - 650i = -650i
+        $$
+        Теперь подставим:
+        $$
+        -650i - (17 + 19i)x + (19 + 17i)x + x^2
+        $$
+        Упростим:
+        $$
+        ab = -650i + x^2 + (-17 + 19 + 17i - 19i)x
+        $$
+        $$
+        = -650i + x^2 + (2 - 2i)x
+        $$
+
+        \item[2)]Вычислим $(8 + 8i)(-40 - 40i)$
+        Раскроем скобки:
+        $$
+        (8 + 8i)(-40 - 40i) = 8 \cdot (-40) + 8 \cdot (-40i) + 8i \cdot (-40) + 8i \cdot (-40i)=
+        $$
+        $$
+        = -320 - 320i - 320i - 320i^2 = -320 - 320i - 320i + 320 = -640i
+        $$
+    \end{enumerate}
+    Подставим вычисленные выражения:
+    $$det(A - x E) = -650i + x^2 + (2 - 2i)x  +640i = x^2 + (2 - 2i)x  -10i = 0$$
+    $$D = (2 - 2i)^2 - 4 \cdot 1 \cdot (-10i)$$
+    Вычислим $(2 - 2i)^2 $:
+    $$
+    (2 - 2i)^2 = 4 - 8i + 4i^2 = 4 - 8i - 4 = -8i.
+    $$
+    Подставим:
+    $$
+    D = -8i + 40i = 32i.
+    $$
+    $$
+    \sqrt{D} = \sqrt{32i}.
+    $$
+    Чтобы найти $\sqrt{32i}$, представим $32i$ в тригонометрической форме. Модуль равен $32$, а аргумент равен $\frac{\pi}{2}$:
+    $$
+    \sqrt{32i} = 4\sqrt{2} \cdot \left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right) = 4\sqrt{2} \cdot \left(\frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right) = 4 + 4i.
+    $$
+    Следовательно:
+    $$
+    x = \frac{-(2 - 2i) \pm (4 + 4i)}{2}=\frac{-2 + 2i \pm (4 + 4i)}{2}
+    $$
+    $$
+    \gath{
+        x_1 = \frac{-2 + 2i + 4 + 4i}{2} = \frac{2 + 6i}{2} = 1 + 3i\\
+        x_2 = \frac{-2 + 2i - 4 - 4i}{2} = \frac{-6 - 2i}{2} = -3 - i
+    }
+    $$
+    \textbf{Следовательно, матрица $ A - x E $ необратима при:}
+    $$
+    \gath{
+        x_1 = 1 + 3i\\
+        x_2 = -3 - i
+    }
+    $$
+    \item[\textbf{№2}]$\sqrt[4]{-\frac{81}{2} - \frac{81\sqrt{3}}{2}i}$\\
+    Сначала найдем модуль и аргумент комплексного числа $ z = -\frac{81}{2} - \frac{81 \sqrt{3}}{2} i $.
+    $$
+    |z| = \sqrt{\left(-\frac{81}{2}\right)^2 + \left(-\frac{81 \sqrt{3}}{2}\right)^2}
+    $$
+    
+    Вычислим каждую часть:
+
+    $$
+    \left(-\frac{81}{2}\right)^2 = \frac{6561}{4}
+    $$
+    
+    $$
+    \left(-\frac{81 \sqrt{3}}{2}\right)^2 = \frac{6561 \cdot 3}{4} 
+    $$
+
+    Сложим:
+    $$
+    |z| = \sqrt{\frac{6561}{4} + \frac{6561 \cdot 3}{4}} = \sqrt{\frac{6561\cdot 4}{4}} = \sqrt{6561} = 81
+    $$
+
+    Найдем аргумент $ \varphi $
+
+    Аргумент $ \varphi $ в данном случае вычисляется по формуле:
+
+    $$
+    \varphi =\pi - \arctg\left(\frac{y}{x}\right)
+    $$
+    так как $z$ лежит в третьей четверти
+    $$
+    \varphi = \arctg\left(\frac{-\frac{81 \sqrt{3}}{2}}{-\frac{81}{2}}\right)-\pi = \arctg(\sqrt{3})-\pi = \frac{\pi}{3}-\pi = -\f{2\pi}{3}
+    $$
+    Следовательно $z$ равно:
+    $$z = 81(\cos(-\f{2\pi}{3} + i\sin(-\f{2\pi}{3})))$$
+    
+    Теперь мы можем найти четвертые корни $ w_k $:
+
+    $$
+    w_k = \sqrt[4]{|z|}\left(\cos \frac{\varphi + 2\pi k}{4} + i \sin \frac{\varphi + 2\pi k}{4}\right)
+    $$
+    
+    где $ |z| = 81 $ и $ \sqrt[4]{|z|} = \sqrt[4]{81} = 3 $.
+
+    Теперь подставим значения для $ k = 0, 1, 2, 3 $:
+    \begin{enumerate}
+        \item[1)] $k = 0$\\
+        $$
+        w_0 = 3 \left( \cos \frac{-\frac{2\pi}{3}}{4} + i \sin \frac{-\frac{2\pi}{3}}{4} \right) = 3 \left( \cos \left(-\frac{\pi}{6}\right) + i \sin \left(-\frac{\pi}{6}\right) \right)
+        $$
+        $$
+        = 3 \left( \frac{\sqrt{3}}{2} - i \frac{1}{2} \right) = \frac{3\sqrt{3}}{2} - \frac{3i}{2}
+        $$
+        \item[2)]$k=1$\\
+        $$
+        w_1 = 3 \left( \cos \left(\frac{-\frac{2\pi}{3} + 2\pi}{4}\right) + i \sin \left(\frac{-\frac{2\pi}{3} + 2\pi}{4}\right) \right) =
+        $$
+        $$
+        = 3 \left( \cos \left(\frac{\pi}{3}\right) + i \sin \left(\frac{\pi}{3}\right) \right) = 3 \left( \frac{\sqrt{3}}{2} + i \frac{1}{2} \right) = \frac{3}{2} + \frac{3\sqrt{3}}{2}i
+        $$
+        \item[3)]$k=2$\\
+        $$
+        w_2 = 3 \left( \cos \left(\frac{-\frac{2\pi}{3} + 4\pi}{4}\right) + i \sin \left(\frac{-\frac{2\pi}{3} + 4\pi}{4}\right) \right) = 3 \left( \cos \left(\frac{10\pi}{12}\right) + i \sin \left(\frac{10\pi}{12}\right) \right)
+        $$
+        $$
+        = 3 \left( \cos \left(\frac{5\pi}{6}\right) + i \sin \left(\frac{5\pi}{6}\right) \right) = 3 \left( -\frac{\sqrt{3}}{2} + i \frac{1}{2} \right) = -\frac{3\sqrt{3}}{2} + \frac{3i}{2}
+        $$
+        \item[4)]$k=3$\\
+        $$
+        w_3 = 3 \left( \cos \left(\frac{-\frac{2\pi}{3} + 6\pi}{4}\right) + i \sin \left(\frac{-\frac{2\pi}{3} + 6\pi}{4}\right) \right) = 
+        $$
+        $$
+        = 3 \left( \cos \left(\frac{4\pi}{3}\right) + i \sin \left(\frac{4\pi}{3}\right) \right) = 3 \left( -\frac{1}{2} - i \frac{\sqrt{3}}{2} \right) = -\frac{3}{2} - \frac{3\sqrt{3}}{2} i
+        $$
+        
+    \end{enumerate}
+    \textbf{Ответ: }
+    $\gath{
+        w_0 = \frac{3\sqrt{3}}{2} - \frac{3i}{2}\\
+        w_1 = \frac{3}{2} + \frac{3\sqrt{3}}{2}i\\
+        w_2 = -\frac{3\sqrt{3}}{2} + \frac{3i}{2}\\
+        w_3 = -\frac{3}{2} - \frac{3\sqrt{3}}{2} i
+    }$\\
+
+    \item[\textbf{№3}]$$
+        v_{1} = \begin{pmatrix}
+        5 \\
+        -5 \\
+        -3 \\
+        -1 \\
+        2
+        \end{pmatrix}, \quad 
+        v_{2} = \begin{pmatrix}
+        -45 \\
+        46 \\
+        26 \\
+        9 \\
+        -21
+        \end{pmatrix}, \quad 
+        v_{3} = \begin{pmatrix}
+        5 \\
+        -4 \\
+        -4 \\
+        a \\
+        3
+        \end{pmatrix}
+        $$
+    Чтобы доказать, что векторы $ v_1, v_2, v_3 $ линейно независимы при всех значениях параметра $ a $, мы можем рассмотреть их линейную комбинацию и показать, что единственным решением является тривиальное решение.
+    
+    Рассмотрим линейную комбинацию векторов:
+
+    $$
+    c_1 v_1 + c_2 v_2 + c_3 v_3 = 0
+    $$
+
+    где $ c_1, c_2, c_3 $ — скаляры. Подставим векторы:
+    
+    $$
+    c_1 \begin{pmatrix}
+    5 \\
+    -5 \\
+    -3 \\
+    -1 \\
+    2
+    \end{pmatrix} + c_2 \begin{pmatrix}
+    -45 \\
+    46 \\
+    26 \\
+    9 \\
+    -21
+    \end{pmatrix} + c_3 \begin{pmatrix}
+    5 \\
+    -4 \\
+    -4 \\
+    a \\
+    3
+    \end{pmatrix} = \begin{pmatrix}
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0
+    \end{pmatrix}
+    $$
+Это приводит к системе уравнений:
+    $$
+    \case{
+    5c_1 - 45c_2 + 5c_3 = 0 \\
+    -5c_1 + 46c_2 - 4c_3 = 0 \\
+    -3c_1 + 26c_2 - 4c_3 = 0 \\
+    -c_1 + 9c_2 + ac_3 = 0 \\
+    2c_1 - 21c_2 + 3c_3 = 0 \\
+    }
+    $$
+    Перепишем в виде матрицы СЛУ:
+    $$
+    A = \mat{5 & -45 & 5 &|& 0\\ -5 & 46 & -4 &|&0\\ -3 & 26 & -4&|& 0\\ -1 & 9 & a&|& 0\\ 2 & -21 & 3&|&0}
+    \implies \begin{pmatrix}
+        1 & -9 & 1 & | & 0 \\
+        0 & 1 & 1 & | & 0 \\
+        0 & -1 & -1 & | & 0 \\
+        0 & 0 & a + 1 & | & 0 \\
+        0 & -3 & 1 & | & 0
+        \end{pmatrix}
+    \implies \begin{pmatrix}
+        1 & 0 & 10 & | & 0 \\
+        0 & 1 & 1 & | & 0 \\
+        0 & 0 & 0 & | & 0 \\
+        0 & 0 & a + 1 & | & 0 \\
+        0 & 0 & 4 & | & 0
+        \end{pmatrix}
+        \implies$$
+    $$\implies \text{УСВ: } \begin{pmatrix}
+        1 & 0 & 0 & | & 0 \\
+        0 & 1 & 0 & | & 0 \\
+        0 & 0 & 0 & | & 0 \\
+        0 & 0 & 0 & | & 0 \\
+        0 & 0 & 1 & | & 0
+        \end{pmatrix}
+        $$
+    Следовательно:
+    $$
+    \case{
+        c_1 = 0\\
+        c_2 = 0\\
+        c_3 = 0
+    }\text{ - единственное решение}$$
+
+    Таким образом, векторы $ v_1, v_2, v_3 $ линейно независимы для всех значений $ a $.
+
+    Запишем векторы в матричном виде:
+    $$A = \mat{5 & -45 & 5\\ -5 & 46 & -4 \\ -3 & 26 & -4\\ -1 & 9 & a\\ 2 & -21 & 3}$$
+    Приведём матрицу $A$ к СВ преобразованиями столбцов:
+    $$A = \mat{5 & -45 & 5\\ -5 & 46 & -4 \\ -3 & 26 & -4\\ -1 & 9 & a\\ 2 & -21 & 3} \implies \text{ СВ:} \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        -\frac{8}{5} & -1 & 0 \\
+        0 & 0 & 1 \\
+        \frac{-9 - 13a}{5(1 + a)} & -3 & \frac{4}{1 + a}
+        \end{pmatrix}$$
+    После таких преобразований линейная независимость векторов не пропала.
+    Следовательно, чтобы дополнить $v_1, v_2, v_3$ до базиса, нужно добавить векторы:
+    $$e_3 = \mat{0\\0\\1\\0\\0}, e_5 = \mat{0\\0\\0\\0\\1}$$
+    \textbf{Ответ: } $v1, v2, v3, e3, e5$ - базис
+    
+    \item[\textbf{№4}]
+    Запишем векторы $v1, v2, v3, v4$ в матричном виде:
+    $$
+   A = \begin{pmatrix}
+   30 & 4 & -5 & 0 \\
+   16 & 7 & -2 & 1 \\
+   25 & 7 & -5 & 2 \\
+   32 & 8 & -4 & 0 \\
+   18 & 5 & -1 & -1
+   \end{pmatrix}
+   $$
+   \begin{enumerate}
+    \item[(а)]
+    Приведём матрицу к УСВ преобразованиями строк:
+    $$A = \begin{pmatrix}
+     30 & 4 & -5 & 0 \\
+     16 & 7 & -2 & 1 \\
+     25 & 7 & -5 & 2 \\
+     32 & 8 & -4 & 0 \\
+     18 & 5 & -1 & -1
+    \end{pmatrix} \implies \text{ УСВ: } \begin{pmatrix}
+        1 & 0 & 0 & -\frac{1}{5} \\
+        0 & 1 & 0 & \frac{1}{3} \\
+        0 & 0 & 1 & -\frac{14}{15} \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+        \end{pmatrix}$$
+    Так как такие преобразования не меняют линейную зависимость векторов, то мы можем утверждать, что вектор $v_4$ выражается через остальные, а набор $v_1, v_2, v_3$ - линейно независим.
+
+    Следовательно, так как $v_1, v_2, v_3$ - ЛНЗ, и: 
+    $$v_4 \in \langle v_1, v_2, v_3 \rangle \r \langle v_1, v_2, v_3 \rangle = \langle v_1, v_2, v_3, v_4 \rangle$$
+    то $v_1, v_2, v_3$ базис подпространства $U$.
+
+    \item[(б)]Пусть $E$ - матрица, составленная из векторов $v_1, v_2, v_3$\\
+    Чтобы проверить принадлежность $u_1$ к $U$ решим уравнение ${Ex= u_1}$:
+    $$(E|u_1) = \begin{pmatrix}
+        30 & 4 & -5 &|& 8 \\
+        16 & 7 & -2  &|& 6\\
+        25 & 7 & -5 &|& 11 \\
+        32 & 8 & -4  &|& 8\\
+        18 & 5 & -1&|& 2
+       \end{pmatrix} \implies \text{ УСВ: } \begin{pmatrix}
+        1 & 0 & 0 &|& -\frac{1}{5} \\
+        0 & 1 & 0 & |&\frac{2}{3} \\
+        0 & 0 & 1 & |&-\frac{34}{15} \\
+        0 & 0 & 0 & |&0 \\
+        0 & 0 & 0 &|& 0
+        \end{pmatrix}
+        $$
+    Следовательно, у уравнения $Ax= u_1$ есть единственное решение, а значит $u_1$ можно представить в виде:
+    $$u_1 = -\frac{1}{5}v_1 + \frac{2}{3}v_2 -\frac{34}{15}v_3 $$
+   
+    Теперь проверим принадлежность $u_2$, аналогично решим уравнение $Ex = u_2$:
+    $$(E|u_2)= \begin{pmatrix}
+        30 & 4 & -5 &|& 9 \\
+        16 & 7 & -2  &|& 6\\
+        25 & 7 & -5 &|& 10 \\
+        32 & 8 & -4  &|& 9\\
+        18 & 5 & -1&|& 4
+       \end{pmatrix} \implies \text{ УСВ: } \begin{pmatrix}
+        1 & 0 & 0 &|& 0 \\
+        0 & 1 & 0 &|& 0 \\
+        0 & 0 & 1 &|& 0 \\
+        0 & 0 & 0 &|& 1 \\
+        0 & 0 & 0 &|& 0
+        \end{pmatrix}
+        \r \varnothing$$
+    Следовательно, у уравнения $Ex = u_2$ нет решений, а значит $u_2$ не выражается через базис $v_1, v_2, v_3$, а значит $u_2 \notin U$\\
+
+    \end{enumerate}
+
+    \item[\textbf{№5}]Запишем СЛУ в виде матрицы, и приведём её к улучшенному ступенчатому виду: 
+    $$A =
+    \begin{pmatrix}
+    13 & 12 & 0 & -12 & -6 & | & 0\\
+    17 & 13 & -13 & -17 & -11& | & 0 \\
+    11 & 9 & -5 & -9 & -7 & | & 0\\
+    17 & 13 & -12 & -14 & -12& | & 0
+    \end{pmatrix}
+    \implies \text{ УСВ: }\begin{pmatrix}
+        1 & 0 & 0 & 12 & -6 &| & 0 \\
+        0 & 1 & 0 & -14 & 6 &| & 0 \\
+        0 & 0 & 1 & 3 & -1 &| & 0 \\
+        0 & 0 & 0 & 0 & 0 & | &0
+        \end{pmatrix}$$
+    Следовательно, получаем:
+    $$\case{
+        x_3 = -3x_4+x_5\\
+        x_2 = 14x_4-6x_5\\
+        x_1 = -12x_4+6x_5
+    } \quad x_4, x_5 \in \RR$$
+    Общий вид решений:
+    $$x = \mat{x_1\\x_2\\x_3\\x_4\\x_5} = \mat{-12x_4+6x_5\\14x_4-6x_5\\-3x_4+x_5\\x_4\\x_5}\quad x_4, x_5 \in \RR$$
+    При этом:
+    $$x = \mat{-12x_4+6x_5\\14x_4-6x_5\\-3x_4+x_5\\x_4\\x_5} = v_1x_4 + v_2x_5, \quad v_1 = \mat{-12\\14\\-3\\1\\0}, v_2 = \mat{6\\-6\\1\\0\\1}$$
+    Следовательно набор векторов $v_1, v_2$ является ФСР для данной системы, а соответственно и базисом множества её решений. Его размерность равна двум.\\
+    \textbf{Ответ: }$v_1, v_2$ - базис, $\dim{U} = 2$
+
+\end{enumerate}
+\end{document}

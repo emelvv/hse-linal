@@ -1,0 +1,293 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 15.01 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Для доказательства того, что векторы $ b_1, b_2, b_3 $ образуют базис векторного пространства $ V $, необходимо показать, что они линейно независимы.
+    
+    
+Запишем векторы $ b_1, b_2, b_3 $:
+    $$\case{
+    b_1 = a_1 + 2a_2 + 5a_3\\
+    b_2 = 3a_1 - a_2 + a_3\\
+    b_3 = 2a_1 + 0a_2 - 2a_3}
+    $$
+    
+    Теперь представим их в виде матрицы:
+
+    $$
+    B = 
+    \begin{pmatrix}
+    1 & 3 & 2 \\
+    2 & -1 & 0 \\
+    5 & 1 & -2
+    \end{pmatrix}
+    $$
+        
+    Найдем определитель этой матрицы:
+    \[
+    det(B) = 
+    \begin{vmatrix}
+    1 & 3 & 2 \\
+    2 & -1 & 0 \\
+    5 & 1 & -2
+    \end{vmatrix}
+    =28 \neq 0\]
+
+    Следовательно, $b_1, b_2, b_3$ - ЛНЗ. Следовательно, $b_1, b_2, b_3$ - базис V т.к. линейная оболочка не менялась.
+    
+    Матрица перехода \( C \) состоит из координат векторов \( b_1, b_2, b_3 \) в базисе \( a_1, a_2, a_3 \), что уже представлено матрицей \( B \). Следовательно:
+    \[
+    C = B.
+    \]
+    Теперь найдем обратную матрицу \( C^{-1} \), которая позволяет переходить от базиса \( a_1, a_2, a_3 \) к базису \( b_1, b_2, b_3 \).
+
+    
+    Обратная матрица \( C^{-1} \) (переход от базиса \( a_1, a_2, a_3 \) к базису \( b_1, b_2, b_3 \)) равна:
+    $$(C | E) \to (E|C^{-1})$$
+    $$ \begin{pmatrix}
+        1 & 2 & 5 & | & 1 & 0 & 0 \\
+        3 & -1 & 1& | & 0 & 1 & 0\\
+        2 & 0 & -2& | & 0 & 0 & 1
+        \end{pmatrix} \to \begin{pmatrix}
+             1 & 0 & 0 & | &\frac{1}{14} & \frac{1}{7} & \frac{1}{4} \\
+             0 & 1 & 0 & | &\frac{2}{7} & -\frac{3}{7} & \frac{1}{2} \\
+             0 & 0 & 1 & | &\frac{1}{14} & \frac{1}{7} & -\frac{1}{4}
+            \end{pmatrix}$$
+
+    
+    Теперь вычислим координаты вектора \( a_1 + 4a_2 - 3a_3 \) в новом базисе, используя формулу:
+    \[
+    x' = C^{-1} \cdot x,
+    \]
+    где \( x = \begin{pmatrix} 1 \\ 4 \\ -3 \end{pmatrix} \) — координаты вектора в старом базисе.
+
+    Координаты вектора \( a_1 + 4a_2 - 3a_3 \) в базисе \( b_1, b_2, b_3 \) равны:
+    $$x' = \begin{pmatrix}
+        \frac{1}{14} & \frac{1}{7} & \frac{1}{4} \\
+        \frac{2}{7} & -\frac{3}{7} & \frac{1}{2} \\
+       \frac{1}{14} & \frac{1}{7} & -\frac{1}{4}
+       \end{pmatrix}\cdot \begin{pmatrix} 1 \\ 4 \\ -3 \end{pmatrix} = 
+        \begin{pmatrix} 
+        -\frac{3}{28} \\ 
+        -\frac{41}{14} \\ 
+        \frac{39}{28} 
+        \end{pmatrix}
+        $$
+
+    \textbf{Ответ: } $\begin{pmatrix} 
+        -\frac{3}{28} \\ 
+        -\frac{41}{14} \\ 
+        \frac{39}{28} 
+        \end{pmatrix}$
+    
+    \item[\textbf{№2}]Так как в матрице $C$ в i-ом столбце записаны координаты $e_i'$ в первом базисе, то при записи второго базиса в обратном порядке, в матрице $C$ строки будут тоже в обратном порядке. При записи первого базиса в обратном порядке, столбцы будут в обратном порядке
+    
+    \item[\textbf{№3}]Чтобы доказать, что они являются базисами, достачно доказать их ЛНЗ. Для этого посчитаем определитель матрицы векторов каждого базиса:
+    $$
+    \det{
+    -4 & 3 & 4 \\
+    -3 & -3 & 3 \\
+    2 & -1 & -5
+    } = -63 \neq 0 
+    \quad \quad
+    \det{-19 & 4 & 29 \\
+    -51 & 3 & 6 \\
+    37 & -2 & -34} = -4599 \neq 0$$
+    Следовательно, базисы $e$ и $e'$ - ЛНЗ, а значит они базисы в $\RR^3$ т.к. $$\dim(\RR^3) = \dim(e) = \dim(e')$$
+
+    Найдём матрицу перехода от $e$ к $e'$, для этого найдём координаты $e'$ в $e$:
+    $$
+    \mat{-4\\-3\\2}x_1 + \mat{3\\-3\\-1}x_2 + \mat{4 \\ 3\\-5}x_3 = \mat{-19 \\-51\\37} \implies \mat{x_1 \\ x_2\\x_3} = \mat{2 \\ 7\\ -8}
+    $$
+    $$
+    \mat{-4\\-3\\2}x_1 + \mat{3\\-3\\-1}x_2 + \mat{4 \\ 3\\-5}x_3 = \mat{4 \\ 3\\ -2} \implies \mat{x_1 \\ x_2\\x_3} = \mat{-1 \\ 0\\ 0}
+    $$
+    $$
+    \mat{-4\\-3\\2}x_1 + \mat{3\\-3\\-1}x_2 + \mat{4 \\ 3\\-5}x_3 = \mat{29 \\ 6\\ -34} \implies \mat{x_1 \\ x_2\\x_3} = \mat{2 \\ 3\\ 7}
+    $$
+    \textbf{Ответ:} $\begin{pmatrix}2 & -1 & 2 \\ 7 & 0 & 3 \\ -8 & 0 & 7\end{pmatrix}$\\
+
+    \item[\textbf{№4}]
+    Подпространство $ U $ задается векторами:
+    $$
+    \mathbf{u_1} = \begin{pmatrix} 1 \\ 2 \\ 1 \\ 0 \end{pmatrix}, \quad \mathbf{u_2} = \begin{pmatrix} -1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
+    $$
+
+    Подпространство $ W $ задается векторами:
+    $$
+    \mathbf{w_1} = \begin{pmatrix} 2 \\ -1 \\ 0 \\ 1 \end{pmatrix}, \quad \mathbf{w_2} = \begin{pmatrix} 1 \\ -1 \\ 3 \\ 7 \end{pmatrix}
+    $$
+    \begin{enumerate}
+        \item[\textbf{4.1}]
+        
+        Следовательно, подпространство $U+W$ задается векторами:
+        $$u_1, u_2, w_1, w_2$$
+        То есть:
+        $$U+W = \langle u_1, u_2, w_1, w_2 \rangle$$
+        Чтобы найти базис, нужно проверить их ЛНЗ:
+        $$\begin{pmatrix} 1 & -1 & 2 & 1\\ 2 & 1 & -1 & -1\\ 1 & 1 & 0 & 3 \\ 0 & 1 & 1 & 7\end{pmatrix} \to \text{УСВ: }\begin{pmatrix} 1 & 0 & 0 & -1 \\ 0 & 1 & 0 & 4 \\ 0 & 0 & 1 & 3 \\ 0 & 0 & 0 & 0 \end{pmatrix}$$
+        Следовательно, веткторы:
+        $$u_1, u_2, w_1 - \text{ЛНЗ}$$
+        А значит $u_1, u_2, w_1$ - базис в $U+W$, значит:
+        $$\dim{(U+W)} = 3$$
+        А $\dim(U \cap W)$ можно найти по формуле:
+        $$\dim(U \cap W) = dim(U)+dim(W)-dim(U+W)$$
+        Так $u_1, u_2$ и $w_1, w_2$ - ЛНЗ, то:
+        $$\dim U = 2, \quad \dim W = 2$$
+        Значит 
+        $$\dim(U \cap W) = 2+2 -3 = 1$$
+
+        \item[\textbf{4.2}]
+        Зададим $U$ через ОСЛУ:
+        $$U:
+        \gath{
+            u_1:\\
+            u_2:
+        } \; \mat{1 & 2 & 1 & 0 &|&0\\
+        -1 & 1 & 1 & 1&|&0} \implies \text{УСВ: }\begin{pmatrix}
+            1 & 0 & -\frac{1}{3} & -\frac{2}{3} & |&0 \\
+            0 & 1 & \frac{2}{3} & \frac{1}{3} & |&0
+            \end{pmatrix}
+        $$
+        Следовательно,
+        $$\case{
+            x_1 = \frac{1}{3}x_3+\frac{2}{3}x_4\\
+            x_2 = -\frac{2}{3}x_3 - \frac{1}{3}x_4
+        }\implies \begin{pmatrix}
+            \frac{1}{3} \\
+            -\frac{2}{3} \\
+            1 \\
+            0
+            \end{pmatrix}, \begin{pmatrix}
+                \frac{2}{3} \\
+                -\frac{1}{3} \\
+                0 \\
+                1
+                \end{pmatrix} \text{ - ФСР}$$
+        Следовательно, матрица ОСЛУ для $U$:
+        $$\mat{\frac{1}{3} &-\frac{2}{3} &1 &0 & | & 0\\
+        \frac{2}{3} &-\frac{1}{3} &0 &1& | & 0}$$
+
+        Зададим $W$ через ОСЛУ:
+        $$W:
+        \gath{
+            w_1:\\
+            w_2:
+        } \; \mat{2 & -1 & 0 & 1 &|&0\\
+        1 & -1 & 3 & 7&|&0} \implies \text{УСВ: }\begin{pmatrix}
+            1 & 0 & -3 & -6 & |&0 \\
+            0 & 1 & -6 & -13 & |&0
+            \end{pmatrix}
+        $$
+        Следовательно,
+        $$
+        \case{x_1 = 3x_3+6x_4\\
+        x_2 = 6x_3+13x_4}
+        \implies \begin{pmatrix}
+            3 \\
+            6 \\
+            1 \\
+            0
+            \end{pmatrix}, \begin{pmatrix}
+                6 \\
+                13 \\
+                0 \\
+                1
+                \end{pmatrix} \text{- ФСР}$$
+        Следовательно, матрица ОСЛУ для $U$:
+        $$\mat{3 &6 &1 &0&|&0\\
+        6 &13 &0 &1&|&0}$$
+
+        Тогда $U \cap W$ задаётся как:
+        $$U\cap W:\mat{\frac{1}{3} &-\frac{2}{3} &1 &0 & | & 0\\
+        \frac{2}{3} &-\frac{1}{3} &0 &1& | & 0\\
+        3 &6 &1 &0&|&0\\
+        6 &13 &0 &1&|&0} \implies \text{УСВ: }\begin{pmatrix}
+            1 & 0 & 0 & \frac{5}{4} &| & 0 \\
+            0 & 1 & 0 & -\frac{1}{2} & | &0 \\
+            0 & 0 & 1 & -\frac{3}{4} & | &0 \\
+            0 & 0 & 0 & 0 &| & 0
+            \end{pmatrix}$$
+        $$
+        \case{
+            x_1 = -\frac{5}{4}x_4\\
+            x_2 = \frac{1}{2}x_4\\
+            x_3 = \frac{3}{4}x_4\\
+        } \implies \left\{\mat{-\frac{5}{4}\\\frac{1}{2}\\\frac{3}{4}\\1}\right\} \text{ - ФСР} 
+        $$
+        Следовательно,
+        $$\dim{(U \cap W)} = 1$$
+
+        \item[\textbf{4.3}]Запшием матрицу:
+        $$(u_1, u_2, -w_1, -w_2) = \begin{pmatrix} 1&-1&-2&-1 \\ 2&1&1&1 \\ 1&1&0&-3 \\ 0&1&-1&-7 \end{pmatrix} \implies \text{ УСВ: } \begin{pmatrix} 
+            1 & 0 & 0 & 1 \\ 
+            0 & 1 & 0 & -4 \\ 
+            0 & 0 & 1 & 3 \\ 
+            0 & 0 & 0 & 0 
+            \end{pmatrix}$$
+        Следовательно,
+        $$\case{\lambda_1 = -\mu_2\\
+        \lambda_2 = 4\mu_2\\
+        \mu_1 = -3\mu_2}\implies \text{ФСР: } \mat{-1\\4\\-3\\1}$$
+        Значит:
+        $$-u_1+4u_2 = \mat{-1\\-2\\-1\\0}+\mat{-4\\4\\4\\4} = \mat{-5\\2\\3\\4} \text{-базис U} \implies \dim U = 1$$
+        
+    \end{enumerate}
+    
+    \item[\textbf{№5}]
+        
+    
+\end{enumerate}
+\end{document}

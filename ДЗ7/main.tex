@@ -1,0 +1,144 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 23.10 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{1.}]$A = \mat{a_{11} & \dots & a_{1n} \\ a_{21} & \dots & a_{2n} \\ \dots & \dots & \dots \\ a_{n1} & \dots & a_{nn}} \to \mat{a_{n1} & \dots & a_{21} & a_{11} \\ \dots & \dots & \dots & \dots \\ a_{nn} & \dots & a_{2n} &  a_{1n}}$\\
+          Для такого перехода матрицу нужно сначала транспонировать, а потом поменять столбцы местами $\f{n(n-1)}{2}$ раз, чтобы получить обратный порядок столбцов (из предыдущего дз).
+          Следовательно после такого перехода определитель будет равен: $(-1)^{\f{n(n-1)}{2}}detA$\\
+          \textbf{Ответ: } $(-1)^{\f{n(n-1)}{2}}detA$\\
+
+    \item[\textbf{2.}]$\det{x & y & 0 & 0 \\ 0 & x & y & 0 \\ 0 & 0 & x & y \\ y & 0 & 0 & x} = x\det{x & y & 0 \\ 0 & x & y \\ 0 & 0 & x} - y\det{0 & y & 0 \\0 & x &y \\ y &0 &x} = x^4-y\det{ y &0 &x \\0 & x &y \\ 0 & y & 0} =$ \\
+          $= x^4 - y^2\det{x & y \\ y & 0} = x^4 - y^4$\\
+          \textbf{Ответ: } $x^4 - y^4$\\
+
+    \item[\textbf{3.}]$A = \mat{2 & 7 & 3 \\ 3 & 9 & 4 \\ 1 & 5 & 3}, \; A^{-1} = \f{1}{detA}\hat{A}$
+          $$detA = \det{2 & 7 & 3 \\ 3 & 9 & 4 \\ 1 & 5 & 3} =  54 +45+28-27-63-40 = -3$$
+          $$\hat{A} = \mat{\det{9 & 4 \\ 5 & 3} & -\det{3 & 4 \\ 1 & 3} & \det{3 & 9 \\ 1 & 5}\\
+                  -\det{7 & 3 \\ 5 & 3} & \det{2 & 3 \\ 1 & 3} & -\det{2 & 7 \\ 1 & 5}\\
+                  \det{7 & 3 \\ 9 & 4} & -\det{2 & 3 \\ 3 & 4} & \det{2 & 7 \\ 3 & 9}}^{T}=$$
+          $$ = \mat{7 & -5 & 6 \\ -6 & 3 & -3 \\ 1 & 1 & -3}^{T} = \mat{7 & -6 & 1 \\ -5 & 3 & 1 \\ 6 & -3 & -3}$$
+          $$A^{-1} = \f{1}{detA}\hat{A} = -\f{1}{3}\cdot \mat{7 & -6 & 1 \\ -5 & 3 & 1 \\ 6 & -3 & -3} = \mat{-\f{7}{3} & 2 &-\f{1}{3} \\ \f{5}{3} & -1 & -\f{1}{3} \\ -2 & 1 & 1}$$
+
+          \textbf{Ответ: } $\mat{-\f{7}{3} & 2 &-\f{1}{3} \\ \f{5}{3} & -1 & -\f{1}{3} \\ -2 & 1 & 1}$
+
+    \item[\textbf{4.}]
+    $\det{\cos(\alpha_1 - \beta_1) & \cos(\alpha_1 - \beta_2) & \dots & \cos(\alpha_1 - \beta_n) \\
+    \cos(\alpha_2 - \beta_1) & \cos(\alpha_2 - \beta_2) & \dots & \cos(\alpha_2 - \beta_n) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \cos(\alpha_n - \beta_1) & \cos(\alpha_n - \beta_2) & \dots & \cos(\alpha_n - \beta_n)} =\\
+    = \det{\cos\alpha_1 & \sin\alpha_1 & 0 & \dots \\
+    \cos\alpha_2 & \sin\alpha_2 & 0 & \dots \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \cos\alpha_n & \sin\alpha_n & 0 & \dots}\cdot \det{\cos\beta_1 & \cos\beta_2 & \dots & \cos\beta_n \\
+    \sin\beta_1 & \sin\beta_2 & \dots & \sin\beta_n \\
+    0 & 0 & \dots & 0 \\
+    \vdots & \vdots & \ddots & \vdots} =0\cdot 0 = 0$ \\\\
+    \textbf{Ответ: } $0$\\
+
+    \item[\textbf{5.}]$$\det{1 & 1 & \dots & 1 \\
+    x_1 + 1 & x_2 + 1 & \dots & x_n + 1 \\
+    x_1^2 + x_1 & x_2^2 + x_2 & \dots & x_n^2 + x_n \\
+    x_1^3 + x_1^2 & x_2^3 + x_2^2 & \dots & x_n^3 + x_n^2 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    x_1^{n-1} + x_1^{n-2} & x_2^{n-1} + x_2^{n-2} & \dots & x_n^{n-1} + x_n^{n-2}}= $$
+    $$=\det{1 & 1 & \dots & 1 \\
+    x_1 + 1 & x_2 + 1 & \dots & x_n + 1 \\
+    x_1(x_1 + 1) & (x_2 + 1)x_2 & \dots & (x_n + 1)x_n \\
+    x_1^2(x_1 + 1) & (x_2 + 1)x_2^2 & \dots & (x_n + 1)x_n^2 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    x_1^{n-2}(x_1 + 1) & (x_2 + 1)x_2^{n-2} & \dots & (x_n + 1)x_n^{n-2}} = $$
+    $$= \det{1 & x_1 + 1 & x_1(x_1 + 1) & x_1^2(x_1 + 1) & \dots & x_1^{n-2}(x_1 + 1) \\
+    1 & x_2 + 1 & (x_2 + 1)x_2 & (x_2 + 1)x_2^2 & \dots & (x_2 + 1)x_2^{n-2} \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & x_n + 1 & (x_n + 1)x_n & (x_n + 1)x_n^2 & \dots & (x_n + 1)x_n^{n-2}} =$$
+    $$= \mul{k=1}{n}(x_k+1) \det{\f{1}{x_1 + 1} & 1 & x_1 & x_1^2 & \dots & x_1^{n-2} \\
+    \f{1}{x_2 + 1} & 1 & x_2 & x_2^2 & \dots & x_2^{n-2} \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    \f{1}{x_n + 1} & 1 & x_n & x_n^2 & \dots & x_n^{n-2}} = $$
+
+    \item[\textbf{6.}]
+    $\det{1 & -1 & 0 & 0 & \dots & 0 & 0\\
+    1 & 1 & -1 & 0 & \dots & 0& 0 \\
+    0 & 1 & 1 & -1 & \dots & 0& 0 \\
+    0 & 0 & 1 & 1 & \dots & 0 & 0\\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \dots & 1 & -1 \\
+    0 & 0 & 0 & 0 & \dots & 1 & 1} =$ 
+    $$=\det{
+     1 & -1 & 0 & \dots & 0 & 0\\
+     1 & 1 & -1 & \dots & 0 & 0\\
+     0 & 1 & 1 & \dots & 0 & 0\\
+     \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+     0 & 0 & 0 & \dots & 1 & -1 \\
+     0 & 0 & 0 & \dots & 1 & 1} - 
+     \det{
+     1 & -1 & 0 & \dots & 0 & 0\\
+     0 & 1 & -1 & \dots & 0 & 0\\
+     0 & 1 & 1 & \dots & 0& 0 \\
+     \vdots &  \vdots & \vdots & \ddots & \vdots& \vdots  \\
+     0 & 0 & 0 & \dots & 1 & -1 \\
+     0 & 0 & 0 & \dots & 1 & 1}$$
+    
+    \item[\textbf{7.}]
+    $$\det{a & b & c \\ d & e & f \\ g & h & i} = aei +dhc+bfg-gec-dbi-ahf $$
+    Пусть все три слагаемы со знаком + (т.е. $aei, \; dhc,\; bfg$) равны 1, тогда
+    $a, e, i, d, h, c, b, f, g = 1\r $ определитель будет равен 0\\
+    Пусть какие-то два слагаемых со знаком + равны 1, а оставшееся равно 0, например, $aei = 1, \; dhc = 1, \; bfg = 0$, тогда 
+    $(a, e, i, d, h, c = 1) \wedge (b=0 \vee h=0 \vee c=0)$ тогда в любом случае будет существовать хотя бы одно слагаемое зо знаком -, следовательно, определитель будет не больше 1\\
+    Пусть только одно слагаемое со знаком + равно 1, тогда определитель не может быть больше 1\\
+    Пусть все три слагаемых со знаком + равны 0, тогда определитель не может быть больше\\
+    Следовательно, определитель не может быть больше 1. Пример когда он равен 1:
+    $$\det{1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 0 & 1} = 1+0+0-0-0-0 = 1$$
+    \textbf{Ответ: } $1$
+
+
+\end{enumerate}
+\end{document}

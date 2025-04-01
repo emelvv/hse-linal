@@ -1,0 +1,212 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 29.01 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Пусть $ U = \langle u_{1}, u_{2}, u_{3}, u_{4} \rangle \subseteq \mathbb{R}^{5} $, где
+    $$
+    u_{1} = \mat{2\\ 4\\ 3\\ 5\\ 1}, \quad u_{2} = \mat{3\\6\\ 4\\ 11\\ 3}, \quad u_{3} = \mat{3\\6\\ 5\\ 4\\ 0}, \quad u_{4} = \mat{5\\ 10\\ 7\\ 16\\4}
+    $$
+    Необходимо найти подпространство $ W \subseteq \mathbb{R}^{5} $, такое что $ \mathbb{R}^{5} = U \oplus W $.
+
+    Для начала найдём какой-нибудь базис $U$:
+    $$\mat{2 & 3 & 3 & 5\\ 4 & 6 & 6 & 10\\ 3 & 4 & 5 &7\\ 5&11&4&16\\ 1&3&0&4} \implies \text{УСВ: } \mat{1 & 0 & 0 & 0 \\
+    2 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    13 & -7 & 0 & 0 \\
+    5 & -3 & 0 & 0}
+    $$
+    Чтобы дополнить $U$ до $\RR^5$ нужно взять векторы:
+    $$e_2 = \mat{0\\1\\0\\0\\0}, \quad e_4 = \mat{0\\0\\0\\1\\0}, \quad e_5 = \mat{0\\0\\0\\0\\1}$$
+    Так они ЛНЗ с веторами базиса $U$ и $\RR^5 = U + \langle e_2, e_4, e_5\rangle$, то:
+    $$W = \langle e_2, e_4, e_5\rangle$$
+
+    \item[\textbf{№2}]Рассмотрим линейное отображение $\varphi: \mathbb{R}[x]_{\leqslant 2} \rightarrow \mathrm{M}_{2}(\mathbb{R})$, которое каждому многочлену $f$ сопоставляет матрицу $f(S)$, $$S = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$ Найдём матрицу этого линейного отображения в базисах $(1, x, x^2)$ для пространства многочленов и $(E_{11}, E_{12}, E_{21}, E_{22})$ для пространства матриц.
+    $$(\phi(1), \phi(x), \phi(x^2)) = (E_{11}, E_{12}, E_{21}, E_{22})A$$
+    В матрице $A$ в $i$-ом столбце будут записаны координаты $\phi(e_i)$ в базисе матриц:
+    $$\phi(1) = \mat{a_1 \\ b_1 \\ c_1 \\ d_1}, \quad \phi(x) = \mat{a_2 \\ b_2 \\ c_2 \\ d_2}, \quad \phi(x^2) = \mat{a_3 \\ b_3 \\ c_3 \\ d_3}$$
+    То есть $A$:
+    $$A = \mat{a_1 & a_2 &a_3 \\ b_1 & b_2 &b_3 \\ c_1 &c_2&c_3 \\ d_1 & d_2 & d_3 }$$\\
+
+    \item[\textbf{№3}]Пусть линейное отображение $\varphi: V \rightarrow W$ в базисах $(e_{1}, e_{2}, e_{3})$ пространства $V$ и $(f_{1}, f_{2})$ пространства $W$ имеет матрицу 
+    $$
+    A = \begin{pmatrix}
+    0 & 1 & 2 \\
+    3 & 4 & 5
+    \end{pmatrix}
+    $$
+    Необходимо найти матрицу $A'$ отображения $\varphi$ в базисах $e' = (e_{1}, e_{1}+e_{2}, e_{1}+e_{2}+e_{3})$ и $f' = (f_{1}, f_{1}+f_{2})$
+
+    Найдём матрицу перехода от $e$ к $e'$:
+    $$(e_1, e_1+e_2, e_1+e_2+e_3) = (e_1, e_2, e_3)C$$
+    $$C = \mat{1 & 1 & 1\\0 & 1 & 1 \\0 & 0 & 1}$$
+
+    Найдём матрицу перехода от $f$ к $f'$:
+    $$(f_1, f_1+f_2) = (f_1, f_2)D$$
+    $$D = \mat{1 & 1\\0 & 1} \\\implies D^{-1} = \mat{1 & -1\\0 & 1}$$
+    Получается:
+    $$A' = D^{-1}AC = \mat{1 & -1\\0 & 1}\cdot \begin{pmatrix}
+        0 & 1 & 2 \\
+        3 & 4 & 5
+        \end{pmatrix} \cdot \mat{1 & 1 & 1\\0 & 1 & 1 \\0 & 0 & 1} = \mat{-3 & -6 & -9 \\
+        3 & 7 & 12}$$
+
+    \textbf{Ответ: }$\mat{-3 & -6 & -9 \\
+        3 & 7 & 12}$\\
+    
+    \item[\textbf{№4}]Докажем, что отображение $\varphi: \mathbb{R}[x]_{\leqslant 3} \rightarrow \mathbb{R}^{2}$, заданное как $\varphi(f)=\binom{f(2)}{f^{\prime}(1)}$, является линейным:
+    $$\lambda_1\phi(f_1) + \lambda_2\phi(f_2) = \lambda_1\mat{f_1(2) \\ f_1'(1)} + \lambda_2\mat{f_2(2)\\f_2'(1)} = \mat{\lambda_1f_1(2) \\ \lambda_1f_1'(1)} + \mat{\lambda_2 f_2(2)\\\lambda_2 f_2'(1)} =$$
+    $$=\mat{\lambda_1f_1(2) + \lambda_2 f_2(2)\\ \lambda_1f_1'(1) + \lambda_2 f_2'(1)} = \phi(\lambda_1 f_1 + \lambda_2 f_2)$$
+
+    Найдём его матрицу в базисах $(1, x, x^{2}, x^{3})$ и $\left(\binom{1}{0},\binom{0}{1}\right)$:
+    $$\phi(1) = \mat{1\\0}, \quad \phi(x) = \mat{2\\1}, \quad \phi(x^2) = \mat{4 \\ 2}, \quad \phi(x^3) = \mat{8\\3}$$
+    $$A = \mat{1 & 2 & 4 & 8 \\ 0 & 1 & 2 & 3}$$
+    Найдём образ многочлена $f=x^{3}-4x+2$ и проверим, что столбцы координат $f$ и $\varphi(f)$ правильно связаны друг с другом с помощью матрицы $A$.
+    $$\mat{f_1' \\ f_2'} = A\cdot \mat{f_1\\ f_2\\ f_3\\f_4} = \mat{1 & 2 & 4 & 8 \\ 0 & 1 & 2 & 3} \cdot \mat{2\\-4\\0\\ 1} = \mat{2 \\ -1}$$
+    $$\phi(x^3-4x+2) = \mat{8-8+2 \\ 3-4} = \mat{2\\-1}$$
+    \textbf{Ответ: }$A = \mat{1 & 2 & 4 & 8 \\ 0 & 1 & 2 & 3}, \quad \phi(f) = \mat{2\\-1}$
+
+    \item[\textbf{№5}]Дано линейное отображение $\varphi: \mathbb{R}^{2} \rightarrow \mathbb{R}^{3}$ с матрицей 
+    $$A=\begin{pmatrix}2 & 1 \\ 0 & -1 \\ 3 & 1\end{pmatrix}$$ 
+    в базисах 
+    $$e = \left(\begin{pmatrix}2 \\ 5\end{pmatrix}, \begin{pmatrix}1 \\ 3\end{pmatrix}\right) \text{ и }
+    f = \left(\begin{pmatrix}1 \\ 0 \\ 1\end{pmatrix}, \begin{pmatrix}2 \\ 1 \\ 2\end{pmatrix}, \begin{pmatrix}3 \\ 1 \\ 4\end{pmatrix}\right)$$
+    Найдём $\varphi\left(\begin{pmatrix}2 \\ 1\end{pmatrix}\right)$.
+
+    Для начала найдём координаты $\mat{2\\1}$ в базисе $e$:
+    $$\mat{2 & 1 & | & 2\\5 & 3 & | & 1} \implies \text{УСВ: } \mat{
+        1 & 0 & | & 5 \\
+        0 & 1 & | & -8
+    } \implies \mat{5 \\ -8}$$
+    Найдём координты $\phi(v)$ в $f$:
+    $$\mat{v_x'\\ v_y' \\v_z'} = A \cdot \mat{v_x \\ v_y} = \begin{pmatrix}2 & 1 \\ 0 & -1 \\ 3 & 1\end{pmatrix} \cdot \mat{5 \\ -8} =
+    \mat{2 \\
+    8 \\
+    7}$$
+    Следовательно, $\phi(v)$:
+    $$\phi(v) = 2\begin{pmatrix}1 \\ 0 \\ 1\end{pmatrix} + 8\begin{pmatrix}2 \\ 1 \\ 2\end{pmatrix}+7\begin{pmatrix}3 \\ 1 \\ 4\end{pmatrix}=
+    \mat{39 \\
+    15 \\
+    46}$$
+    \textbf{Ответ:} $(39, 15, 46)^{T}$
+    
+    \item[\textbf{№6}]Дано линейное отображение $\varphi: \mathbb{R}^{4} \rightarrow \mathbb{R}^{3}$ 
+    с матрицей 
+    $$A=\begin{pmatrix} 1 & 2 & 3 & 3 \\ 2 & 4 & 6 & 6 \\ 3 & 6 & 9 & 9 \end{pmatrix}$$ 
+    в паре базисов 
+    $$e=\{e_{1}, e_{2}, e_{3}, e_{4}\} \text{ и } f = \{f_{1}, f_{2}, f_{3}\}$$
+    Найдём базис ядра и базис образа этого линейного отображения.
+    
+    Чтобы найти базис ядра, нужно, чтобы координаты любого вектора из $e$ переходили в координаты $(0, 0, 0, 0)^{T}$:
+    $$\begin{pmatrix} 1 & 2 & 3 & 3 \\ 2 & 4 & 6 & 6 \\ 3 & 6 & 9 & 9 \end{pmatrix}\mat{x_1 \\ x_2 \\ x_3 \\ x_4} = 0$$
+    $$\begin{pmatrix} 1 & 2 & 3 & 3 & | & 0 \\ 2 & 4 & 6 & 6 & | & 0\\ 3 & 6 & 9 & 9 & | & 0\end{pmatrix} \implies \text{УСВ: }
+    \begin{pmatrix}
+        1 & 2 & 3 & 3 & | & 0 \\
+        0 & 0 & 0 & 0 & | & 0 \\
+        0 & 0 & 0 & 0 & | & 0
+    \end{pmatrix}$$
+    $$x_1 = -2x_2-3x_3-3x_4, \quad x_2, x_3, x_4 \in \RR$$
+    $$\mat{x_1 \\ x_2 \\ x_3 \\x_4} = \mat{-2x_2-3x_3-3x_4 \\ x_2 \\ x_3 \\x_4} = \mat{-2\\1\\0\\0}x_2+\mat{-3\\0\\1\\0}x_3+\mat{-3\\0\\0\\1}x_4$$
+    Базис ядра:
+    $$(-2e_1+e_2, -3e_1+3e_3, -3e_1+e_4)$$
+
+    Найдём базис образа, дополнив координаты ядра до базиса $\RR^4$:
+    $$\mat{-2 & -3 & -3 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1} \implies \text{УСВ: } \mat{1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -\frac{1}{3} & -\frac{2}{3} & -1}$$
+    Чтобы дополнить до базиса $\RR^4$ нужен вектор с координатами в базисе $e$:
+    $$v_1 = (0, 0, 0, 1)^T$$
+    То есть координаты базиса образа $\phi$:
+    $$\phi(v_1) = A\cdot v_1 = \begin{pmatrix} 1 & 2 & 3 & 3 \\ 2 & 4 & 6 & 6 \\ 3 & 6 & 9 & 9 \end{pmatrix} \cdot \mat{0\\0\\0\\1}  = \mat{3\\6\\9}$$
+    базис образа:
+    $$3f_1 + 6f_2+9f_3$$\\
+
+    \item[\textbf{№7}]Найдем базис ядра и базис образа линейного отображения $\varphi: M_{2}(\mathbb{R}) \rightarrow M_{2}(\mathbb{R})$, заданного как $X \mapsto A X$, где 
+    $$
+    A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix}
+    $$
+    Рассмотрим два базиса:
+    $$e = (e_1, e_2, e_3, e_4) \text{ и } f = (f_1, f_2, f_3, f_4)$$
+    Пусть $e$ и $f$ - стандартные базисы. Найдём матрицу отображения $B$:\\
+    $$\phi(e_1) = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} \cdot \mat{1 & 0 \\ 0 & 0}=\begin{pmatrix} 1 & 0 \\ 3 & 0 \end{pmatrix}$$    
+    $$\phi(e_2) = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} \cdot \mat{0 & 1 \\ 0 & 0}=\begin{pmatrix} 0 & 1 \\ 0 & 3 \end{pmatrix}$$ 
+    $$\phi(e_3) = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} \cdot \mat{0 & 0 \\ 1 & 0}=\begin{pmatrix} 3 & 0 \\ 9 & 0 \end{pmatrix}$$ 
+    $$\phi(e_4) = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} \cdot \mat{0 & 0 \\ 0 & 1}=\begin{pmatrix} 0 & 3 \\ 0 & 9 \end{pmatrix}$$
+    $$B = \mat{1 & 0 & 3 & 0 \\ 0 &  1 &  0 &  3 \\ 3 &  0 &  9 &  0 \\ 0 &  3 & 0 & 9}$$
+    Найдём координаты векторов базиса ядра:
+    $$\mat{1 & 0 & 3 & 0 & | & 0 \\ 0 &  1 &  0 &  3 & | & 0\\ 3 &  0 &  9 &  0 & | & 0\\ 0 &  3 & 0 & 9 & | & 0} \implies \text{УСВ:} \mat{1 & 0 & 3 & 0 & | & 0 \\
+    0 & 1 & 0 & 3 & | & 0 \\
+    0 & 0 & 0 & 0 & | & 0 \\
+    0 & 0 & 0 & 0 & | & 0}$$
+    $$\text{ФСР: } \mat{-3\\0\\1\\0}, \mat{0\\-3\\0\\1}$$
+    Значит базис ядра:
+    $$(-3e_1+e_3, -3e_2+e_4) = \left(\mat{-3 & 0 \\ 1 & 0}, \mat{0 & -3 \\ 0 & 1}\right)$$
+    Дополним координаты ядра до $\RR^4$, чтобы найти координаты базиса образа:
+    $$\mat{-3 & 0 \\ 0 & -3 \\1 & 0 \\ 0 & 1} \implies \text{УСВ: } \mat{1 & 0 \\
+    0 & 1 \\
+    -\frac{1}{3} & 0 \\
+    0 & -\frac{1}{3}}$$
+    Чтобы дополнить, нужно взять:
+    $$(0, 0, 1, 0)^T, (0, 0,0, 1)^T$$
+    Поэтому базис образа $\phi$:
+    $$\mat{0 & 0 \\ 1 & 0}, \mat{0 & 0 \\ 0 & 1}$$
+    
+    
+
+
+
+
+\end{enumerate}
+\end{document}

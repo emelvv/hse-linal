@@ -1,0 +1,483 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{ИДЗ №5, Вариант 13 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Чтобы разложить матрицу $A$ в сумму матриц ранга 1, нужно для начала найти ранг матриицы $A$ и соотношение её столбцов.
+    $$
+    A = \begin{pmatrix}
+    -22 & 13 & -23 & -27 & -2 \\
+    8 & -17 & 16 & -13 & 5 \\
+    2 & -11 & 10 & -8 & 3 \\
+    -28 & -2 & -6 & -18 & 0 \\
+    0 & 6 & -4 & 10 & -2
+    \end{pmatrix}
+    \implies \text{ УСВ: } \begin{pmatrix}
+        1 & 0 & 0 & -\frac{11}{18} & \frac{1}{9} \\
+        0 & 1 & 0 & \frac{41}{9} & -\frac{5}{9} \\
+        0 & 0 & 1 & \frac{13}{3} & -\frac{1}{3} \\
+        0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0
+        \end{pmatrix}$$
+    Следовательно, $rkA = 3$, и:
+    $$\case{
+        A_{(4)} = -\frac{11}{18}A_{(1)}+\frac{41}{9}A_{(2)}+\frac{13}{3}A_{(3)}\\
+        A_{(5)} = \frac{1}{9}A_{(1)}-\frac{5}{9}A_{(2)}-\frac{1}{3}A_{(3)}   
+    }$$
+    Ранг матрицы равен 1, тогда, когда все её столбцы пропорциональны. Поэтому $A$ можно представить в виде суммы матриц ранга 1 так:
+    $$A = (A_{(1)}, A_{(2)}, A_{(3)}, A_{(4)}, A_{(5)}) =$$
+    $$= (A_{(1)}, A_{(2)}, A_{(3)}, -\frac{11}{18}A_{(1)}+\frac{41}{9}A_{(2)}+\frac{13}{3}A_{(3)}, \frac{1}{9}A_{(1)}-\frac{5}{9}A_{(2)}-\frac{1}{3}A_{(3)})=$$
+    $$=(A_{(1)}, 0, 0, -\frac{11}{18}A_{(1)}, \frac{1}{9}A_{(1)})+(0, A_{(2)}, 0, \frac{41}{9}A_{(2)}, -\frac{5}{9}A_{(2)})+(0, 0, A_{(3)}, \frac{13}{3}A_{(3)}, -\frac{1}{3}A_{(3)})=$$
+    $$=\begin{pmatrix}
+        -22 & 0 & 0 & \frac{121}{9} & -\frac{22}{9} \\
+        8 & 0 & 0 & -\frac{44}{9} & \frac{8}{9} \\
+        2 & 0 & 0 & -\frac{11}{9} & \frac{2}{9} \\
+        -28 & 0 & 0 & \frac{154}{9} & -\frac{28}{9} \\
+        0 & 0 & 0 & 0 & 0
+        \end{pmatrix}+
+        \begin{pmatrix}
+            0 & 13 & 0 & \frac{533}{9} & -\frac{65}{9} \\
+            0 & -17 & 0 & -\frac{697}{9} & \frac{85}{9} \\
+            0 & -11 & 0 & -\frac{451}{9} & \frac{55}{9} \\
+            0 & -2 & 0 & -\frac{82}{9} & \frac{10}{9} \\
+            0 & 6 & 0 & \frac{246}{9} & -\frac{10}{3}
+            \end{pmatrix}+
+    \begin{pmatrix}
+        0 & 0 & -23 & -\frac{299}{3} & \frac{23}{3} \\
+        0 & 0 & 16 & \frac{208}{3} & -\frac{16}{3} \\
+        0 & 0 & 10 & \frac{130}{3} & -\frac{10}{3} \\
+        0 & 0 & -6 & -\frac{78}{3} & 2 \\
+        0 & 0 & -4 & -\frac{52}{3} & \frac{4}{3}
+        \end{pmatrix} = $$
+    $$= \begin{pmatrix}
+        -22 & 13 & -23 & -27 & -2 \\
+        8 & -17 & 16 & -13 & 5 \\
+        2 & -11 & 10 & -8 & 3 \\
+        -28 & -2 & -6 & -18 & 0 \\
+        0 & 6 & -4 & 10 & -2
+        \end{pmatrix} \text{ (проверено)}$$\\
+
+    \item[\textbf{№2}]Даны базисы $e_1, e_2, e_3$ и $e_1', e_2', e_3'$:
+    $$e_1 = \mat{3\\-2\\1}, e_2=\mat{-1\\3\\1}, e_3=\mat{3\\2\\1}, e_1' = \mat{-3\\7\\5}, e_2' = \mat{-5\\9\\3}, e_3'=\mat{3\\5\\11}$$
+    \begin{enumerate}
+        \item[(а)] Докажем, что векторы в $e$ и $e'$ ЛНЗ. Для этого составим матрицу из векторов для каждого базиса и найдём её определитель:
+        $$e: \det{3 & -1 & 3 \\ -2 & 3 & 2\\ 1 &1 & 1} = -16 \neq 0 \quad \quad e':\det{-3 & -5 &3 \\ 7 &9 & 5 \\ 5 & 3 &11}=-64\neq 0$$
+        Следовательно, векторы $e$ и $e'$ ЛНЗ, а значит $e$ и $e'$ - базисы, т.к. 
+        $$\dim \RR^3 = \dim \langle e_1, e_2, e_3\rangle = \dim \langle e_1', e_2', e_3'\rangle \text{ при $e_1, e_2, e_3$ и $e_1', e_2', e_3'$ - ЛНЗ} \implies$$
+        $$\implies \langle e_1, e_2, e_3\rangle = \RR^3 = \langle e_1', e_2', e_3'\rangle$$
+        
+        \item[(б)]Матрица перехода от базиса $e$ к $e'$ получается записыванием в $i$-ый столбец координат $e_i'$ в базисе $e$.
+        
+        Найдём кординаты $e_1', e_2', e_3'$ в базисе $e$:
+        $$(e_1, e_2, e_3, |, e_1',e_2', e_3') \to (E, |, x_1, x_2, x_3) = (E, |, C)$$
+        $$\mat{3 & -1 & 3 &|&-3&5&3\\ -2 & 3 & 2&|&7&9&5\\ 1 &1 & 1&|&5&3&11} \to \text{ УСВ: } \begin{pmatrix}
+            1 & 0 & 0 & | & \frac{15}{8} & -\frac{1}{2} & \frac{49}{8} \\
+            0 & 1 & 0 & | & \frac{9}{2} & 1 & \frac{15}{2} \\
+            0 & 0 & 1 & | & -\frac{11}{8} & \frac{5}{2} & -\frac{21}{8}
+            \end{pmatrix}$$
+        Следовательно, матрица перехода:
+        $$C = \mat{\frac{15}{8} & -\frac{1}{2} & \frac{49}{8}\\
+        \frac{15}{8} & -\frac{1}{2} & \frac{49}{8} \\
+        -\frac{11}{8} & \frac{5}{2} & -\frac{21}{8}}$$\\
+
+        \item[(в)]Координаты вектора $v$ в базисе $e'$ можно получить по формуле:
+        $$x' = C\cdot x$$
+        Следовательно,
+        $$x' = \mat{\frac{15}{8} & -\frac{1}{2} & \frac{49}{8}\\
+        \frac{15}{8} & -\frac{1}{2} & \frac{49}{8} \\
+        -\frac{11}{8} & \frac{5}{2} & -\frac{21}{8}} \cdot \mat{-1 \\2 \\ 5}=\begin{pmatrix}
+            \frac{111}{4} \\
+            \frac{111}{4} \\
+            -\frac{27}{4}
+            \end{pmatrix}$$\\
+    \end{enumerate}
+
+    \item[\textbf{№3}]$L_1$ состоит из векторов:
+    $$
+    a_{1} = (1, -5, -3, -1, -4), \quad a_{2} = (-5, 5, 7, 3, 4), $$
+    $$\quad a_{3} = (-1, 2, 4, -5, -1), \quad a_{4} = (-1, -5, -1, 0, -4)
+    $$
+    $L_2$ состоит из векторов:
+    $$
+    b_{1} = (-3, -5, 1, 1, -4), \quad b_{2} = (3, 5, 2, -7, 4), $$
+    $$\quad b_{3} = (-3, -5, 4, -5, -4), \quad b_{4} = (-1, 9, 9, -10, 2)
+    $$
+    \begin{enumerate}
+        \item[1)]
+        Найдём базис $L_1$:
+        $$(a_1, a_2, a_3, a_4) =\begin{pmatrix}
+            1 & -5 & -1 & -1 \\
+            -5 & 5 & 2 & -5 \\
+            -3 & 7 & 4 & -1 \\
+            -1 & 3 & -5 & 0 \\
+            -4 & 4 & -1 & -4
+        \end{pmatrix}\implies \text{ УСВ: }\begin{pmatrix}
+            1 & 0 & 0 & \frac{3}{2} \\
+            0 & 1 & 0 & \frac{1}{2} \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}$$
+        Следовательно, векторы $a_1, a_2, a_3$ - ЛНЗ, а значит они образуют базис, т.к. линейная оболчка не меняется.
+        $$\dim L_1 = 3$$
+        \item[2)]
+        Найдём базис $L_2$:
+        $$(b_1, b_2, b_3, b_4) = \begin{pmatrix}
+            -3 & 3 & -3 & -1 \\
+            -5 & 5 & -5 & 9 \\
+            1 & 2 & 4 & 9 \\
+            1 & -7 & -5 & -10 \\
+            -4 & 4 & -4 & 2
+        \end{pmatrix} \implies \text{ УСВ: } \begin{pmatrix}
+            1 & 0 & 2 & 0 \\
+            0 & 1 & 1 & 0 \\
+            0 & 0 & 0 & 1 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}$$
+        Следовательно, векторы $b_1, b_2, b_4$ - ЛНЗ, а значит они образуют базис, т.к. линейная оболчка не меняется.
+        $$\dim L_2 = 3$$
+        \item[3)]
+        Найдём базис $U$:
+
+        Т.к. $U = L_1+L_2$, то линейная оболчка $U$ будет выглядить как:
+        $$\langle a_1, a_2, a_3, a_4, b_1, b_2, b_3, b_4, b_5\rangle$$
+        Осталось выбрать из неё ЛНЗ векторы, мы уже знаем, что $a_1, a_2, a_3$ и $b_1, b_2, b_4$ - ЛНЗ, выберем из них:
+        $$(a_1,a_2,a_3,b_1, b_2, b_4) = \begin{pmatrix}
+            1 & -5 & -1 & -3 & 3 & -1 \\
+            -5 & 5 & 2 & -5 & 5 & 9 \\
+            -3 & 7 & 4 & 4 & 2 & 9 \\
+            -1 & 3 & -5 & -5 & -7 & -10 \\
+            -4 & 4 & -1 & -4 & 4 & 2
+            \end{pmatrix}\implies $$
+            $$\implies \text{УСВ:} \begin{pmatrix}
+                1 & 0 & 0 & 0 & -4 & -\frac{3}{2} \\
+                0 & 1 & 0 & 0 & -2 & -\frac{1}{2} \\
+                0 & 0 & 1 & 0 & 0 & 2 \\
+                0 & 0 & 0 & 1 & 1 & 0 \\
+                0 & 0 & 0 & 0 & 0 & 0
+                \end{pmatrix}$$
+        Следовательно, векторы $a_1, a_2, a_3, b_1$ - ЛНЗ, а значит образуют базис в $U$, т.к. линейная оболчка не меняется.
+        $$\dim U = 4$$
+        \item[4)] Найдём базис в $W$:
+        
+        Для этого нужно представить подпространства $L_1, L_2$ в виде решений ОСЛУ:
+        
+        Найдём матрицу ОСЛУ для $L_1$:
+        $$L_1:\gath{a_1:\\
+        a_2:\\
+        a_3:\\
+        a_4:} \begin{pmatrix}
+            1 & -5 & -3 & -1 & -4 &|&0\\
+            -5 & 5 & 7 & 3 & 4&|&0 \\
+            -1 & 2 & 4 & -5 & -1 &|&0\\
+            -1 & -5 & -1 & 0 & -4&|&0
+            \end{pmatrix} \implies \text{УСВ: }\begin{pmatrix}
+                1 & 0 & 0 & -\frac{34}{11} & -\frac{13}{11} & |&0 \\
+                0 & 1 & 0 & \frac{25}{22} & \frac{14}{11} &|& 0 \\
+                0 & 0 & 1 & -\frac{57}{22} & -\frac{13}{11} & |&0 \\
+                0 & 0 & 0 & 0 & 0 & |& 0
+                \end{pmatrix}$$
+        Следовательно,
+        $$\case{x_1 = \frac{34}{11}x_4+\frac{13}{11}x_5\\
+        x_2 = -\frac{25}{22}x_4-\frac{14}{11}x_5\\
+        x_3 = \frac{57}{22}x_4+\frac{13}{11}x_5} \implies \text{ ФСР: }
+         \left\{\mat{\frac{34}{11}\\-\frac{25}{22}\\\frac{57}{22}\\1\\0}, 
+         \mat{\frac{13}{11}\\-\frac{14}{11}\\\frac{13}{11}\\0\\1}\right\}$$
+        Следовательно, $L_1$ задаётся матрицей ОСЛУ:
+        $$\mat{\frac{34}{11}&-\frac{25}{22}&\frac{57}{22}&1&0&|&0\\
+        \frac{13}{11}&-\frac{14}{11}&\frac{13}{11}&0&1&|&0}$$
+
+        Найдём матрицу ОСЛУ для $L_2$:
+        $$L_2:\gath{b_1:\\
+        b_2:\\
+        b_3:\\
+        b_4:} \begin{pmatrix}
+            -3 & -5 & 1 & 1 & -4&|&0 \\
+            3 & 5 & 2 & -7 & 4 &|&0\\
+            -3 & -5 & 4 & -5 & -4 &|&0\\
+            -1 & 9 & 9 & -10 & 2&|&0
+            \end{pmatrix} \implies \text{УСВ: } \begin{pmatrix}
+                1 & 0 & 0 & -\frac{67}{32} & \frac{13}{16} &|& 0 \\
+                0 & 1 & 0 & \frac{21}{32} & \frac{5}{16} &|& 0 \\
+                0 & 0 & 1 & -2 & 0 & |&0 \\
+                0 & 0 & 0 & 0 & 0 &|& 0
+                \end{pmatrix}$$
+        Следовательно,
+        $$\case{
+        x_1 = \frac{67}{32}x_4-\frac{13}{16}x_5\\
+        x_2 = -\frac{21}{32}x_4-\frac{5}{16}x_5\\
+        x_3 = 2x_4
+        } \implies \text{ ФСР: }
+        \left\{\mat{\frac{67}{32}\\-\frac{21}{32}\\2\\1\\0}, 
+        \mat{-\frac{13}{16}\\-\frac{5}{16}\\0\\0\\1}\right\}$$
+
+        Следовательно, $L_2$ задаётся матрицей ОСЛУ:
+        $$\mat{\frac{67}{32}&-\frac{21}{32}&2&1&0&|&0\\
+        -\frac{13}{16}&-\frac{5}{16}&0&0&1&|&0}$$
+
+        Следовательно, $W = L_1 \cap L_2$ можно представить как:
+        $$\mat{\frac{34}{11}&-\frac{25}{22}&\frac{57}{22}&1&0&|&0\\
+        \frac{13}{11}&-\frac{14}{11}&\frac{13}{11}&0&1&|&0\\
+        \frac{67}{32}&-\frac{21}{32}&2&1&0&|&0\\
+        -\frac{13}{16}&-\frac{5}{16}&0&0&1&|&0
+        }\implies \text{УСВ: }\begin{pmatrix}
+            1 & 0 & 0 & -\frac{5}{19} & -\frac{31}{38} &|&0 \\
+            0 & 1 & 0 & \frac{13}{19} & -\frac{41}{38} & |&0 \\
+            0 & 0 & 1 & 1 & \frac{1}{2} &|& 0 \\
+            0 & 0 & 0 & 0 & 0 & |&0
+            \end{pmatrix}$$
+        Следовательно, 
+        $$\case{
+            x_1 = \frac{5}{19}x_4+\frac{31}{38}x_5\\
+            x_2 = -\frac{13}{19}x_4+\frac{41}{38}x_5\\
+            x_3 = -x_4-\frac{1}{2}x_5
+        }\implies
+        \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4 \\
+        x_5
+        \end{pmatrix} = 
+        x_4 \begin{pmatrix}
+        \frac{5}{19} \\
+        -\frac{13}{19} \\
+        -1 \\
+        1 \\
+        0
+        \end{pmatrix} + 
+        x_5 \begin{pmatrix}
+        \frac{31}{38} \\
+        \frac{41}{38} \\
+        -\frac{1}{2} \\
+        0 \\
+        1
+        \end{pmatrix}
+        \implies$$
+    $$\implies\left\{\begin{pmatrix}
+        \frac{5}{19} \\
+        -\frac{13}{19} \\
+        -1 \\
+        1 \\
+        0
+        \end{pmatrix},\begin{pmatrix}
+            \frac{31}{38} \\
+            \frac{41}{38} \\
+            -\frac{1}{2} \\
+            0 \\
+            1
+            \end{pmatrix}\right\} \text{ - базис $W$}, \quad \dim W = 2$$
+    
+    Проверим пункты по формуле:
+    $$\dim L_1 + \dim L_2 = \dim(L_1 \cap L_2) + \dim(L_1 + L_2)$$
+    $$3 + 3 = 2+ 4$$
+    $$6=6 \text{ - верно}$$\\
+    \end{enumerate}
+        
+    \item[\textbf{№4}]Подпространство $U$ порождается векторами:
+    $$v_1 = \mat{0 \\5 \\ -8 \\ -5 \\ -4},\; v_2 = \mat{7 \\-2 \\ 10 \\ 10 \\ -10},\; v_3 = \mat{-3\\9\\7\\1\\-5}, \;v_4 = \mat{4\\-3\\33\\21\\-7}$$
+    Найдём такое $W$, что:
+    $$
+    \RR^5= U \oplus W \lr \case{
+        \RR^5 = U + W \\
+        U, W \text{ - ЛНЗ}
+    }\lr \case{
+        \RR^5 = U + W \\
+        \dim \RR^5 = \dim U + \dim W
+    }\lr
+    $$
+    Так как $U, W \subseteq \RR^5$:
+    $$
+    \lr \case{
+        \dim \RR^5 = \dim(U + W) \\
+        \dim \RR^5 = \dim U + \dim W
+    }\lr 5 = \dim(U + W) = \dim U + \dim W
+    $$
+    Для начала найдём ЛНЗ векторы среди $v_1, v_2, v_3, v_4$:
+    $$
+    \begin{pmatrix}
+    0 & 7 & -3 & 4 \\
+    5 & -2 & 9 & -3 \\
+    -8 & 10 & 7 & 33 \\
+    -5 & 10 & 1 & 21 \\
+    -4 & -10 & -5 & -7
+    \end{pmatrix} \implies \text{УСВ: } \begin{pmatrix}
+        1 & 0 & 0 & -2 \\
+        0 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}
+    $$
+    Следовательно, векторы $v_1, v_2, v_3$ - ЛНЗ, а также:
+    $$\dim U = 3 \implies \dim W = 2$$
+    Пусть $W = \langle x, y\rangle$: 
+    $$
+    x = \mat{1\\ 2\\ 3\\4\\ 5}, \quad y = \mat{5\\4\\3\\2\\1} \implies \text{ они ЛНЗ } \implies \dim W = 2
+    $$
+    Значит, т.к. $U = \langle v_1, v_2, v_3\rangle$, то:
+    $$U+W = \langle v_1, v_2, v_3, x, y \rangle$$
+    Удостоверимся, что набор $v_1, v_2, v_3, x, y$ ЛНЗ:
+    $$\begin{pmatrix}
+        0 & 7 & -3 & 1 & 5\\
+        5 & -2 & 9 & 2 & 4\\
+        -8 & 10 & 7 & 3 & 3\\
+        -5 & 10 & 1 & 4 & 2\\
+        -4 & -10 & -5 & 5 & 1
+        \end{pmatrix} \implies \text{УСВ: } \begin{pmatrix}
+            1 & 0 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 0 & 1
+            \end{pmatrix}$$
+    Значит, $v_1, v_2, v_3, x, y$ базис в $U+W$, следовательно:
+    $$\dim (U + W) = 5$$
+    Получили:
+    $$5 = \dim(U + W) = \dim U + \dim W$$
+    Значит:
+    $$\RR^5= U \oplus W$$
+    \textbf{Ответ:} $(1, 2, 3, 4, 5)^T$ и $(5, 4, 3, 2, 1)^T$ \\
+    
+    \item[\textbf{№5}]$U = \langle v_1, v_2\rangle$ и $W = \langle v_3, v_4\rangle$ подпространства $\text{Mat}_{2\times 2}(\RR)$
+    $$
+    v_1 = \mat{1 & 4\\ -9 & 6}, \;v_2 = \mat{-5 & 6 \\ -3 & 9}, \; v_3 = \mat{9 & -11 \\ -4 & 8},\; v_4 = \mat{6 & 0 \\ -6 & 14}
+    $$
+    \begin{enumerate}
+        \item[(а)] Условие $\text{Mat}_{2\times 2}(\RR) = U \oplus W$ эквивалентно:
+        $$
+        \text{Mat}_{2\times 2}(\RR)= U \oplus W \lr \case{
+            \text{Mat}_{2\times 2}(\RR) = U + W \\
+            U, W \text{ - ЛНЗ}
+        }\lr $$
+        $$\lr \case{
+            \text{Mat}_{2\times 2}(\RR) = U + W \\
+            \dim \text{Mat}_{2\times 2}(\RR) = \dim U + \dim W
+        }\lr
+        $$\\
+        Так как $U, W \subseteq \text{Mat}_{2\times 2}(\RR)$:
+        $$
+        \lr \case{
+            \dim \text{Mat}_{2\times 2}(\RR) = \dim(U + W) \\
+            \dim \text{Mat}_{2\times 2}(\RR) = \dim U + \dim W
+        }\lr \case{
+            4 = \dim(U + W) \\
+            4 = \dim U + \dim W
+        }
+        $$
+        Значит, нужно доказать, что:
+        $$\dim(U + W) = \dim U + \dim W = 4$$
+        Найдём, какие из векторов $v1, v2, v3, v4$ - ЛНЗ:
+        $$
+        \mat{-1 & -5& 9 & 6 \\
+        4 & 6 & -11 &0 \\
+        -9 & -3 & -4 & -6\\
+        -6 & 9 & 8 & 14}
+        \implies \text{УСВ: } \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+            \end{pmatrix}$$
+        Значит, все они ЛНЗ между собой. Поэтому $v_1, v_2$ - базис в $U$, $v_3, v_4$ - базис в $W$ и $v_1, v_2, v_3, v_4$ - базис в $U + W = \langle v_1, v_2, v_3, v_4 \rangle$
+
+        Следовательно:
+        $$\dim U = 2, \quad \dim W = 2, \quad \dim (U+W) = 4$$
+        А значит:
+        $$\dim(U + W) = \dim U + \dim W = 4 \text{ - верно}$$
+        Следовательно,
+        $$\text{Mat}_{2\times 2}(\RR) = U \oplus W$$
+
+        \item[(б)] Найдём проекцию вектора $\xi$ на Подпространство $W$ вдоль $U$:
+        $$\xi = \mat{15 & -20 \\ -17 &-19}$$
+        Вектор $\xi$ выражается как:
+        $$\xi = u + w \text{, где $u \in U$ и $w \in W$}$$
+        $w$ - и будет искомой проекцией. $u$ и $w$ можно представить как:
+        $$u = \lambda_1 v_1 + \lambda_2 v_2, \quad w = \lambda_3v_3 + \lambda_4 v_4$$
+        Получаем ОСЛУ на $\lambda_1, \lambda_2, \lambda_3, \lambda_4$:
+        $$\lambda_1 v_1 + \lambda_2 v_2 + \lambda_3v_3 + \lambda_4 v_4 = \xi$$
+        Запишем матрицу ОСЛУ и решим:
+        $$\mat{-1 & -5& 9 & 6 &|& 15\\
+        4 & 6 & -11 &0  &|& -20\\
+        -9 & -3 & -4 & -6 &|& -17\\
+        -6 & 9 & 8 & 14 &|& -19} \implies \text{УСВ: } \begin{pmatrix}
+            1 & 0 & 0 & 0 & |&2 \\
+            0 & 1 & 0 & 0 &|& -1 \\
+            0 & 0 & 1 & 0 &|& 2 \\
+            0 & 0 & 0 & 1 &|& -1
+            \end{pmatrix}\implies$$
+        Получаем:
+        $$
+        \case{
+            \lambda_1 = 2\\
+            \lambda_2 = -1\\
+            \lambda_3 = 2\\
+            \lambda_4 = -1}
+        \implies w = \lambda_3v_3 + \lambda_4 v_4 = 2 \mat{9 & -11 \\ -4 & 8} - \mat{6 & 0 \\ -6 & 14} = \begin{pmatrix}
+            12 & -22 \\
+            -2 & 2
+            \end{pmatrix}$$
+
+        \textbf{Ответ:} $\begin{pmatrix}
+            12 & -22 \\
+            -2 & 2
+            \end{pmatrix}$ 
+        
+
+    \end{enumerate}
+
+
+    \end{enumerate}
+\end{document}

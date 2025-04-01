@@ -1,0 +1,266 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 22.01 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Векторы $U$:
+    $$
+    u_1 = (0,0,0,1,1)^{T}, \quad u_2 = (0,0,3,2,-3)^{T}, \quad u_3 = (0,0,3,5,0)^{T}, \quad u_4 = (0,2,1,3,0)^{T}
+    $$
+    Векторы $W$:
+    $$
+    w_1 = (1,-1,2,0,0)^{T}, \quad w_2 = (1,1,1,0,0)^{T}
+    $$
+    Докажем, что:
+    $$\case{
+        \RR^5 = U + W\\
+        \dim(U + W) = \dim(U) + \dim(W)
+    } \lr \case{
+        \dim \RR^5 = \dim(U+W)\\
+        \dim(U + W) = \dim(U) + \dim(W)
+    } \lr$$
+    $$\lr \dim(U) + \dim(W) = \dim(U + W) = 5$$
+    Для начала найдём какие из векторов $u_1, u_2, u_3, u_4, w_1, w_2$ - ЛНЗ:
+    $$\mat{0 & 0 &0 & 0&1& 1\\
+    0 & 0 & 0 & 2 & -1&1\\
+    0 & 3 &3  & 1 & 2&1\\
+    1 & 2 & 5 & 3 & 0&0\\
+    1& -3 & 0 & 0 & 0&0} \implies \text{УСВ: } \mat{1 & 0 & 3 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1}$$
+    Следовательно, $u_1, u_2, u_4, w_1, w_2$ - ЛНЗ, а значит:
+    $$\dim U = 3, \quad \dim W = 2, \quad \dim(U + W) = 5$$
+    Значит, выполняется:
+    $$\dim(U) + \dim(W) = \dim(U + W) = 5$$
+    Поэтому:
+    $$\RR^5 = U \oplus V$$
+    Найдём проекцию вектора $v$ на $U$ вдоль $W$ и на $W$ вдоль $U$:
+    $$v = \mat{6&4&6&4&6}^T$$
+    Вектор $v$ выражается как:
+    $$v = u + w, \text{ где $u \in U$, $w \in W$}$$
+    Здесь $u$ и $w$ будут искомыми проекциями. Их можно представить как:
+    $$u = \lambda_1 u_1 + \lambda_2 u_2 + \lambda_3 u_4, \quad w = \mu_1 w_1 + \mu_2w_2$$
+    Найдём $\lambda_1, \lambda_2, \lambda_3, \mu_1, \mu_2$ решив $u+w = v$:
+    $$\mat{0 & 0  & 0&1& 1 & | & 6\\
+    0 & 0 & 2 & -1&1 & | & 4\\
+    0 & 3 & 1 & 2&1 & | & 6\\
+    1 & 2 & 3 & 0&0 & | & 4\\
+    1& -3 & 0 & 0&0 & | & 6} \implies \text{УСВ: } \mat{1 & 0 & 0 & 0 & 0 & | & 3 \\
+    0 & 1 & 0 & 0 & 0 & | & -1 \\
+    0 & 0 & 1 & 0 & 0 & | & 1 \\
+    0 & 0 & 0 & 1 & 0 & | & 2 \\
+    0 & 0 & 0 & 0 & 1 & | & 4}\implies \mat{\lambda_1\\\lambda_2\\ \lambda_3\\ \mu_1\\ \mu_2} = \mat{3 \\ -1\\ 1\\ 2\\4}$$
+    Найдём $u$:
+    $$
+    u = 3u_1 - 1u_2 + 1u_4 = 3 \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \\ 1 \end{pmatrix} - 1 \begin{pmatrix} 0 \\ 0 \\ 3 \\ 2 \\ -3 \end{pmatrix} + 1 \begin{pmatrix} 0 \\ 2 \\ 1 \\ 3 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 2 \\ -2 \\ 4 \\ 6 \end{pmatrix}
+    $$
+    Найдём $w$:
+    $$w = 2w_1 + 4w_2 = 2 \begin{pmatrix} 1 \\ -1 \\ 2 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 1 \\ 1 \\ 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 6 \\ 2 \\ 8 \\ 0 \\ 0 \end{pmatrix}$$
+
+    \textbf{Ответ: } На $U$: $(0, 2, -2, 4, 6)^T$, на $W$: $(6, 2, 8, 0, 0)^T$\\
+
+    \item[\textbf{№2}] $U$ задано уравнением:
+    $$x_1 + x_2 + \dots + x_n = 0$$
+    $W$ задано уравнением:
+    $$x_1 = \dots = x_n $$
+    Докажем, что 
+    $$\RR^n = U \oplus W$$
+    Это эквивалентно:
+    $$\case{
+        \RR^n = U+W\\
+        \dim U + \dim W = \dim(U + W)
+    } \lr \case{
+        n = \dim(U+W)\\
+        \dim U + \dim W = n
+    } \lr$$
+    $$ \lr \case{
+        n = \dim U + \dim W - \dim(U \cap W)\\
+        \dim U + \dim W = n
+    } \lr \case{
+        \dim(U \cap W) = 0 \\
+        \dim U + \dim W = n
+    }$$
+    Найдём $\dim U$:
+    $$\mat{1 & 1 & \dots & 1 & | & 0} \implies x_1 = -x_2-x_3-\dots-x_n$$
+    $$\mat{x_1 \\ x_2 \\ \dots \\ x_n} = \mat{-x_2-x_3-\dots-x_n\\x_2 \\ \dots \\ x_n} = \mat{-1\\1 \\ \dots \\ 0}x_2 + \mat{-1\\0 \\ \dots \\ 0}x_3 + \dots \implies$$
+    $$\implies \dim U = n-1$$
+    Найдём $\dim W$, линейная оболочка будет иметь вид:
+    $$\mat{1\\1\\\dots\\1}x_1 \quad \forall x_1 \in \RR$$
+    Поэтому:
+    $$\dim W = 1$$
+    Найдём $\dim( U \cap W)$:
+    $$\case{
+        x_1 + x_2 + \dots + x_n = 0\\
+        x_1 = \dots = x_n 
+    } \implies x_1 = \dots = x_n = 0 \implies \dim (U \cap W )= 0$$
+    Получается, что выполняется условие:
+    $$\case{
+        \dim(U \cap W) = 0 \\
+        \dim U + \dim W = n
+    }$$
+    А значит:
+    $$\RR^n = U \oplus W$$
+    Нам известно, что:
+    $$U = \langle \mat{-1\\1 \\ \dots \\ 0},\mat{-1\\0 \\ \dots \\ 0}, \dots\rangle, \quad W = \langle \mat{1\\1\\\dots\\1} \rangle$$
+    Найдём, проекции $v = (a_1, a_2, \dots, a_n)^T$:
+    $$v = u + w = \alpha_1u_1 + \alpha_2u_2 + \dots + \alpha_{n-1}u_{n-1} + \mu_1w_1$$
+    $$\mat{
+        -1 & -1 & -1 & \dots & -1 & 1 & | & a_1\\
+         1 & 0 & 0 & \dots & 0 & 1 & | & a_2\\
+         0 & 1 & 0 & \dots & 0 & 1 & | & a_3\\
+         0 & 0 & 1 & \dots & 0 & 1 & | & a_4 \\
+         \dots & \dots &\dots &\dots &\dots & \dots & \dots & \dots &
+    } \implies$$$$\implies \mat{
+        1 & 0 & 0 & \dots & 0 & 1 & | & a_2\\
+        0 & 1 & 0 & \dots & 0 & 1 & | & a_3\\
+        0 & 0 & 1 & \dots & 0 & 1 & | & a_4 \\
+        \dots & \dots &\dots &\dots &\dots & \dots & \dots & \dots \\
+        0 & 0 & 0 & \dots & 1 & 1 & | & a_{n} \\
+        0 & 0 & 0 & \dots & 0 & n & | & a_1 + a_2+\dots + a_n\\
+    } \implies $$
+    $$\implies \mat{
+        1 & 0 & 0 & \dots & 0 & 1 & | & a_2\\
+        0 & 1 & 0 & \dots & 0 & 1 & | & a_3\\
+        0 & 0 & 1 & \dots & 0 & 1 & | & a_4 \\
+        \dots & \dots &\dots &\dots &\dots & \dots & \dots & \dots \\
+        0 & 0 & 0 & \dots & 1 & 1 & | & a_{n} \\
+        0 & 0 & 0 & \dots & 0 & 1 & | & \f{a_1 + a_2+\dots + a_n}{n}\\
+    } \r $$
+    $$\r \mat{\alpha_1 \\ \alpha_2 \\ \dots \\ \alpha_{n-1}\\ \mu_1} = \mat{\f{-a_1 + a_2(n-1) - a_3 -\dots - a_n}{n} \\ \f{-a_1 - a_2 + a_3(n-1) -\dots - a_n}{n} \\ \dots \\ \f{-a_1 - a_2 - a_3 -\dots + a_n(n-1)}{n} \\ \f{a_1 + a_2+\dots + a_n}{n}}$$
+    Получается проекция $v$ на $U$ равна:
+    \small{$$\f{-a_1 + a_2(n-1) - a_3 -\dots - a_n}{n} \cdot \mat{-1\\1 \\ \dots \\ 0} + \dots + \f{-a_1 - a_2 - a_3 -\dots + a_n(n-1)}{n} \cdot \mat{-1\\0 \\ \dots \\ 1} $$}
+    А проекция $v$ на $W$:
+    $$\f{a_1 + a_2+\dots + a_n}{n} \cdot \mat{1\\1\\\dots\\1}$$
+
+    \item[\textbf{№3}] Мы знаем размерность пространства матриц $n \times n$:
+    $$\dim{M_n(\RR)} = n^2$$
+    Размерность пространства симметрических матриц:
+    $$\dim \text{Sym} = \f{n(n+1)}{2}$$
+    Размерность пространства строго верхнетреугольных матриц:
+    $$\dim N = (n-1) + (n-2) + \dots + 1 = \f{n(n-1)}{2}$$
+    Размерность пространства $\text{Sym} \cap N$:
+    $$\dim (\text{Sym} \cap N) = 0$$
+    Следовательно, выполняется условие:
+    $$\case{
+        \dim (\text{Sym} \cap N) = 0\\
+        \dim(M_n(\RR)) = \dim(\text{Sym}) + \dim(N) \lr n^2 = \f{n(n+1)}{2}+\f{n(n-1)}{2} \text{ - верно}
+    }$$
+    А значит:
+    $$M_n(\RR) = \text{Sym} \oplus N$$
+    Найдём проекции матрицы $A$:
+    $$A = \mat{0 & 1 & 2 & \ldots & n-1 \\
+     -1 & 0 & 1 & \ddots & \vdots \\ 
+     -2 & -1 & 0 & \ddots & 2 \\
+      \vdots & \ddots & \ddots & \ddots & 1 \\ 
+      -n+1 & \ldots & -2 & -1 & 0}$$
+    Мы знаем, что:
+    $$A = B + C$$ где $B$ - симметрическая матрица, а $C$ - строго верхнетругольная/
+
+    Получается, что:
+    $$B = \mat{0 & -1 & -2 & \ldots & -n+1 \\
+    -1 & 0 & -1 & \ddots & \vdots \\ 
+    -2 & -1 & 0 & \ddots & -2 \\
+     \vdots & \ddots & \ddots & \ddots & -1 \\ 
+     -n+1 & \ldots & -2 & -1 & 0}, \quad C = \mat{
+        0 & 2 & 4 & \ldots & 2n-2 \\
+        0 & 0 & 2 & \ddots & \vdots \\ 
+        0 & 0 & 0 & \ddots & 4 \\
+        \vdots & \ddots & \ddots & \ddots & 2 \\ 
+        0 & \ldots & 0 & 0 & 0}$$
+    Следовательно, $B$ - проекция на $Sym$ вдоль $N$, а $C$ - проекция на $N$ вдоль $Sym$.
+
+    \item[\textbf{№4}] $U$ - пространство верхнетреугольных матриц
+    $$\dim U = \f{n(n+1)}{2}$$
+    $N$ - подпространство строго верхнетреугольных матриц
+    $$\dim N = \f{n(n-1)}{2}$$
+    $S$ - подпространство скалярных матрица
+    $$\dim S = 1$$
+    $Z$ - подпространство диагональных матриц со следом ноль
+    $$\dim Z = n-1$$
+    Докажем, что $U = N \oplus S \oplus Z$, это эквивалентно:
+    $$\case{
+        U = N + S + Z\\
+        \dim U = \dim N + \dim S + \dim Z
+    }\lr \case{
+        \dim U = \dim(N + S + Z)\\
+        \dim U = \dim N + \dim S + \dim Z
+    } \lr$$
+    $$\lr \case{
+        \dim U = \dim(N + S + Z)\\
+        \dim U = \dim N + \dim S + \dim Z
+    } \lr$$$$\lr \case{
+        \dim U= \dim (N+S) + \dim Z - \dim ((N+S) \cap Z)\\
+        \dim U = \dim N + \dim S + \dim Z
+    }$$
+    Найдём размерность $N + S$, по сути мы дополняем строго верхнетреугольную матрицу диагональю, задающуюся одним числом, поэтому:
+    $$\dim (N + S) =  \f{n(n-1)}{2} + 1$$
+    Пересечение таких матриц и матриц $Z$, даёт нулевую матрицу:
+    $$\dim ((N+S) \cap Z) = 0$$
+    Получается, что:
+    $$\dim (N+S) + \dim Z - \dim ((N+S) \cap Z) = $$
+    $$=\f{n(n-1)}{2} + 1 + n-1 - 0  = \f{n(n-1)}{2} + n = \f{n(n+1)}{2} = \dim U$$
+    А также:
+    $$\dim N + \dim S + \dim Z = \f{n(n-1)}{2} + 1 + n-1 = \f{n(n+1)}{2}= \dim U$$
+    Значит, выполняется условие:
+    $$\case{
+        \dim U= \dim (N+S) + \dim Z - \dim ((N+S) \cap Z)\\
+        \dim U = \dim N + \dim S + \dim Z
+    }$$
+    Следовательно:
+    $$U = N \oplus S \oplus Z$$
+    
+\end{enumerate}
+\end{document}

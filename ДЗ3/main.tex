@@ -1,0 +1,505 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[14pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+
+
+\begin{document}
+
+\section*{Домашнее задание на 25.09.2024 (Линейная алгебра)}
+{\large Емельянов Владимир, ПМИ гр №247}\\\\
+
+\begin{enumerate}
+    \item[\textbf{1.}]
+    $A-A^T = -(A^T-A) = -(A-A^T)^T \r -(A-A^T) = (A-A^T)^T \r\\ \r A-A^T$ - кососимметричекая для любых $A$.\\
+    $\f{A}{2}-\f{A}{2}^T$ - кососимметричекая матрица $=-(\f{A}{2}-\f{A}{2}^T)^T$\\
+    $\f{A}{2}+\f{A}{2}^T$ - симметрическая матрица $=\f{A}{2}^T+\f{A}{2}$\\
+    \textbf{Тогда $A$ можно представить как: }$A = \f{A}{2}-\f{A}{2}^T + \f{A}{2}+\f{A}{2}^T =\\= \f{A-A^T}{2}+\f{A+A^T}{2}$\\
+
+    \item[\textbf{2.}]\indent 
+    \begin{enumerate}
+        \item[2.1]
+        $\begin{cases} %б (главные x_1 и x_3)
+            -9x_1 + 6x_2 + 7x_3 + 10x_4 = 3 \\ -6x_1 + 4x_2 + 2x_3 + 3x_4 = 2 \\ -3x_1 + 2x_2 - 11x_3 - 15x_4 = 1
+        \end{cases}\r\\$
+        Запишем расширенную матрицу этой системы: \\
+        \[A = \begin{pmatrix}
+            -9 & 6 & 7 & 10 & | & 3 \\
+            -6 & 4 & 2 & 3 & | & 2 \\
+            -3 & 2 & -11 & -15 & | & 1 \\
+        \end{pmatrix}\]
+        \[A[i] - \text{ i-ая строка СЛУ}\]
+        \[A[1]=A[1]-2A[2]\]
+        \[A = \begin{pmatrix}
+            -9 & 6 & 7 & 10 & | & 3 \\
+            0 & 0 & 24 & 33 & | & 0 \\
+            -3 & 2 & -11 & -15 & | & 1 \\
+        \end{pmatrix}\]
+        \[A[0]=A[0]-3A[2]\]
+        \[\begin{pmatrix}
+            0 &  0 & 40 & 55 &  0 \\
+            0 &  0 & 24 & 33 &  0 \\
+            -3 &  2 & -11 & -15 &  1
+        \end{pmatrix}\]
+        \[A[0]=\f{1}{5}A[0]\]
+        \[A[1]=\f{1}{3}A[1]\]
+        \[\begin{pmatrix}
+            0 &  0 &  8 & 11 &  0 \\
+            0 &  0 &  8 & 11 &  0 \\
+            -3 &  2 & -11 & -15 &  1
+        \end{pmatrix}=
+        \begin{pmatrix}
+            0 &  0 &  8 & 11 &  0 \\
+            -3 &  2 & -11 & -15 &  1
+        \end{pmatrix}\]
+        \[\begin{cases}
+            8x_3+11x_4=0\\
+            -3x_1+2x_2-11x_3-15x_4=1
+        \end{cases}\]
+        \[\begin{cases}
+            x_3=-\f{11x_4}{8}\\
+            -3x_1+2x_2+\f{121x_4}{8}-\f{120x_4}{8}=1
+        \end{cases}\]
+        \[\begin{cases}
+            x_3=-\f{11x_4}{8}\\
+            -3x_1+2x_2+\f{x_4}{8}=1
+        \end{cases}\]
+        \[x_4=8a, x_2=b\]
+        \[\textbf{Ответ: }\begin{cases}
+            x_1 = -\f{1-2b-a}{3}\\
+            x_2 = b\\
+            x_3 = -11a\\
+            x_4 = 8a\\
+        \end{cases}\]
+
+        \item[2.2]
+        $\begin{cases}
+            12x_1 + 9x_2 +3x_3 +10x_4 = 13 \\
+            4x_1 + 3x_2 + x_3 + 2x_4 = 3 \\
+            8x_1 + 6x_2 + 2x_3 + 5x_4 = 7 
+        \end{cases}$
+        \[A = \mat{
+            12 & 9 & 3 & 10 & | & 13 \\
+            4 & 3 & 1 & 2 & | & 3 \\
+            8 & 6 & 2 & 5 & | & 7 \\
+        }\]
+        \[A[0] = A[0] - 3*A[1]\]
+        \[\begin{pmatrix}
+            0 & 0 & 0 & 4 & 4 \\
+            4 & 3 & 1 & 2 & 3 \\
+            8 & 6 & 2 & 5 & 7
+        \end{pmatrix}\]
+        \[A[2] = A[2] - 2*A[1]\]
+        \[\mat{
+            0 & 0 & 0 & 4 & 4 \\
+            4 & 3 & 1 & 2 & 3 \\
+            0 & 0 & 0 & 1 & 1
+        }=\mat{
+            0 & 0 & 0 & 1 & 1 \\
+            4 & 3 & 1 & 2 & 3 \\
+            0 & 0 & 0 & 1 & 1
+        }=\mat{
+            4 & 3 & 1 & 2 & 3 \\
+            0 & 0 & 0 & 1 & 1
+        }\]
+        \[\begin{cases}
+            4x_1 + 3x_2 + x_3 + 2x_4 = 3 \\
+            x_4 = 1
+        \end{cases}=
+        \begin{cases}
+            4x_1 + 3x_2 + x_3 = 1 \\
+            x_4 = 1
+        \end{cases}\]
+        \[x_1 = a, x_2 = b\]
+        \[\textbf{Ответ: }\begin{cases}
+            x_1 = a\\
+            x_2 = b\\
+            x_3 = 1-4a-3b\\
+            x_4 = 1
+        \end{cases}\]
+
+        \item[2.3]
+        $\begin{cases}
+            2x_1 + 5x_2 - 8 x_3 = 8 \\
+            4x_1 + 3x_2 - 9x_3 = 9 \\
+            2x_1 + 3x_2 - 5x_3 = 7 \\
+            x_1 + 8 x_2 - 7x_3 = 12
+        \end{cases}$\\
+        \[A = \begin{pmatrix}
+            2 & 5 & -8 & | & 8 \\
+            4 & 3 & -9 & | & 9 \\
+            2 & 3 & -5 & | & 7 \\
+            1 & 8 & -7 & | & 12
+        \end{pmatrix}\]
+        \[A[0] = A[0]/2\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        4 & 3 & -9 & 9 \\
+        2 & 3 & -5 & 7 \\
+        1 & 8 & -7 & 12
+        \end{pmatrix}
+        \]
+        \[A[1] = A[1]-4*A[0]\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & -7 & 7 & -7 \\
+        2 & 3 & -5 & 7 \\
+        1 & 8 & -7 & 12
+        \end{pmatrix}
+        \]
+        \[A[1] = A[1]/-7\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & 1 & -1 & 1 \\
+        2 & 3 & -5 & 7 \\
+        1 & 8 & -7 & 12
+        \end{pmatrix}
+        \]
+        \[A[2] = A[2]-2*A[0]\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & 1 & -1 & 1 \\
+        0 & -2 & 3 & -1 \\
+        1 & 8 & -7 & 12
+        \end{pmatrix}
+        \]
+        \[A[2] = A[2]+2*A[1]\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & 1 & -1 & 1 \\
+        0 & 0 & 1 & 1 \\
+        1 & 8 & -7 & 12
+        \end{pmatrix}
+        \]
+        \[A[3] = A[3]-A[0]\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & 1 & -1 & 1 \\
+        0 & 0 & 1 & 1 \\
+        0 & \frac{11}{2} & -3 & 8
+        \end{pmatrix}
+        \]
+        \[A[3] = A[3]-\f{11}{2}*A[1]\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & 1 & -1 & 1 \\
+        0 & 0 & 1 & 1 \\
+        0 & 0 & \frac{5}{2} & \frac{5}{2}
+        \end{pmatrix}
+        \]
+        \[A[3] = A[3]*\f{2}{5}\]
+        \[
+        \begin{pmatrix}
+        1 & \frac{5}{2} & -4 & 4 \\
+        0 & 1 & -1 & 1 \\
+        0 & 0 & 1 & 1 \\
+        0 & 0 & 1 & 1
+        \end{pmatrix}=
+        \begin{pmatrix}
+            1 & \frac{5}{2} & -4 & 4 \\
+            0 & 1 & -1 & 1 \\
+            0 & 0 & 1 & 1 \\
+        \end{pmatrix}
+        \]
+        \[
+        \begin{cases}
+        x_1 + \frac{5}{2} x_2 - 4 x_3 = 4 \\
+        x_2 - x_3 = 1 \\
+        x_3 = 1
+        \end{cases}
+        \r
+        \begin{cases}
+            x_1 + \frac{5}{2} x_2 - 4 x_3 = 4 \\
+            x_2 = 2 \\
+            x_3 = 1
+        \end{cases}
+        \]\[\r
+        \begin{cases}
+            x_1 + 5 - 4 = 4 \\
+            x_2 = 2 \\
+            x_3 = 1
+        \end{cases}\r\]
+        \[ \textbf{Ответ:}
+        \begin{cases}
+            x_1 = 3 \\
+            x_2 = 2 \\
+            x_3 = 1
+        \end{cases}\]
+
+        \item[2.4]
+        $\begin{cases}
+            -9x_1 + 10x_2 + 3x_3 + 7x_4 = 7 \\
+            -4x_1 + 7x_2 + x_3 + 3x_4 = 5 \\
+            7x_1 + 5x_2 - 4x_3 - 6x_4 = 3
+        \end{cases}$
+        \[A= 
+        \begin{pmatrix}
+        -9 & 10 & 3 & 7 & | & 7 \\
+        -4 & 7 & 1 & 3 & | & 5 \\
+        7 & 5 & -4 & -6 & | & 3
+        \end{pmatrix}
+        \]
+        \[A[0] = A[0]/-9\]
+        \[
+        \begin{pmatrix}
+        1 & -\frac{10}{9} & -\frac{1}{3} & -\frac{7}{9} & -\frac{7}{9} \\
+        -4 & 7 & 1 & 3 & 5 \\
+        7 & 5 & -4 & -6 & 3
+        \end{pmatrix}
+        \]
+        \[A[1] = A[1] + 4*A[0]\]
+        \[
+        \begin{pmatrix}
+        1 & -\frac{10}{9} & -\frac{1}{3} & -\frac{7}{9} & -\frac{7}{9} \\
+        0 & \frac{23}{9} & -\frac{1}{3} & -\frac{1}{9} & \frac{17}{9} \\
+        7 & 5 & -4 & -6 & 3
+        \end{pmatrix}
+        \]
+        \[A[1] = A[1]*\f{9}{23}\]
+        \[
+        \begin{pmatrix}
+        1 & -\frac{10}{9} & -\frac{1}{3} & -\frac{7}{9} & -\frac{7}{9} \\
+        0 & 1 & -\frac{3}{23} & -\frac{1}{23} & \frac{17}{23} \\
+        7 & 5 & -4 & -6 & 3
+        \end{pmatrix}
+        \]
+        \[A[2] = A[2]-7*A[0]\]
+        \[
+        \begin{pmatrix}
+        1 & -\frac{10}{9} & -\frac{1}{3} & -\frac{7}{9} & -\frac{7}{9} \\
+        0 & 1 & -\frac{3}{23} & -\frac{1}{23} & \frac{17}{23} \\
+        0 & \frac{115}{9} & -\frac{5}{3} & -\frac{5}{9} & \frac{76}{9}
+        \end{pmatrix}
+        \]
+        \[A[2] = A[2]-A[1]*\f{115}{9}\]
+        \[
+        \begin{pmatrix}
+        1 & -\frac{10}{9} & -\frac{1}{3} & -\frac{7}{9} & -\frac{7}{9} \\
+        0 & 1 & -\frac{3}{23} & -\frac{1}{23} & \frac{17}{23} \\
+        0 & 0 & 0 & 0 & -1
+        \end{pmatrix}
+        \]
+        \[\text{Заметим, что последняя строчка даёт: } 0 = -1 \text{  }\varnothing\]
+        \[\textbf{Ответ: } \varnothing\]
+    \end{enumerate}
+
+    \item[\textbf{3.}]
+    Пусть $f(x) = ax^2+bx+c$, тогда:\\
+    $\begin{cases}
+        f(1) = a+b+c=8\\
+        f(-1)= a-b+c=2\\
+        f(2) = 4a+2b+c=14
+    \end{cases}$\\
+    Запишем в виде расширенной матрицы СЛУ:\\
+    \[A = \mat{
+        1 & 1 & 1 & | & 8 \\
+        1 & -1 & 1 & | & 2 \\
+        4 & 2 & 1 & | & 14 
+    }\]
+    \[A[1] = A[1]-A[0]\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & 1 & 8 \\
+    0 & -2 & 0 & -6 \\
+    4 & 2 & 1 & 14
+    \end{pmatrix}
+    \]
+    \[A[1] = A[1]/-2\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & 1 & 8 \\
+    0 & 1 & 0 & 3 \\
+    4 & 2 & 1 & 14
+    \end{pmatrix}
+    \]
+    \[A[2] = A[2] - 4*A[0]\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & 1 & 8 \\
+    0 & 1 & 0 & 3 \\
+    0 & -2 & -3 & -18
+    \end{pmatrix}
+    \]
+    \[A[2] = A[2] + 2*A[1]\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & 1 & 8 \\
+    0 & 1 & 0 & 3 \\
+    0 & 0 & -3 & -12
+    \end{pmatrix}
+    \]
+    \[A[2] = A[2]/-3\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & 1 & 8 \\
+    0 & 1 & 0 & 3 \\
+    0 & 0 & 1 & 4
+    \end{pmatrix}\r
+    \begin{cases}
+    a + b + c = 8 \\
+    b = 3 \\
+    c = 4
+    \end{cases}
+    \r
+    \begin{cases}
+        a = 1 \\
+        b = 3 \\
+        c = 4
+    \end{cases}\]
+    \[\textbf{Ответ: } f(x) = x^2+3x+4\]
+
+    \item[\textbf{4.}]
+    $\begin{cases}
+        x_1 + x_2 + a x_3 = 0 \\ -x_1 + (a-1)x_2 = 0 \\ ax_1 + ax_2 + ax_3 = 0
+    \end{cases}$\\
+    Запишем в виде расширенной матрицы СЛУ:
+    \[
+    \begin{pmatrix}
+    1 & 1 & a & | & 0 \\
+    -1 & a-1 & 0 & | & 0 \\
+    a & a & a & | & 0
+    \end{pmatrix}
+    \]
+    \[A[1] = A[1]+A[0]\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & a & 0 \\
+    0 & a & a & 0 \\
+    a & a & a & 0
+    \end{pmatrix}
+    \]
+    \[A[1] = A[1]/a\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & a & 0 \\
+    0 & 1 & 1 & 0 \\
+    a & a & a & 0
+    \end{pmatrix}
+    \]
+    \[A[2] = A[2] - A[0]*a\]
+    \[
+    \begin{pmatrix}
+    1 & 1 & a & 0 \\
+    0 & 1 & 1 & 0 \\
+    0 & 0 & -a^2 + a & 0
+    \end{pmatrix}
+    \]
+    $x_1, x_2$ - всегда главные переменные, a $x_3$ - главная только при $-a^2+a \neq 0$, т.е. при $a\neq 1$ и $a \neq 0$\\
+    \textbf{Ответ: } 
+    $\begin{cases}
+        \text{При $a\in \{1, 0\}$: 2 главных и 1 свободная.} \\ 
+        \text{При $a\in R\smallsetminus\{1, 0\} $ :3 главных и 0 свободных} 
+    \end{cases}$\\
+
+    \item[\textbf{5.}]
+    $\begin{cases}
+        ax+2z=2\\
+        5x+2y=1\\
+        x-2y+bz=3
+    \end{cases}$\\
+    Запишем в виде расширенной матрицы СЛУ:\\
+    $$
+    \begin{pmatrix}
+        a & 0 & 2 & | & 2 \\
+        5 & 2 & 0 & | & 1 \\
+        1 & -2 & b & | & 3
+    \end{pmatrix}
+    $$
+    При $a=0$: 1 решение \\
+    При $a \neq 0$:
+    $$A[0] = A[0]/a$$
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{2}{a} & \frac{2}{a} \\
+    5 & 2 & 0 & 1 \\
+    1 & -2 & b & 3
+    \end{pmatrix}
+    $$
+    $$A[1] = A[1]-5*A[0]$$
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{2}{a} & \frac{2}{a} \\
+    0 & 2 & -\frac{10}{a} & 1 - \frac{10}{a} \\
+    1 & -2 & b & 3
+    \end{pmatrix}
+    $$
+    $$A[1] = A[1]/2$$
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{2}{a} & \frac{2}{a} \\
+    0 & 1 & -\frac{5}{a} & \frac{1}{2} - \frac{5}{a} \\
+    1 & -2 & b & 3
+    \end{pmatrix}
+    $$
+    $$A[2] = A[2]-A[0]$$
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{2}{a} & \frac{2}{a} \\
+    0 & 1 & -\frac{5}{a} & \frac{1}{2} - \frac{5}{a} \\
+    0 & -2 & b - \frac{2}{a} & 3 - \frac{2}{a}
+    \end{pmatrix}
+    $$
+    $$A[2] = A[2]+2*A[1]$$
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{2}{a} & \frac{2}{a} \\
+    0 & 1 & -\frac{5}{a} & \frac{1}{2} - \frac{5}{a} \\
+    0 & 0 & b - \frac{12}{a} & 4 - \frac{12}{a}
+    \end{pmatrix}
+    $$
+    При $b-(12/a) = 0$:\\
+    $b = 12/a$\\
+    $a=3$: $\infty$ решений\\
+    $a\neq3$: $\varnothing$ \\
+    При $b-(12/a) \neq 0$:
+    $$A[2] = A[2]/(b-(12/a))$$
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{2}{a} & \frac{2}{a} \\
+    0 & 1 & -\frac{5}{a} & \frac{1}{2} - \frac{5}{a} \\
+    0 & 0 & 1 & \frac{4 - \frac{12}{a}}{b - \frac{12}{a}}
+    \end{pmatrix}
+    \r \text{1 решение}$$
+
+    \textbf{Ответ: }$\begin{cases}
+        a=0, b\in \RR : \text{1 решение}\\
+        a=3, b=4 : \infty \text{ решений}\\
+        a\in \RR \smallsetminus \{0, 3\},b=\f{12}{a} : \text{ 0 решений}\\
+        a\in \RR \smallsetminus \{0, 3\}, b\neq\f{12}{a}: \text{ 1 решение} 
+    \end{cases}$
+\end{enumerate}
+
+\end{document}

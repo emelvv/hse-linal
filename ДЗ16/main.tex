@@ -1,0 +1,248 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+\newcommand{\Ker}[1]{\operatorname{Ker}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+\renewcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 05.02 (Линейная алгебра)}
+ {\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+    \item[\textbf{№1}]Дано линейное отображение $\varphi: \mathbb{R}^{4} \rightarrow \mathbb{R}^{3}$ 
+    с матрицей 
+    $$A=\begin{pmatrix} 1 & 2 & 3 & 3 \\ 2 & 4 & 6 & 6 \\ 3 & 6 & 9 & 9 \end{pmatrix}$$ 
+    в паре базисов 
+    $$e=\{e_{1}, e_{2}, e_{3}, e_{4}\} \text{ и } f = \{f_{1}, f_{2}, f_{3}\}$$
+    Найдём базис ядра этого линейного отображения.
+
+    Чтобы найти базис ядра, нужно, чтобы координаты любого вектора из $e$ переходили в координаты $(0, 0, 0, 0)^{T}$:
+    $$\begin{pmatrix} 1 & 2 & 3 & 3 \\ 2 & 4 & 6 & 6 \\ 3 & 6 & 9 & 9 \end{pmatrix}\mat{x_1 \\ x_2 \\ x_3 \\ x_4} = 0$$
+    $$\begin{pmatrix} 1 & 2 & 3 & 3 & | & 0 \\ 2 & 4 & 6 & 6 & | & 0\\ 3 & 6 & 9 & 9 & | & 0\end{pmatrix} \implies \text{УСВ: }
+    \begin{pmatrix}
+        1 & 2 & 3 & 3 & | & 0 \\
+        0 & 0 & 0 & 0 & | & 0 \\
+        0 & 0 & 0 & 0 & | & 0
+    \end{pmatrix}$$
+    $$x_1 = -2x_2-3x_3-3x_4, \quad x_2, x_3, x_4 \in \RR$$
+    $$\mat{x_1 \\ x_2 \\ x_3 \\x_4} = \mat{-2x_2-3x_3-3x_4 \\ x_2 \\ x_3 \\x_4} = \mat{-2\\1\\0\\0}x_2+\mat{-3\\0\\1\\0}x_3+\mat{-3\\0\\0\\1}x_4$$
+    Базис ядра:
+    $$(-2e_1+e_2, -3e_1+e_3, -3e_1+e_4)$$
+    Дополним ядро до базиса $\RR^4$. Для этого нужно взять вектор с координатами в $e$:
+    $$\mat{1\\0\\0\\0}
+    \text{ То есть вектор: }
+    e_1 = e_1'$$
+
+    Возьмём $f_1' = \phi(e_1')$, найдём координаты $f_1'$:
+    $$A\mat{1\\0\\0\\0} = \begin{pmatrix} 1 & 2 & 3 & 3 \\ 2 & 4 & 6 & 6 \\ 3 & 6 & 9 & 9 \end{pmatrix}\cdot \mat{1\\0\\0\\0} = \mat{1\\2\\3}$$
+    Дополним координтаы $f_1'$ до базиса $\RR^3$, для этого возьмём векторы:
+    $$\mat{0 \\ 1\\0} \text{ и } \mat{0\\0\\1}$$
+    Таким образом, новые базисы в $\RR^4$ и $\RR^3$, при которых матрица $A'(\phi, e', f')$ будет иметь диагональный вид:
+    $$e' = (e_1, -2e_1+e_2, -3e_1+e_3, -3e_1+e_4) \quad f' = (f_1+2f_2+3f_3, f_2, f_3)$$
+    При этом матрица $A'$ будет выглядить так:
+    $$A' = \mat{1 & 0 &  0 & 0\\0 &  0 & 0 & 0\\0 & 0 & 0 & 0}$$
+    Найдём матрицу перехода $C$ от $e$ к $e'$:
+    $$C = \mat{1&-2&-3&-3\\0&1&0&0\\0&0&1&0\\0&0&0&1}$$
+    Найдём матрицу перехода $D$ от $f$ к $f'$:
+    $$D = \mat{  1 & 0 & 0 \\
+    2 & 1 & 0 \\
+    3 & 0 & 1}$$
+
+    Поэтому $A$ можно разложить как:
+    $$A = DA'C^{-1}$$\\
+
+    \item[\textbf{№2}]Пусть линейное отображение \( \varphi : \mathbb{R}^3 \to \mathbb{R}^2 \) в паре стандартных базисов имеет матрицу  
+    \[A = \begin{pmatrix}
+    0 & 1 & 2 \\
+    3 & 4 & 5
+    \end{pmatrix}\]  
+    Найдём базис ядра:
+    $$\begin{pmatrix}
+        0 & 1 & 2 &|& 0\\
+        3 & 4 & 5 &|& 0
+    \end{pmatrix} \implies \text{УСВ: } \mat{1 & 0 & -1 &|& 0 \\
+    0 & 1 & 2 &|& 0} \implies \mat{x_1\\x_2\\x_3} = \mat{1\\-2\\1}x_3$$
+    Дополним ядро до базиса, для этого возьмём векторы:
+    $$e_1' = \mat{0\\1\\0}, \quad e_2' = \mat{0\\0\\1}$$
+    Мы получили базис образа. Найдём новые базисы $e'$ и $f'$, при которых матрица $A'(\phi, e', f')$ будет иметь диагональный вид. 
+    $$e' = (e_1', e_2', e_3'), f' = (f_1', f_2')$$
+    Найдём $\phi(e_1')=f_1'$ и $\phi(e_2')=f_2'$:
+    $$f_1' = \phi(e_1') = A \mat{0\\1\\0} = \begin{pmatrix}
+        0 & 1 & 2 \\
+        3 & 4 & 5
+        \end{pmatrix} \mat{0\\1\\0} = \mat{1\\4}$$
+    $$f_2' = \phi(e_2') = A \mat{0\\0\\1} = \begin{pmatrix}
+        0 & 1 & 2 \\
+        3 & 4 & 5
+        \end{pmatrix}\mat{0\\0\\1} = \mat{2\\5}$$
+    Таким образом $e'$:
+    $$e_1' = \mat{0\\1\\0}, \quad e_2' = \mat{0\\0\\1}, \quad e_3' = \mat{1\\-2\\1}$$
+    А $f'$:
+    $$f_1' =  \mat{1\\4}, \quad f_2' = \mat{2\\5}$$
+    Матрица $A'$ имеет вид:
+    $$A' = \mat{1&0&0\\0&1&0}$$\\
+
+    \item[\textbf{№3}]Так как $U = \ker \phi = \text{Im} \phi$, где $U \subseteq V$, и при этом:
+    $$\dim V = \dim (\ker \phi) + \dim ( \text{Im} \phi) = k+k = 2k$$
+    Значит подойдут все пространства $V$ с чётной размерностью.\\
+
+    \item[\textbf{№4}]Для нахождения двойственного базиса $\varepsilon_{ij}$ к базису $E_{ij}$ пространства матриц $M_{2}(\mathbb{R})$, сначала определим базис $E_{ij}$:
+    $$
+    E_{11} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \quad E_{12} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad E_{21} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \quad E_{22} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+    $$
+        
+    Теперь найдем выражения для $\varepsilon_{ij}$:
+
+    1. Для $\varepsilon_{11}$:
+    $$
+    \varepsilon_{11}(E_{11}) = 1, \quad \varepsilon_{11}(E_{12}) = 0, \quad \varepsilon_{11}(E_{21}) = 0, \quad \varepsilon_{11}(E_{22}) = 0
+    $$
+
+    2. Для $\varepsilon_{12}$:
+    $$
+    \varepsilon_{12}(E_{11}) = 0, \quad \varepsilon_{12}(E_{12}) = 1, \quad \varepsilon_{12}(E_{21}) = 0, \quad \varepsilon_{12}(E_{22}) = 0
+    $$
+
+    3. Для $\varepsilon_{21}$:
+    $$
+    \varepsilon_{21}(E_{11}) = 0, \quad \varepsilon_{21}(E_{12}) = 0, \quad \varepsilon_{21}(E_{21}) = 1, \quad \varepsilon_{21}(E_{22}) = 0
+    $$
+
+    4. Для $\varepsilon_{22}$:
+    $$
+    \varepsilon_{22}(E_{11}) = 0, \quad \varepsilon_{22}(E_{12}) = 0, \quad \varepsilon_{22}(E_{21}) = 0, \quad \varepsilon_{22}(E_{22}) = 1
+    $$
+
+    Теперь мы можем выразить $\varepsilon_{ij}$ для произвольной матрицы $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$:
+    
+    $$
+    \varepsilon_{11}\left(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\right) = a, \quad \varepsilon_{12}\left(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\right) = b
+    $$
+    $$
+    \varepsilon_{21}\left(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\right) = c, \quad \varepsilon_{22}\left(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\right) = d
+    $$
+    
+    Таким образом, двойственный базис $\varepsilon_{ij}$ к базису $E_{ij}$ в пространстве матриц $M_{2}(\mathbb{R})$ имеет следующие значения:
+    $$
+    \varepsilon_{ij}\left(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\right) = \begin{cases}
+    a, & \text{если } (i,j) = (1,1) \\
+    b, & \text{если } (i,j) = (1,2) \\
+    c, & \text{если } (i,j) = (2,1) \\
+    d, & \text{если } (i,j) = (2,2)
+    \end{cases}
+    $$\\
+
+    \item[\textbf{№5}]Докажем, что две ненулевые линейные функции $\alpha$ и $\beta$ из двойственного пространства $V^*$ пропорциональны при условии, что 
+    $$\operatorname{Ker} \alpha = \operatorname{Ker} \beta$$ 
+    Мы говорим, что линейные функции $\alpha$ и $\beta$ пропорциональны, если существует скаляр $\lambda \in \mathbb{R}$ (или $\mathbb{C}$), такой что $$\alpha(v) = \lambda \beta(v)$$ для всех $v \in V$.
+    
+    Поскольку $\operatorname{Ker} \alpha = \operatorname{Ker} \beta$, это означает, что для любого вектора $v \in V$:
+    $$
+    \alpha(v) = 0 \iff \beta(v) = 0
+    $$
+    Возьмём случайный вектор $v_0 \in \Im \alpha$, тогда $v_0 \in \Im \beta$ т.к. $\Ker \alpha = \Ker \beta$ ($\Im \alpha = \Im \beta$).
+
+    Пусть:
+    $$\f{\alpha(v_0)}{\beta(v_0)} = \lambda \lr \alpha(v_0) = \lambda \beta(v_0)$$
+    Любой вектор $v \in V$ можно представить как $v = v_0 + w$, где $w \in \Ker \alpha = \Ker \beta$, следовательно:
+    $$\alpha(v) = \alpha(v_0 + w) = \alpha(v_0)+\alpha(w) =\alpha(v_0)+0=  \lambda \beta(v_0) + \beta(w) = \lambda \beta(v)$$
+    Поэтому:
+    $$\alpha(v) = \lambda \beta(v)$$
+    для любого $v \in V$\\
+
+    \item[\textbf{№6}]
+    - Базис пространства $ V $: $ e_{1}, e_{2}, e_{3} $
+
+    - Двойственный базис пространства $ V^{*} $: $ \varepsilon^{1}, \varepsilon^{2}, \varepsilon^{3} $
+
+    \begin{enumerate}
+        \item[\textbf{6.1)}] Найдём базис $ V^{*} $, двойственный к базису $ 2 e_{1}+e_{3}, e_{1}+e_{2}+e_{3}, e_{2} $ пространства $ V $.
+        
+        Пусть $$e_1' = 2 e_{1} + e_{3} ,\quad  e_2' = e_{1} + e_{2} + e_{3} , \quad e_3' = e_{2}$$
+
+        Для двойственного базиса $ \varepsilon^{1'}, \varepsilon^{2'}, \varepsilon^{3'} $ к $ e_1', e_2', e_3' $ необходимо :
+        $$
+        \varepsilon^{i'}(e_j') = \case{1, \quad i=j\\0, \quad i\neq j}, \quad i,j = 1, 2, 3
+        $$
+        Это равносильно:
+        $$(a_{i0}, a_{i1}, a_{i2})\cdot \mat{x_{1j}\\x_{2j}\\x_{3j}} = \case{1, \quad i=j\\0, \quad i\neq j}$$
+        Где $(a_{i0}, a_{i1}, a_{i2})$ - координаты $\varepsilon^{i'}$ в $\varepsilon$, а $\mat{x_{1j}\\x_{2j}\\x_{3j}}$ - координаты $e_j'$ в $e$. Получается матричное уравнение:
+        $$A\cdot\mat{2&1&0\\0&1&1\\1&1&0} = \mat{1&0&0\\0&1&0\\0&0&1} \implies A = \mat{1 & 0 & -1 \\
+        -1 & 0 & 2 \\
+        1 & 1 & -2}$$
+        Следовательно:
+        $$\varepsilon^{1'} = \varepsilon^{1}-\varepsilon^{2}+\varepsilon^{3}$$
+        $$\varepsilon^{2'} = \varepsilon^{3}$$
+        $$\varepsilon^{3'} = -\varepsilon^{1}+2\varepsilon^{2}-2\varepsilon^{3}$$\\
+
+        \item[\textbf{6.2)}]Найдём базис $ V $, двойственным к которому является базис $ 2\varepsilon^1+\varepsilon^3, \varepsilon^1+\varepsilon^2+\varepsilon^3, \varepsilon^2 $ пространства $ V^{*} $.
+        
+        Пусть $$\varepsilon^{1'} = 2\varepsilon^1+\varepsilon^3,\quad  \varepsilon^{2'} = \varepsilon^1+\varepsilon^2+\varepsilon^3 , \quad \varepsilon^{3'} = \varepsilon^2 $$
+        
+        Для двойственного базиса $ \varepsilon^{1'}, \varepsilon^{2'}, \varepsilon^{3'} $ к $e_1', e_2', e_3' $ необходимо :
+        $$
+        \varepsilon^{i'}(e_j') = \case{1, \quad i=j\\0, \quad i\neq j}, \quad i,j = 1, 2, 3
+        $$
+        Это равносильно:
+        $$(a_{i0}, a_{i1}, a_{i2})\cdot \mat{x_{1j}\\x_{2j}\\x_{3j}} = \case{1, \quad i=j\\0, \quad i\neq j}$$
+        Где $(a_{i0}, a_{i1}, a_{i2})$ - координаты $\varepsilon^{i'}$ в $\varepsilon$, а $\mat{x_{1j}\\x_{2j}\\x_{3j}}$ - координаты $e_j'$ в $e$. Получается матричное уравнение:
+        $$\mat{2&0&1\\1&1&1\\0&1&0}X = \mat{1&0&0\\0&1&0\\0&0&1} \implies X = \mat{1 & -1 & 1 \\
+        0 & 0 & 1 \\
+        -1 & 2 & -2}$$
+        Следовательно:
+        $$e_1' = e_1-e_3$$
+        $$e_2' = -e_1+2e_3$$
+        $$e_3' = e_1+e_2-2e_3$$
+    \end{enumerate}
+
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,117 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[14pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\phi}{\varphi}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\dspace}{\space\space}
+
+\begin{document}
+\section*{Домашнее задание на 11.09.2024}
+{\large Емельянов Владимир, ПМИ гр №247}\\
+\begin{enumerate}
+    \item[\textbf{1.}] \indent
+    \begin{enumerate}
+        \item[1.1] $\mat{3 & -4 & 5 \\ 2 & -3 & 1 \\ 3 & -5 & -1} * \mat{3 & 29 \\ 2 & 18 \\ 0 & -3} = \mat{1 & 0 \\ 0 & 1 \\ -1 & 0}$
+        \item[1.2] $\mat{1 & a \\ 0 & 1}*\mat{1 & b \\ 0 & 1} = \mat{1 & b+a \\ 0 & 1}$
+        \item[1.3] $\mat{0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0}^3 =
+        \mat{0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0}^2 * \mat{0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0}
+        = \mat{0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0}* \mat{0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0} 
+        = \mat{0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0}$
+        \item[1.4] $\mat{	\lambda_1 & \!0 & \!\ldots & \!0 \\ 0 & \!\lambda_2 & \!\ddots & \!\vdots \\ \!\vdots& \!\ddots & \!\ddots & \!0 \\ 0 & \!\ldots & \!0 & \!\lambda_n} * 
+        \mat{a_{11} & \!a_{12} & \!\ldots & \!a_{1n} \\ a_{21} & \!a_{22} & \!\ldots & \!a_{2n} \\ \!\ldots& \!\ldots & \!\ldots & \!\ldots \\ \!\ldots& \!\ldots & \!\ldots & \!\ldots \\ a_{n1} & a_{n2} & \!\ldots & \!a_{nn}} 
+        = \mat{\lambda_1a_{11} & \!\lambda_1a_{12} & \!\ldots & \!\lambda_1a_{1n} \\ \lambda_2 a_{21} & \!\lambda_2a_{22} & \!\ldots & \!\lambda_2a_{2n} \\ \!\ldots& \!\ldots & \!\ldots & \!\ldots \\ \!\ldots& \!\ldots & \!\ldots & \!\ldots \\ \lambda_n a_{n1} & \lambda_n a_{n2} & \!\ldots & \!\lambda_n a_{nn}}$
+    \end{enumerate}
+
+    \item[\textbf{2.}] \indent\\
+    $\mat{1 & 2 & 3} * \mat{-1 & -2 & -3 \\ 1 & 0 & 0}^T + \mat{4 & 9} 
+    = \mat{1 & 2 & 3} * \mat{-1 & 1 \\ -2 & 0 \\ -3 & 0}+\mat{4 & 9} 
+    = \mat{-14 & 1} + \mat{4 & 9} = \mat{-10 & 10}$
+
+    \item[\textbf{3.}] \indent\\
+    $A = \mat{2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2} \text{\space} A^2 = \mat{6 & 5 & 5 \\ 5 & 6 & 5 \\ 5 & 5 & 6} \text{\space} A^3 = A^2 * A = \mat{6 & 5 & 5 \\ 5 & 6 & 5 \\ 5 & 5 & 6} * \mat{2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2} = \mat{22 & 21 & 21 \\ 21 & 22 & 21 \\ 21 & 21 & 22}$\\
+    \\$f(A) = A^3 -3A + 2 = \mat{22 & 21 & 21 \\ 21 & 22 & 21 \\ 21 & 21 & 22} - 3 * \mat{2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2} + 2E 
+    = \mat{22 & 21 & 21 \\ 21 & 22 & 21 \\ 21 & 21 & 22} - \mat{6 & 3 & 3 \\ 3 & 6 & 3 \\ 3 & 3 & 6} +2E 
+    = \mat{16 & 18 & 18 \\ 18 & 16 & 18 \\ 18 & 18 & 16} +2E 
+    = \mat{16 & 18 & 18 \\ 18 & 16 & 18 \\ 18 & 18 & 16} + \mat{2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2}
+    = \mat{18 & 18 & 18 \\ 18 & 18 & 18 \\ 18 & 18 & 18}$ 
+
+    \item[\textbf{4.}] \indent\\
+    $AX =B$\\
+    A - матрица $2 \times 2$ \\
+    B - матрица $2 \times 2$ \\
+    Следовательно, X - тоже матрица $2 \times 2$. Пусть $X = \mat{a & b \\ c & d}$\\
+    Тогда $AX = \mat{1 & 3 \\ 1 & 2}*\mat{a & b \\ c & d} = \mat{a+3c & b+3d \\ a+2c & b+2d} = B = \mat{1 & 1 \\ 1 & 1} \Rightarrow$\\
+    $\Rightarrow \begin{cases}
+        a+3c = 1 \\
+        b+3d = 1 \\
+        a+2c = 1 \\
+        b+2d = 1 \\
+    \end{cases} (1)-(3) \text{\space и \space} (2)-(4)\Rightarrow 
+    \begin{cases}c=0 \\a=1\\d=0\\b=1\end{cases} \Rightarrow \\ \Rightarrow X = \mat{1 & 1 \\ 0 & 0}$\\
+    
+    \item[\textbf{5.}] \indent\\
+    $X = \mat{a & b \\ c & d}$\space $A = \mat{0 & 1 \\ 2 & 3}$\\
+    $A*X = \mat{0 & 1 \\ 2 & 3}*\mat{a & b \\ c & d} = \mat{c & d \\ 2a+3c & 2b+3d}$\\
+    $X*A = \mat{a & b \\ c & d}*\mat{0 & 1 \\ 2 & 3} = \mat{2b & a+3b \\ 2d & c+3d}$\\\\
+    Чтобы $AX=XA$, должно выполняться: \\
+    $\mat{c & d \\ 2a+3c & 2b+3d} = \mat{2b & a+3b \\ 2d & c+3d} \Rightarrow\\ \Rightarrow
+    \begin{cases}
+        c=2b\\
+        d=a+3b\\
+        2a+3c=2d\\
+        2b+3d=c+3d
+    \end{cases}\Rightarrow \begin{cases}c=2b\\d=a+3b\\2a+3c=2d\\2b=c \end{cases}
+    \Rightarrow \begin{cases}c=2b\\d=a+3b\\2a+6b=2d \end{cases}
+    \Rightarrow \begin{cases}c=2b\\d=a+3b\\2a+6b=2a+6b \end{cases}
+    \Rightarrow \begin{cases}c=2b\\d=a+3b \end{cases}$\\
+    X коммутирует с матрицей A в случае если X принимает вид $X = \mat{x & y \\ 2y & x+3y} \text{,\space} x,y \in \RR$. \textbf{Все матрицы такого вида подходят.}
+
+    \item[\textbf{6.}] \indent\\
+    $X = \mat{a & b \\ c & d} \Rightarrow X^2 = \mat{a^2+bc & ab +bd \\ ca+dc & cb+d^2}\Rightarrow 
+    x^2 - (a+d) x + ad-bc =  \begin{pmatrix} a^2 + bc & ab + bd \\ ac + dc & bc + d^2 \end{pmatrix} - (a + d) \begin{pmatrix} a & b \\ c & d \end{pmatrix} + \begin{pmatrix} ad - bc & 0 \\ 0 & ad - bc \end{pmatrix} =
+    \\ = \begin{pmatrix} a^2 + bc & ab + bd \\ ac + dc & bc + d^2 \end{pmatrix} - \begin{pmatrix} a^2+da & ab+db \\ ac+dc & ad+d^2 \end{pmatrix} + \begin{pmatrix} ad - bc & 0 \\ 0 & ad - bc \end{pmatrix} = \\ 
+    = \mat{bc-da & 0 \\ 0 & bc-ad}+\begin{pmatrix} ad - bc & 0 \\ 0 & ad - bc \end{pmatrix} = \mat{0 & 0 \\ 0 & 0} = 0$\\
+
+    \item[\textbf{7.}] \indent\\
+    Предположим, что матричная единица $E_{ij}$ имеет размер $m \times n$ и содержит одну 1 в позиции $(i, j)$ и нули в остальных местах. Тогда результат произведения $E_{ij}A$ будет матрицей в которой $i$-ая строка содержит $j$-ую строку матрицы A, а в остальных местах нули.\\
+    \underline{Пример}:\\
+    $E_{21} = \mat{0 & 0 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0} \text{\space\space} A = \mat{1 & 2 & 3 & 10 \\ 4 & 5 & 6 & 11 \\ 7 & 8 & 9 & 12}\text{\space\space} E_{21}A=\mat{0 & 0 & 0 & 0 \\ 1 & 2 & 3 & 10 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0}$ 
+
+    \item[\textbf{8$^*$.}] \indent\\
+    $E_{ij}E_{kl}=
+    \begin{cases}
+        E_{il} \text{\dspace если \space} j=k\\
+        0 \text{\dspace иначе \dspace}
+    \end{cases}$\\\\
+    Из задания 7 мы знаем, что при умножении матричной единицы $E_{ij}$ на другую матрицу, мы получаем матрицу в которой сохраняется только $j$-ая строка на $i$-ой строке новой матрицы. 
+    Так как $E_{ij}$ мы умножаем на $E_{kl}$, то, чтобы единственная единица матрицы $E_{kl}$ сохранилась нужно, чтобы она находилась на $j$-ой строчке матрицы $E_{kl}$ (т.е. j=k). Иначе при умножении на всех местах будет 0.
+
+    \item[\textbf{9$^*$.}] \indent\\
+    $E_{ii}A=AE_{ii} : \forall i\in \NN$ \\
+    Пусть размер матрицы $E_{ii}$ будет $m \times n$, тогда размер матрицы $A$ будет $n \times n$, так как она квадратная и размеры должны быть согласованы. Так как по условию две матрицы коммутируют, то размер матрицы $E$ будет $n \times n$ ($m=n$).\\
+    Заметим, что при умножении матрицы на матричную единицу $E_{kj}$ сохраняется толко $k$-ый столбец, который записывается в $j$-ый столбец новой матрицы, в остальных местах будут стоять нули.\\
+    \underline{Пример:}\\
+    $\mat{1 & 2 & 3 & 10 \\ 4 & 5 & 6 & 11\\ 7 & 8 & 9 & 12}*\mat{0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 1 & 0} = \mat{0 & 10 & 0 \\ 0 & 11 & 0 \\ 0 & 12 & 0}$\\
+    Так как при $E_{ii}A$ сохраняется $i$-ая строка и убирается всё остальное, а при $AE_{ii}$ сохраняется $i$-ый столбец и убирается всё остальное, то для их равенства $A$ обязана иметь 0 на всех местах кроме диагонали, на диагонали могут быть любые числа.
+    Получается для равенства должно выполняться: $a_{ij}=0 : i\neq j \Rightarrow$ \textbf{матрица A в данном случае является диагональной}. 
+\end{enumerate}
+
+\end{document}

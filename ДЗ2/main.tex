@@ -1,0 +1,115 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[T2A]{fontenc} %
+\usepackage[utf8]{inputenc} % подключение русского языка
+\usepackage[russian]{babel} %
+\usepackage[14pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\r}{\Rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+
+
+\begin{document}
+
+\section*{Домашнее задание на 18.09.2024 (Линейная алгебра)}
+{\large Емельянов Владимир, ПМИ гр №247}\\\\
+
+\begin{enumerate}
+    \item[\textbf{1.}] 
+    $\mat{\lambda & 1 \\ 0 & \lambda}^2 = \mat{\lambda^2 & 2\lambda \\ 0 & \lambda^2}$\\
+    $\mat{\lambda & 1 \\ 0 & \lambda}^3 = \mat{\lambda^2 & 2\lambda \\ 0 & \lambda^2} \cdot \mat{\lambda & 1 \\ 0 & \lambda} = \mat{\lambda^3 & 3\lambda^2 \\ 0 & \lambda^3}$\\
+    Докажем через математическую индукцию, что $\mat{\lambda & 1 \\ 0 & \lambda}^n = \mat{\lambda^n & n\lambda^{n-1} \\ 0 & \lambda^n}$\\
+    $\mat{\lambda & 1 \\ 0 & \lambda}^1 = \mat{\lambda & 1 \\ 0 & \lambda}$ - верно (база индукции)\\
+    $\mat{\lambda & 1 \\ 0 & \lambda}^{n+1} = \mat{\lambda & 1 \\ 0 & \lambda}^n \cdot \mat{\lambda & 1 \\ 0 & \lambda} = \mat{\lambda^n & n\lambda^{n-1} \\ 0 & \lambda^n} \cdot \mat{\lambda & 1 \\ 0 & \lambda} = \mat{\lambda^{n+1} & (n+1)\lambda^{n} \\ 0 & \lambda^{n+1}}$ - ч.т.д (шаг индукции)
+
+    \item[\textbf{2.}] \underline{Пример:} \\\\ 
+    $A = \mat{1 & 1 \\ 1 & 1}$ \dspace $B = \mat{1 & 0 \\ 1 & 1}$\\
+    $A^2 + B^2 = \mat{1 & 1 \\ 1 & 1}^2+\mat{1 & 0 \\ 1 & 1}^2 = \mat{2 & 2 \\ 2 & 2} + \mat{1 & 0 \\ 2 & 1} = \mat{3 & 2 \\ 4 & 3}$ \\
+    $(A-B)(A+B) = (\mat{1 & 1 \\ 1 & 1} - \mat{1 & 0 \\ 1 & 1})(\mat{1 & 1 \\ 1 & 1}+\mat{1 & 0 \\ 1 & 1}) = \mat{0 & 1 \\ 0 & 0} \cdot \mat{2 & 1 \\ 2 & 2} = \mat{2 & 2 \\ 0 & 0}$\\\\
+    Следовательно, $A^2 + B^2 \neq (A-B)(A+B)$\\
+    $(A-B)(A+B) = A^2-BA+BA + B^2$ \\
+
+    \item[\textbf{3.}] $A = \mat{-1 & 0 & 0 \\ -4 & 1 & 0 \\ 3 & 0 & 2}$ \dspace $B = \mat{0 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & -1 & -1}$ \dspace $C = \mat{1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 2}$ \\\ $D = \mat{-2 & 1 & 0 \\ 1 & 0 & 0 \\ -1 & 0 & -1}$ \\
+    \\$A = BCD$\dspace $A^6 = BCDBCDBCDBCDBCDBCD =\\= BC(DB)C(DB)C(DB)C(DB)C(DB)CD$\\\\
+    $DB = \mat{-2 & 1 & 0 \\ 1 & 0 & 0 \\ -1 & 0 & -1} \cdot \mat{0 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & -1 & -1} = \mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1} \r A^6= BC^6D$\\\\
+    $C^2 = \mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 4} \r C^3 = \mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 4} \cdot \mat{1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 2} = \mat{1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 8}$\\
+    $C^6= \mat{1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 8}^2 = \mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 64}$\\
+    $A^6 = \mat{0 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & -1 & -1}\cdot \mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 64} \cdot \mat{-2 & 1 & 0 \\ 1 & 0 & 0 \\ -1 & 0 & -1} =\\= \mat{0 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & -1 & -64} \cdot \mat{-2 & 1 & 0 \\ 1 & 0 & 0 \\ -1 & 0 & -1} = \mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 63 & 0 & 64}$\\
+    \\\textbf{Ответ:} $\mat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 63 & 0 & 64}$
+
+    \item[\textbf{4.}]\indent \\
+    \begin{enumerate}
+        \item[\textbf{4.1.}] $((A+E)(B+E))^T - (A+B)^T = (AB+EB+AE+E^2)^T - A^T - B^T = B^TA^T+B^TE^T+E^TA^T+(E^2)^T - A^T -B^T = B^TA^T+B^T+A^T+E - A^T -B^T =  B^TA^T+E $\\
+        \item[\textbf{4.2.}] $tr((6AB^T - 3BA^T)^TC + C^T(2AB^T - 4BA^T)) \\= tr((6BA^T - 3AB^T)C + 2C^TAB^T -4C^TBA^T) \\= tr(6BA^TC - 3AB^TC + 2C^TAB^T -4CBA^T) \\= 6tr(BA^TC) - 3tr(AB^TC) + 2tr(C^TAB^T) -4tr(C^TBA^T) \\=  6tr(BA^TC) - 3tr(AB^TC^T) + 2tr(B^TC^TA) -4tr(BA^TC) \\=  2tr(BA^TC) - 3tr(A(CB)^T) + 2tr((CB)^TA) \\= 2tr(BA^TC) - 3tr(((CB)A^T)^T) + 2tr((A^T(CB))^T) \\= 2tr(BA^TC) - 3tr(BA^TC) + 2tr(BA^TC) \\= tr(BA^TC) = tr(CBA^T)$\\
+    \end{enumerate}
+
+    \item[\textbf{5.}]\indent \\
+    \begin{enumerate}
+        \item[\textbf{5.1}] $A+A^T = (A^T+A)^T = (A + A^T)^T$
+        \item[\textbf{5.2}] $AB-BA = -(-AB+BA) = -((AB)^T - (BA)^T) = -(AB-BA)^T \r -(AB-BA) = (AB-BA)^T$
+        \item[\textbf{5.3}] $tr((AB)^n) = tr(ABAB\dots AB) = tr(BABA\dots BA) = tr((BA)^n)$ 
+    \end{enumerate}
+
+    \item[\textbf{6.}]\indent \\
+    $XA = \mat{x_{11} & x_{12} & \dots & x_{1n} \\ x_{21} & x_{22} & \dots & x_{2n} \\ \dots & \dots & \dots & \dots \\ x_{n1} & x_{n2} & \dots & x_{nn}} \cdot \mat{a_{11} & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} & \dots & a_{2n} \\ \dots & \dots & \dots & \dots \\ a_{n1} & a_{n2} & \dots & a_{nn}} = \mat{c_{11} & c_{12} & \dots & c_{1n} \\ c_{21} & c_{22} & \dots & c_{2n} \\ \dots & \dots & \dots & \dots \\ c_{n1} & c_{n2} & \dots & c_{nn}}$\\\\\\
+    $\begin{cases}
+        c_{11} = x_{11}a_{11}+x_{12}a_{21} + \dots + x_{1n}a_{n1} = \s{k=1}{n} x_{1k}a_{k1}\\
+        c_{22} = \s{k=1}{n} x_{2k}a_{k2}\\
+        c_{33} = \s{k=1}{n} x_{3k}a_{k3}\\
+        \dots \\ 
+        c_{nn} = \s{k=1}{n} x_{nk}a_{kn}
+    \end{cases} \r \\\\\\ \r tr(XA) = \s{p=1}{n}\s{k=1}{n}x_{pk}a_{kp} \r tr(XA) = 0$ при любом A только при $x_{pk}=0 \r$ $X$ обязана быть нулевой матрицей\\
+    \textbf{Ответ: } Подходит только нулевая матрица
+
+    \item[\textbf{7.}]\indent \\
+    Пусть $C = XA = AX$\\\\
+    $XA = \mat{x_{11} & x_{12} & \dots & x_{1n} \\ x_{21} & x_{22} & \dots & x_{2n} \\ \dots & \dots & \dots & \dots \\ x_{n1} & x_{n2} & \dots & x_{nn}} \cdot \mat{a_{11} & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} & \dots & a_{2n} \\ \dots & \dots & \dots & \dots \\ a_{n1} & a_{n2} & \dots & a_{nn}} = \mat{c_{11} & c_{12} & \dots & c_{1n} \\ c_{21} & c_{22} & \dots & c_{2n} \\ \dots & \dots & \dots & \dots \\ c_{n1} & c_{n2} & \dots & c_{nn}}= \\
+    =\mat{a_{11} & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} & \dots & a_{2n} \\ \dots & \dots & \dots & \dots \\ a_{n1} & a_{n2} & \dots & a_{nn}} \cdot \mat{x_{11} & x_{12} & \dots & x_{1n} \\ x_{21} & x_{22} & \dots & x_{2n} \\ \dots & \dots & \dots & \dots \\ x_{n1} & x_{n2} & \dots & x_{nn}}$\\\\
+    \underline{Рассмотрим элементы матрицы C на диагонали:}\\
+    $c_{11} = \s{k=1}{n}x_{1k}a_{k1} = \s{k=1}{n}a_{1k}x_{k1} \r $ сокращается только $a_{11}x_{11} \r$ чтобы было верно при всех A, все $x$-ы первой строчки и первого столбца матрицы X, кроме $x_{11}$ должны быть равны нулю\\
+    $c_{22}= \s{k=1}{n}x_{2k}a_{k2} = \s{k=1}{n}a_{2k}x_{k2} \r $ все элементы на второй строчке и втором столбце, кроме $x_{22}$, должны быть равны нулю.\\
+    \dots\\
+    $c_{nn}= \s{k=1}{n}x_{nk}a_{kn} = \s{k=1}{n}a_{nk}x_{kn} \r $все элементы на $n$-ой строчке и $n$-ом столбце, кроме $x_{nn}$, должны быть равны нулю.\\
+    Следовательно, матрица X - диагональная\\
+    \underline{Рассмотрим остальные элементы матрицы C:}\\
+    $c_{12} = \s{k=1}{n}x_{1k}a_{k2} = \s{k=1}{n}a_{1k}x_{k2} \r\\\r
+    x_{11}a_{12}+x_{12}a_{22}+x_{13}a_{31} +\dots + x_{1n}a_{n2} =\\= 
+    a_{11}x_{12}+a_{12}x_{22}+a_{13}x_{31} +\dots + a_{1n}x_{n2} \r\\ \r
+    a_{12}(x_{11}-x_{22}) = a_{11}x_{12} - x_{12}a_{22} + a_{13}x_{31} - x_{13}a_{31} + \dots   \r$ чтобы равенство было верно для всех A, нужно чтобы: $x_{11}=x_{22}$ , а остальные элементы первой строчки и второго столбца матрицы X равнялись нулю\\
+    $c_{13} = \s{k=1}{n}x_{1k}a_{k3} = \s{k=1}{n}a_{1k}x_{k3} \r\\\r
+    a_{13}(x_{11}-x_{33}) = \dots$ --- $x_{11}=x_{33}$ аналогично \\
+    Следовательно, все элементы вне диагонали матрицы C, создают условие равенства элементов матрицы X на диагонали между собой. Перебрав все $c$ мы получим условие:\\
+    $\begin{cases}
+        x_{11} = x_{22} = x_{33} = \dots = x_{nn}\\
+        \text{остальные иксы} = 0
+    \end{cases}$\\\\\\
+    \underline{Соберём все условия вместе:}\\
+    $\begin{cases}
+        \text{Матрица X - диагональная} \\ 
+        x_{11} = x_{22} = x_{33} = \dots = x_{nn}
+    \end{cases} \lr X = \lambda E$ - \textbf{ч.т.д.}
+    
+\end{enumerate}
+
+\end{document}
