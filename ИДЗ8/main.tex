@@ -96,7 +96,12 @@
     Значит:
     $$U = \langle u_1, u_2 \rangle, \quad \text{где } \quad u_1= (-3, 0, 1, 0)^T, \quad  u_2 = (0, -3, 0, 1)^T$$
     Найдём проекцию $v$ на $U$:
-    $$\text{pr}_{\langle}$$
-
+    $$v = (-2, 3, -6, 1)^T$$
+    $$\text{pr}_{\langle u_1, u_2\rangle} v = \f{(v, u_1)}{u_1, u_1}u_1 + \f{(v, u_2)}{u_2, u_2}u_2 = 0 + \f{-10}{10}u_2 = -u_2 = (0, 3, 0, 1)^T$$
+    Найдём состовляющую:
+    $$\text{ort}_{\langle u_1, u_2\rangle} v = v - \text{pr}_{\langle u_1, u_2\rangle} v = (-2, 0, -6, 0)^T$$
+    Найдём расстояние от $U$ до $v$
+    $$\rho(U, v) = \abs{\text{ort}_{\langle u_1, u_2\rangle} v} = \sqrt{4+36} = 2\sqrt{10}$$
+    \textbf{Ответ: }$(0, 3, 0, 1)^T, (-2, 0, -6, 0)^T$ и $2\sqrt{10}$
 \end{enumerate}
 \end{document}
