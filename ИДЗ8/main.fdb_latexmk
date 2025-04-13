@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1744211789.08487 "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" "main.pdf" "main" 1744211790.30953 0
+["pdflatex"] 1744536168.09727 "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" "main.pdf" "main" 1744536169.23215 2
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -148,9 +148,9 @@
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1725547064 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1725297362 3252 3140686608bdcae603a09a7973fb9e55 ""
   "C:/Users/User/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725295917 24215268 d4b67dedada491ed68192e2dda405f64 ""
-  "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" 1744211788 3839 3cb1301126bf5e8bd7dddd4ba53bb5c3 ""
-  "main.aux" 1744211790 132 dbefece5cb2935baa713ec3017e95ed6 "pdflatex"
-  "main.tex" 1744211788 3839 3cb1301126bf5e8bd7dddd4ba53bb5c3 ""
+  "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" 1744536165 4431 937cd1a8fe90cd3c46dd1a0e2d372c97 ""
+  "main.aux" 1744536168 132 655c6400fc15544b7f70031f0cd5d0d5 "pdflatex"
+  "main.tex" 1744536165 4431 937cd1a8fe90cd3c46dd1a0e2d372c97 ""
   (generated)
   "main.aux"
   "main.log"
