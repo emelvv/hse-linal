@@ -15,7 +15,6 @@
 \setstretch{1.3}
 
 \newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
-\renewcommand{\det}[1]{\begin{vmatrix} #1 \end{vmatrix}}
 \renewcommand{\f}[2]{\frac{#1}{#2}}
 \newcommand{\dspace}{\space\space}
 \newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
@@ -45,7 +44,8 @@
 \newcommand{\oo}{\overline{o}}
 \renewcommand{\Ker}{\operatorname{Ker}}
 \renewcommand{\Im}{\operatorname{Im}}
-
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\vol}{\operatorname{vol}}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} %
 \makeatletter                               % \abs{}
@@ -161,12 +161,32 @@
     \item[\textbf{№4}]Пусть:
     $$v_1 = (-4, 5, -1), \quad v_2 = (16, -18, 3), \quad v_3 = (8, -14, 3)$$
     $$w_1 = (-3, 3, -4), \quad w_2 = (-3, -1, -7), \quad w_3 = (6, -9, 10)$$
-    - координаты соответствующих многочленов в базисе $1, x, x^2$. Пусть тогда
+    - координаты соответствующих многочленов в ортонормированном базисе $1, x, x^2$. Пусть тогда
     $$V = [v_1, v_2, v_3] = \mat{-4 & 16 & 8\\5 &-18 & -14\\-1& 3 & 3}$$
     $$W = [w_1, w_2, w_3] = \mat{-3 & -3 & 6\\ 3 & -1 & -9 \\ -4 & -7 & 10}$$
-    Тогда, т.к. векторы $v_1, v_2, v_3$ ЛНЗ и векторы $w_1, w_2, w_3$ ЛНЗ, то можем
-    найти матрицу перехода $A$ от $v_1, v_2, v_3$ к $w_1, w_2, w_3$:
-    $$VA = W \lr \small{\mat{-4 & 16 & 8 & | & -3 & -3 & 6\\5 & -18 & -14 & | &3 & -1 & -9\\ -4 & -7 & 10 & | & -1 & 3 & 3}}$$
+    % Тогда, т.к. векторы $v_1, v_2, v_3$ ЛНЗ и векторы $w_1, w_2, w_3$ ЛНЗ, то можем
+    % найти матрицу перехода $A$ от $v_1, v_2, v_3$ к $w_1, w_2, w_3$:
+    % $$VA = W \lr \small{\mat{-4 & 16 & 8 & | & -3 & -3 & 6\\5 & -18 & -14 & | &3 & -1 & -9\\-1 & 3 & 3& | & -4 & -7 & 10}} \implies$$
+    % $$\implies \text{УСВ: }
+    %     \mat{
+    %     1 & 0 & 0 &|& \frac{71}{2} & \frac{155}{2} & -82 \\
+    %     0 & 1 & 0 &|& \frac{55}{8} & \frac{119}{8} & -\frac{65}{4} \\
+    %     0 & 0 & 1 &|& \frac{29}{8} & \frac{69}{8} & -\frac{31}{4}
+    %     } \implies A =         \mat{
+    %         \frac{71}{2} & \frac{155}{2} & -82 \\
+    %         \frac{55}{8} & \frac{119}{8} & -\frac{65}{4} \\
+    %         \frac{29}{8} & \frac{69}{8} & -\frac{31}{4}
+    %         }
+    % $$
+    Теперь мы может найти $\Vol(P(w_1, w_2, w_3))$:
+    $$\Vol(P(w_1, w_2, w_3)) = |\det A| \Vol(P(v_1, v_2, v_3)) = 5|\det A|$$
+    Найдём для этого $\det A$:
+    $$\det V =  \det \mat{-4 & 16 & 8\\5 &-18 & -14\\-1& 3 & 3} = 8$$
+    $$\det W = \det \mat{-3 & -3 & 6\\ 3 & -1 & -9 \\ -4 & -7 & 10} = 51$$
+    $$\det V \det A = \det W \implies \det A = \f{\det W}{\det V} = \f{51}{8}$$
+    Получаем:
+    $$\Vol(P(w_1, w_2, w_3)) = 5|\det A| = 5\cdot \f{51}{8} = \f{255}{8}$$
+    \textbf{Ответ: }$\f{255}{8}$\\
     
 
 \end{enumerate}
