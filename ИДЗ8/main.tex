@@ -46,6 +46,9 @@
 \renewcommand{\Im}{\operatorname{Im}}
 \newcommand{\Vol}{\operatorname{Vol}}
 \newcommand{\vol}{\operatorname{vol}}
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\ort}{\operatorname{ort}}
+
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} %
 \makeatletter                               % \abs{}
@@ -187,7 +190,45 @@
     Получаем:
     $$\Vol(P(w_1, w_2, w_3)) = 5|\det A| = 5\cdot \f{51}{8} = \f{255}{8}$$
     \textbf{Ответ: }$\f{255}{8}$\\
-    
+
+    \item[\textbf{№5}]Пусть:
+    $$a_1 = v_1 - v_0, \quad a_2 = v_2 - v_0, \quad a_3 = v_3 - v_0$$
+    \begin{itemize}
+        \item \( a_1 = v_1 - v_0 = (1,\ 7,\ -8,\ -4,\ -7) \)
+        \item \( a_2 = v_2 - v_0 = (-4,\ -7,\ 0,\ -1,\ -7) \)
+        \item \( a_3 = v_3 - v_0 = (-7,\ 1,\ 0,\ -7,\ 4) \)
+    \end{itemize}
+    Проверим, что они ЛНЗ:
+   $$ \begin{pmatrix}
+        1 & -4 & -7 \\
+        7 & -7 & 1 \\
+        -8 & 0 & 0 \\
+        -4 & -1 & -7 \\
+        -7 & -7 & 4
+        \end{pmatrix} \implies \text{УСВ: } \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+            \end{pmatrix}$$
+    Следовательно, они образуют базис направляющего подпространства линейного многообразия $L$, то есть $L$ можно записать как:
+    $$L = v_0 + \langle a_1, a_2, -a_3 \rangle$$
+    Пусть:
+    $$b = v-v_0 =  (-8, 1, 0, -10, -2) - (2, 3, 8, -7, -6) = (-10,\ -2,\ -8,\ -3,\ 4)$$
+    Обозначим матрицу из векторов \( a_1, a_2, a_3 \) как столбцы:
+    \[
+    A = \begin{pmatrix} a_1 & a_2 & a_3 \end{pmatrix} = \begin{pmatrix}
+        1 & -4 & -7 \\
+        7 & -7 & 1 \\
+        -8 & 0 & 0 \\
+        -4 & -1 & -7 \\
+        -7 & -7 & 4
+        \end{pmatrix}
+    \]
+    Найдём проекцию на направляющее подпространство $L$:
+    $$\pr_{\langle a_1, a_2, a_3 \rangle} b = A(A^TA)^{-1}A^{T} = $$
+
 
 \end{enumerate}
 \end{document}

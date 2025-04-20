@@ -1,5 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1745060842.51505 "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" "main.pdf" "main" 1745060843.70153 0
+["pdflatex"] 1745159696.00478 "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" "main.pdf" "main" 1745159697.17293 0
+  "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -135,6 +136,7 @@
   "C:/Program Files/MiKTeX/tex/latex/tools/calc.sty" 1700599895 10214 547fd4d29642cb7c80bf54b49d447f01 ""
   "C:/Program Files/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1725295562 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+  "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1725548029 14064 dd11a7d17f90b2f773c0eb2052e629a7 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/lh/lh-t2a/dpi600/labx1200.pk" 1725299501 29472 4f3fd2a91696338e912b34dfd42c8d97 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/lh/lh-t2a/dpi600/labx1728.pk" 1725299489 45168 9b6e5c52a15e03c3790d33c3168f20d6 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/lh/lh-t2a/dpi600/larm1200.pk" 1725297365 27028 96b8b10ff33516581c761f7867b1658b ""
@@ -148,9 +150,9 @@
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1725547064 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1725297362 3252 3140686608bdcae603a09a7973fb9e55 ""
   "C:/Users/User/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725295917 24215268 d4b67dedada491ed68192e2dda405f64 ""
-  "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" 1745060841 9091 6c13de5f385f0f26eb9b79318cfee767 ""
-  "main.aux" 1745060843 132 d59914f928483ceabf5405032219390a "pdflatex"
-  "main.tex" 1745060841 9091 6c13de5f385f0f26eb9b79318cfee767 ""
+  "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ8/main.tex" 1745159695 10790 433471912fefe32f4c64c08919fe31e7 ""
+  "main.aux" 1745159696 132 451533ab23d6cc1f816109f926adff2c "pdflatex"
+  "main.tex" 1745159695 10790 433471912fefe32f4c64c08919fe31e7 ""
   (generated)
   "main.aux"
   "main.log"
