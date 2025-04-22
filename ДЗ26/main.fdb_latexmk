@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745324655.61344 "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ26/main.tex" "main.pdf" "main" 1745324656.74761 0
+["pdflatex"] 1745326155.13358 "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ26/main.tex" "main.pdf" "main" 1745326156.29179 0
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -137,14 +137,16 @@
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/lh/lh-t2a/dpi600/larm1440.pk" 1725548562 32600 33e916e67097212be6db0b318fb25a1c ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1725299500 3308 eee81981029f67083258db36df06e523 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/labx1728.tfm" 1725299487 3312 d199be9bd555944e2403193d58a0256a ""
+  "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm0600.tfm" 1725562997 3248 f742b53dd94bcfe553bd3adb4ec70cf7 ""
+  "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm0800.tfm" 1725562996 3240 04766e423166ba63b7fbbf132b8618cb ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1000.tfm" 1725297360 3220 0e417eaf233b160335902e97259a6c77 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1200.tfm" 1725297363 3240 c2435f2b5cd66d4930bc29b8df87967e ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1725547064 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1725297362 3252 3140686608bdcae603a09a7973fb9e55 ""
   "C:/Users/User/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725295917 24215268 d4b67dedada491ed68192e2dda405f64 ""
-  "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ26/main.tex" 1745324654 7703 1360acd7a1914f87085f0c9a5a5c451a ""
-  "main.aux" 1745324656 132 4d327e994cbe2c8b150839962ca4f863 "pdflatex"
-  "main.tex" 1745324654 7703 1360acd7a1914f87085f0c9a5a5c451a ""
+  "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ26/main.tex" 1745326154 12594 6fcf60d04c00655dfbc12a35373af955 ""
+  "main.aux" 1745326155 132 6143dc07d4db807a1b7fd4431ef5e6b6 "pdflatex"
+  "main.tex" 1745326154 12594 6fcf60d04c00655dfbc12a35373af955 ""
   (generated)
   "main.aux"
   "main.log"
