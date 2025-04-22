@@ -224,6 +224,54 @@
     \lambda_2 = 1 - i,\quad v_2 = \begin{pmatrix} 1 \\ -i \end{pmatrix}
     \]
 
+    \item[3.3]Заметим, что \(M\) блочная:
+    \[
+    M=\begin{pmatrix}
+    A & 0\\
+    B & C
+    \end{pmatrix},
+    \quad
+    A=\begin{pmatrix}3&-1\\1&1\end{pmatrix},
+    \quad
+    C=\begin{pmatrix}5&-3\\3&-1\end{pmatrix}
+    \]
+    Тогда
+    \[
+    \chi_M(\lambda)=\det(A-\lambda E)\,\det(C-\lambda E)
+    \]
+    Вычислим каждое:
+    \[
+    \det\!\begin{pmatrix}3-\lambda&-1\\1&1-\lambda\end{pmatrix}
+    =(3-\lambda)(1-\lambda)+1
+    =\lambda^2-4\lambda+4=(\lambda-2)^2,
+    \]
+    \[
+    \det\!\begin{pmatrix}5-\lambda&-3\\3&-1-\lambda\end{pmatrix}
+    =(5-\lambda)(-1-\lambda)+9
+    =\lambda^2-4\lambda+4=(\lambda-2)^2
+    \]
+    Итого  
+    \[
+    \chi_M(\lambda)=(\lambda-2)^4,
+    \]  
+    то есть единственный собственный корень \(\lambda=2\) алгебраической кратности 4.
+
+    Решим \((M-2E)v=0\).  
+    \[
+    M-2E = 
+    \begin{pmatrix}
+    1 & -1 & 0 & 0\\
+    1 & -1 & 0 & 0\\
+    3 &  0 & 3 & -3\\
+    4 & -1 & 3 & -3
+    \end{pmatrix},
+    \quad
+    v=(x_1,x_2,x_3,x_4)^T
+    \]
+    множество решений:
+    $$\langle (1, 1, 0, 1), (-1, -1, 1, 0)\rangle$$
+
+    \textbf{Ответ: } с/з --- $2$, с/в --- $V_2 = \langle e_1 + e_2 + e_4, -e_1-e_2+e_3 \rangle$
 
 
    \end{enumerate}
