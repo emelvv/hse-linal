@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1746357506.47414 "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ9/main.tex" "main.pdf" "main" 1746357507.56022 0
+["pdflatex"] 1746357993.63178 "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ9/main.tex" "main.pdf" "main" 1746357994.73187 0
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -17,8 +17,11 @@
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1247596667 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1247596666 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1247596667 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
   "C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Program Files/MiKTeX/tex/generic/babel/babel.sty" 1704647332 150008 7a05b0fdc0167c04e192003e780ab195 ""
   "C:/Program Files/MiKTeX/tex/generic/babel/locale/ru/babel-ru.ini" 1704647337 6080 f38b5a80e1e155723c5fdec306a1777f ""
@@ -137,9 +140,9 @@
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1725547064 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1725297362 3252 3140686608bdcae603a09a7973fb9e55 ""
   "C:/Users/User/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725295917 24215268 d4b67dedada491ed68192e2dda405f64 ""
-  "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ9/main.tex" 1746357505 2941 c0ab8c97a7a6ba44022b0cce9785cd60 ""
-  "main.aux" 1746357507 132 c89ce2280ab791babe7d68932f1c9de6 "pdflatex"
-  "main.tex" 1746357505 2941 c0ab8c97a7a6ba44022b0cce9785cd60 ""
+  "c:/Users/User/Desktop/exam/Линейная алгебра/ИДЗ9/main.tex" 1746357993 3389 35446fd52e265151af484ac9c1f1cc36 ""
+  "main.aux" 1746357994 132 dbefece5cb2935baa713ec3017e95ed6 "pdflatex"
+  "main.tex" 1746357993 3389 35446fd52e265151af484ac9c1f1cc36 ""
   (generated)
   "main.aux"
   "main.log"
