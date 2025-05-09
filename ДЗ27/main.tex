@@ -238,11 +238,11 @@
   Канонический вид:
   $$6x_1'^2 -3x_2'^2 - 3x_3'^2$$\\
 
-  \item[\textbf{№5}]Для оператора
+  \item[\textbf{№5}]Для оператора 
   $$
   \phi: \RR^3 \to \RR^3
   $$
-  с матрицей в стандартном базисе
+  Найдём базис в котором матрица принимает канонический вид
   $$
   A=\begin{pmatrix}
   -\tfrac23 & -\tfrac23 & \tfrac13\\[3pt]
@@ -250,20 +250,45 @@
   -\tfrac13 & \tfrac23 & \tfrac23
   \end{pmatrix}
   $$
-  Характеристический многочлен даёт корни
+  Так как матрица не симметричная, её канонический вид тоже не симметричный.
+  Проверим является ли $-1$ её собственным значением:
   $$
-  \lambda_1=-1,\quad 
-  \lambda_{2,3}=\frac23\pm\frac{\sqrt5}{3}\,i,
-  $$
-  по собственному вектору при $\lambda=-1$ происходит отражение, в ортогональной ему плоскости действует чистое вращение на угол $\theta$, где
-  $$
-    \cos\theta=\tfrac23,\quad \sin\theta=\tfrac{\sqrt5}{3}, 
-    \quad\theta=\arccos\tfrac23\,.
-  $$
-  собственный вектор при $\lambda=-1$:
-  $$
-     v_1=(2,1,0)^T,\quad \|v_1\|=\sqrt{5},  
-     \quad e_1=\frac1{\sqrt5}(2,1,0)^T.
+   \det\!\begin{pmatrix}
+   -\tfrac23+1& -\tfrac23 & \tfrac13\\
+   -\tfrac23 & \tfrac13+1 & -\tfrac23\\
+   -\tfrac13 & \tfrac23 & \tfrac23+1
+   \end{pmatrix}
+   =0 \text{ --- верно}
    $$
+  Найдём базис $V_{-1}$:
+  $$(A+E)v = 0 \implies v = \langle (2, 1, 0)\rangle$$
+  пусть $$e_3 = \f{1}{\sqrt{5}}(2, 1, 0)$$
+  Найдём базис $\langle e_3 \rangle^\perp$:
+  $$\case{
+    (v, e_3) = 0
+  } \quad \implies \quad v = \langle \frac1{\sqrt5}(1,-2,0), (0,0,1)\rangle$$
+  пусть 
+  $$e_1 = \frac1{\sqrt5}(1,-2,0), \quad e_2 = (0,0,1)$$
+  Следовательно, в ОНБ $(e_1, e_2, e_3)$ матрица имеет канонический вид:
+  $$
+  A=\begin{pmatrix}
+    \cos\alpha & -\sin\alpha & 0\\
+    \sin\alpha & \cos\alpha & 0\\
+    0 & 0 & -1
+  \end{pmatrix}
+  $$
+  Найдём $\cos \alpha$ и $\sin \alpha$. Так как, $\phi(e_1) = e_1\cos \alpha  + e_2\sin \alpha$, то
+  $$\cos \alpha = (\phi(e_1), e_1) = \f{2}{3}$$
+  $$\sin \alpha = (\phi(e_1), e_2) = \f{\sqrt{5}}{3}$$
+  Тогда канонический вид:
+  $$
+  A=\begin{pmatrix}
+    \f{2}{3} & -\f{\sqrt{5}}{3} & 0\\
+    \f{\sqrt{5}}{3} & \f{2}{3} & 0\\
+    0 & 0 & -1
+  \end{pmatrix}
+  $$
+  Геометрически это означает поворот на угол $\arccos(\f{2}{3})$ в плоскости $\langle e_1, e_2 \rangle$ и отражение относительно $\langle e_3 \rangle$
+
 \end{enumerate}
 \end{document}
