@@ -1,0 +1,268 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+\newcommand{\Ker}[1]{\operatorname{Ker}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\l}{\left(}
+\renewcommand{\r}{\right)}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+\renewcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\vol}{\text{vol}}
+\newcommand{\Vol}{\text{Vol}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 29.05 (Линейная алгебра)}
+{\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+  \item[\textbf{№1}]\begin{enumerate}
+    \item[1)]Проверим, что $U$ и $V$ ортогональны
+    \begin{itemize}
+      \item Матрица \( U \):
+     \[
+     U = \begin{pmatrix}
+     -\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} \\
+     \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}}
+     \end{pmatrix}
+     \]
+     Убедимся, что \( U^T U = E \):
+     \[
+     U^T U = \begin{pmatrix}
+     \left(-\frac{2}{\sqrt{5}}\right)^2 + \left(\frac{1}{\sqrt{5}}\right)^2 & \left(-\frac{2}{\sqrt{5}}\right)\left(\frac{1}{\sqrt{5}}\right) + \left(\frac{1}{\sqrt{5}}\right)\left(\frac{2}{\sqrt{5}}\right) \\
+     \left(\frac{1}{\sqrt{5}}\right)\left(-\frac{2}{\sqrt{5}}\right) + \left(\frac{2}{\sqrt{5}}\right)\left(\frac{1}{\sqrt{5}}\right) & \left(\frac{1}{\sqrt{5}}\right)^2 + \left(\frac{2}{\sqrt{5}}\right)^2
+     \end{pmatrix}= \]
+     \[= \begin{pmatrix}
+     1 & 0 \\
+     0 & 1
+     \end{pmatrix}
+     \]
+
+     \item Матрица \( V \):
+     \[
+     V^T = \begin{pmatrix}
+     -\frac{2}{3} & -\frac{2}{3} & \frac{1}{3} \\
+     -\frac{1}{3} & \frac{2}{3} & \frac{2}{3} \\
+     \frac{2}{3} & -\frac{1}{3} & \frac{2}{3}
+     \end{pmatrix}
+     \]
+     Убедимся, что \( V^T V = E \):
+     \[
+     V^T V = \begin{pmatrix}
+     \left(-\frac{2}{3}\right)^2 + \left(-\frac{2}{3}\right)^2 + \left(\frac{1}{3}\right)^2 & \text{...} \\
+     \text{...} & \text{...}
+     \end{pmatrix} = E
+     \]\\
+    \end{itemize}
+
+    \item[2)] Проверим матрицу $\Sigma$:
+      \[
+      \Sigma = \begin{pmatrix}
+      9\sqrt{5} & 0 & 0 \\
+      0 & 3\sqrt{5} & 0
+      \end{pmatrix}
+      \]
+      Диагональные элементы \( 9\sqrt{5} \) и \( 3\sqrt{5} \) упорядочены по убыванию.\\
+
+  \item[3)]Представление \( A = u_1\sigma_1v_1^T + u_2\sigma_2v_2^T \):
+  \begin{itemize}
+    \item Вычислим \( u_1\sigma_1v_1^T \):
+    \[
+    u_1 = \begin{pmatrix} -\frac{2}{\sqrt{5}} \\ \frac{1}{\sqrt{5}}
+      \end{pmatrix}, \quad \sigma_1 = 9\sqrt{5}, \quad v_1^T = 
+      \begin{pmatrix} -\frac{2}{3} & -\frac{2}{3} & \frac{1}{3} \end{pmatrix},
+    \]
+    \[
+    u_1\sigma_1v_1^T = \begin{pmatrix} 12 & 12 & -6 \\ -6 & -6 & 3 \end{pmatrix}
+    \]
+
+    \item Вычислим \( u_2\sigma_2v_2^T \):
+    \[
+    u_2 = \begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{pmatrix}, \quad \sigma_2 = 
+    3\sqrt{5}, \quad v_2^T = \begin{pmatrix} 
+      -\frac{1}{3} & \frac{2}{3} & \frac{2}{3} \end{pmatrix}
+    \]
+    \[
+    u_2\sigma_2v_2^T = \begin{pmatrix} -1 & 2 & 2 \\ -2 & 4 & 4 \end{pmatrix}
+    \]
+
+    \item Сумма:
+    \[
+    u_1\sigma_1v_1^T + u_2\sigma_2v_2^T = \begin{pmatrix} 11 & 14 & -4 \\ -8 & -2 & 7 \end{pmatrix} = A
+    \]
+  \end{itemize}
+
+  \item[4)] Найдём $B$ ранга 1:
+  \[
+  B = u_1\sigma_1v_1^T = \begin{pmatrix} 12 & 12 & -6 \\ -6 & -6 & 3 \end{pmatrix}
+  \]
+  Норма Фробениуса разности:
+  \[
+  \|A - B\| = \sqrt{(3\sqrt{5})^2} = 3\sqrt{5}
+  \]
+  \end{enumerate}
+
+  \item[\textbf{№2}]Полное сингулярное разложение матрицы \( A \):  
+  \[
+  A = U \Sigma V^T = \begin{pmatrix}
+  -2/\sqrt{5} & 1/\sqrt{5} \\
+  1/\sqrt{5} & 2/\sqrt{5}
+  \end{pmatrix} \begin{pmatrix}
+  9\sqrt{5} & 0 & 0 \\
+  0 & 3\sqrt{5} & 0
+  \end{pmatrix} \begin{pmatrix}
+  -2/3 & -2/3 & 1/3 \\
+  -1/3 & 2/3 & 2/3 \\
+  2/3 & -1/3 & 2/3
+  \end{pmatrix}^T
+  \]
+  Матрица \( A \) имеет размер \( 2 \times 3 \), поэтому \( \min(m, n) = 2 \).  
+  Размеры усечённых матриц:
+  \begin{itemize}
+    \item \( U' \): \( 2 \times 2 \) (первые 2 столбца \( U \)),  
+    \item \( \Sigma' \): \( 2 \times 2 \) (первые 2 сингулярных значения),
+    \item \( V' \): \( 2 \times 3 \) (первые 2 строки \( V^T \)).
+  \end{itemize}
+  Сформируем:
+  \begin{itemize}
+    \item \( U' = U \):  
+    \[
+    U' = \begin{pmatrix}
+    -2/\sqrt{5} & 1/\sqrt{5} \\
+    1/\sqrt{5} & 2/\sqrt{5}
+    \end{pmatrix}
+    \]
+    
+    \item \( \Sigma' \):  
+    \[
+    \Sigma' = \begin{pmatrix}
+    9\sqrt{5} & 0 \\
+    0 & 3\sqrt{5}
+    \end{pmatrix}
+    \]
+
+    \item \( (V')^T \):  
+    \[
+    (V')^T = \begin{pmatrix}
+    -2/3 & -2/3 & 1/3 \\
+    -1/3 & 2/3 & 2/3
+    \end{pmatrix}
+    \]
+  \end{itemize}
+  Проверим:
+  Вычислим произведение \( U' \Sigma' (V')^T \):  
+  \begin{itemize}
+    \item \( U' \Sigma' \):  
+    \[
+    U' \Sigma' = \begin{pmatrix}
+    -2/\sqrt{5} \cdot 9\sqrt{5} & 1/\sqrt{5} \cdot 3\sqrt{5} \\
+    1/\sqrt{5} \cdot 9\sqrt{5} & 2/\sqrt{5} \cdot 3\sqrt{5}
+    \end{pmatrix} = \begin{pmatrix}
+    -18 & 3 \\
+    9 & 6
+    \end{pmatrix}
+    \]
+    \item Умножение на \( (V')^T \):  
+    \[
+    \begin{pmatrix}
+    -18 & 3 \\
+    9 & 6
+    \end{pmatrix} \begin{pmatrix}
+    -2/3 & -2/3 & 1/3 \\
+    -1/3 & 2/3 & 2/3
+    \end{pmatrix} = \begin{pmatrix}
+    11 & 14 & -4 \\
+    -8 & -2 & 7
+    \end{pmatrix} = A
+    \]
+  \end{itemize}
+  \textbf{Ответ: }\[
+  A = \underbrace{\begin{pmatrix}
+  -2/\sqrt{5} & 1/\sqrt{5} \\
+  1/\sqrt{5} & 2/\sqrt{5}
+  \end{pmatrix}}_{U'} \underbrace{\begin{pmatrix}
+  9\sqrt{5} & 0 \\
+  0 & 3\sqrt{5}
+  \end{pmatrix}}_{\Sigma'} \underbrace{\begin{pmatrix}
+  -2/3 & -2/3 & 1/3 \\
+  -1/3 & 2/3 & 2/3
+  \end{pmatrix}}_{(V')^T}
+  \]  
+
+  \item[\textbf{№3}]Ненулевая матрица-строка имеет ранг 1.
+    Её единственное сингулярное значение:  
+  \[
+  \sigma = \|\mathbf{a}\| = \sqrt{a_1^2 + a_2^2 + \ldots + a_n^2}
+  \]
+  Матрица \( U' \) размера \( 1 \times 1 \):  
+  \[
+  U' = \begin{pmatrix} 1 \end{pmatrix}
+  \]
+  Нормированный вектор направления \( \mathbf{a} \):  
+  \[
+  \mathbf{v}_1 = \frac{\mathbf{a}^T}{\sigma} =
+    \frac{1}{\sigma} \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
+  \]  
+  Матрица \( (V')^T \) размера \( 1 \times n \):  
+  \[
+  (V')^T = \mathbf{v}_1^T = \frac{1}{\sigma} 
+  \begin{pmatrix} a_1 & a_2 & \ldots & a_n \end{pmatrix}
+  \]
+  Усечённое SVD:
+  \[
+  \mathbf{a} = U' \Sigma' (V')^T,
+  \]  
+  \textbf{Ответ:} Усечённое сингулярное разложение:  
+  \[
+    \underbrace{\begin{pmatrix} 1 \end{pmatrix}}_{U'}
+      \underbrace{\begin{pmatrix} \sigma \end{pmatrix}}_{\Sigma'}
+      \underbrace{\left( \frac{1}{\sigma} 
+      \begin{pmatrix} a_1 & a_2 & \ldots & a_n \end{pmatrix} \right)}_{(V')^T}
+  \]
+
+  \item[\textbf{№4}]
+
+\end{enumerate}
+\end{document}
