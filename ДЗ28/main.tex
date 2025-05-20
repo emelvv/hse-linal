@@ -568,6 +568,14 @@
   \]
 
   \item[\textbf{5.2}]
+  Матрица:  
+  \[
+  A = \begin{pmatrix}
+  1 & 0 & 0 & 1 \\
+  0 & 1 & 0 & 1 \\
+  0 & 0 & 1 & 1
+  \end{pmatrix}
+  \]
   Вычисляем \( A^T A \):  
   \[
   A^T A = \begin{pmatrix}
@@ -643,5 +651,38 @@
   \|A - B\| = \sqrt{\sigma_2^2 + \sigma_3^2} = \sqrt{1 + 1} = \sqrt{2}
   \]
   \end{enumerate}
+
+  \item[\textbf{№6}]Найдём матрицу \( A \) ранга 2, для которой ближайшей матрицей ранга 1 по норме Фробениуса является:  
+  \[
+  B = \begin{pmatrix} -6 & 3 & 3 \\ 2 & -1 & -1 \end{pmatrix}
+  \]
+  SVD матрицы \( B \):
+  \[
+  B = \sigma_1 u_1 v_1^T,
+  \]  
+  где:
+  \[\sigma_1 = \sqrt{60} = 2\sqrt{15}, \quad
+  u_1 = \begin{pmatrix} -\frac{3}{\sqrt{5}} \\ \frac{1}{\sqrt{5}} \end{pmatrix} ,
+  \quad v_1 = \frac{1}{\sqrt{19}} \begin{pmatrix} 3 \\ -1 \\ -1 \end{pmatrix}\] 
+  Чтобы \( A \) имела ранг 2, добавим к \( B \) слагаемое ранга 1, ортогональное \( B \):  
+  \[
+  A = B + \sigma_2 u_2 v_2^T
+  \]  
+  где:
+  \[\sigma_2 = 1, \quad
+   u_2 = \begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{3}{\sqrt{5}} \end{pmatrix},
+   \quad  v_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}\]
+  Вычислим \( A \):
+  \[
+  A = B + \frac{1}{\sqrt{10}} \begin{pmatrix} 0 & 1 & -1 \\ 0 & 3 & -3 \end{pmatrix} = \begin{pmatrix}
+  -6 & 3 + \frac{1}{\sqrt{10}} & 3 - \frac{1}{\sqrt{10}} \\
+  2 & -1 + \frac{3}{\sqrt{10}} & -1 - \frac{3}{\sqrt{10}}
+  \end{pmatrix}
+  \]
+  Ранг \( A \) равен 2 (два линейно независимых столбца) и норма Фробениуса разности:  
+  \[
+  \|A - B\| = \sqrt{\sigma_2^2} = 1,
+  \]  
+  что соответствует минимальному значению для приближения ранга 1.
 \end{enumerate}
 \end{document}
