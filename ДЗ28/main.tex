@@ -262,7 +262,386 @@
       \begin{pmatrix} a_1 & a_2 & \ldots & a_n \end{pmatrix} \right)}_{(V')^T}
   \]
 
-  \item[\textbf{№4}]
+  \item[\textbf{№4}]Найдём усечённые и полные сингулярные разложения
+  \begin{enumerate}
+  \item[\textbf{4.1.}] Матрица:  
+  \[
+  A = \begin{pmatrix}
+  3 & 2 & 2 \\
+  2 & 3 & -2
+  \end{pmatrix}
+  \]
+  Вычисляем \( A^T A \):  
+  \[
+  A^T A = \begin{pmatrix}
+  3 & 2 \\
+  2 & 3 \\
+  2 & -2
+  \end{pmatrix}^T \begin{pmatrix}
+  3 & 2 & 2 \\
+  2 & 3 & -2
+  \end{pmatrix} = \begin{pmatrix}
+  17 & 8 \\
+  8 & 17
+  \end{pmatrix}
+  \]
+  Находим собственные значения \( A^T A \):  
+  \[
+  \det(A^T A - \lambda I) = (17 - \lambda)^2 - 64 = 0 \implies \lambda_1 = 25, \, \lambda_2 = 9.
+  \]  
+  Сингулярные значения:  
+  \[
+  \sigma_1 = \sqrt{25} = 5, \quad \sigma_2 = \sqrt{9} = 3
+  \]
+  Правые сингулярные векторы \( V \):  
+  \begin{itemize}
+    \item 
+    Для \( \lambda_1 = 25 \):  
+    \[
+    (A^T A - 25I)\mathbf{v} = \begin{pmatrix}
+    -8 & 8 \\
+    8 & -8
+    \end{pmatrix}\mathbf{v} = 0 \implies \mathbf{v}_1 = \frac{1}{\sqrt{2}} 
+    \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+    \]  
+    \item 
+    Для \( \lambda_2 = 9 \):  
+    \[
+    (A^T A - 9I)\mathbf{v} = \begin{pmatrix}
+    8 & 8 \\
+    8 & 8
+    \end{pmatrix}\mathbf{v} = 0 \implies \mathbf{v}_2 = 
+    \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+    \]  
+    \item
+    Третий вектор \( \mathbf{v}_3 = 
+    \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \) (ортогонален первым двум).  
+  \end{itemize}
+  Матрица \( V \):  
+  \[
+  V = \begin{pmatrix}
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 \\
+  0 & 0 & 1
+  \end{pmatrix}
+  \]
+  Левые сингулярные векторы \( U \):  
+  \[
+  \mathbf{u}_1 = \frac{1}{\sigma_1} A 
+  \mathbf{v}_1 = \frac{1}{5} \begin{pmatrix} \frac{5}{\sqrt{2}} \\
+     \frac{5}{\sqrt{2}} \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\
+       \frac{1}{\sqrt{2}} \end{pmatrix}, \quad \mathbf{u}_2 = \frac{1}{\sigma_2} A 
+       \mathbf{v}_2 = \frac{1}{3} \begin{pmatrix} \frac{1}{\sqrt{2}} \\
+         -\frac{1}{\sqrt{2}} \end{pmatrix}
+  \]  
+  Матрица \( U \):  
+  \[
+  U = \begin{pmatrix}
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+  \end{pmatrix}
+  \]
+  Полное SVD:  
+  \[
+  A = U \Sigma V^T = \begin{pmatrix}
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+  \end{pmatrix} \begin{pmatrix}
+  5 & 0 & 0 \\
+  0 & 3 & 0
+  \end{pmatrix} \begin{pmatrix}
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 \\
+  0 & 0 & 1
+  \end{pmatrix}
+  \]
+  Усечённое сингулярное разложение:
+  \[
+  A = U' \Sigma' (V')^T = \begin{pmatrix}
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+  \end{pmatrix} \begin{pmatrix}
+  5 & 0 \\
+  0 & 3
+  \end{pmatrix} \begin{pmatrix}
+  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0
+  \end{pmatrix}
+  \]
 
+  \item[\textbf{4.2.}]Матрица:  
+  \[
+  A = \begin{pmatrix}
+  0 & 0 \\
+  0 & 0 \\
+  -3 & 4
+  \end{pmatrix}
+  \]
+  Вычисляем \( A^T A \):  
+  \[
+  A^T A = \begin{pmatrix}
+  0 & 0 & -3 \\
+  0 & 0 & 4
+  \end{pmatrix} \begin{pmatrix}
+  0 & 0 \\
+  0 & 0 \\
+  -3 & 4
+  \end{pmatrix} = \begin{pmatrix}
+  9 & -12 \\
+  -12 & 16
+  \end{pmatrix}
+  \]
+  Собственные значения:  
+  \[
+  \det(A^T A - \lambda I) = \lambda^2 - 
+  25\lambda = 0 \implies \lambda_1 = 25, \, \lambda_2 = 0
+  \]  
+  Сингулярные значения:  
+  \[
+  \sigma_1 = 5, \quad \sigma_2 = 0
+  \]
+  Правые сингулярные векторы \( V \):  
+  \begin{itemize}
+    \item 
+    Для \( \lambda_1 = 25 \):  
+    \[
+    (A^T A - 25I)\mathbf{v} = \begin{pmatrix}
+    -16 & -12 \\
+    -12 & -9
+    \end{pmatrix}\mathbf{v} = 0 \implies \mathbf{v}_1 = 
+    \frac{1}{5} \begin{pmatrix} -3 \\ 4 \end{pmatrix}
+    \]
+    
+    \item
+    Для \( \lambda_2 = 0 \):  
+    \[
+    \mathbf{v}_2 = \frac{1}{5} \begin{pmatrix} 4 \\ 3 \end{pmatrix}
+    \]
+  \end{itemize}
+  Левые сингулярные векторы \( U \):  
+  \begin{itemize}
+    \item 
+    Для \( \sigma_1 = 5 \):  
+    \[
+    \mathbf{u}_1 = \frac{1}{5} A \mathbf{v}_1 =
+     \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+    \]  
+    \item
+    Остальные векторы \( \mathbf{u}_2, \mathbf{u}_3 \)
+     выбираются ортогональными к \( \mathbf{u}_1 \)
+  \end{itemize}
+  Полное SVD:  
+  \[
+  U = \begin{pmatrix}
+  0 & 0 & 1 \\
+  0 & 1 & 0 \\
+  1 & 0 & 0
+  \end{pmatrix}, \quad \Sigma = \begin{pmatrix}
+  5 & 0 \\
+  0 & 0 \\
+  0 & 0
+  \end{pmatrix}, \quad V^T = \begin{pmatrix}
+  -\frac{3}{5} & \frac{4}{5} \\
+  \frac{4}{5} & \frac{3}{5}
+  \end{pmatrix}
+  \]
+  \[
+  A = \begin{pmatrix}
+  0 & 0 & 1 \\
+  0 & 1 & 0 \\
+  1 & 0 & 0
+  \end{pmatrix} \begin{pmatrix}
+  5 & 0 \\
+  0 & 0 \\
+  0 & 0
+  \end{pmatrix} \begin{pmatrix}
+  -\frac{3}{5} & \frac{4}{5} \\
+  \frac{4}{5} & \frac{3}{5}
+  \end{pmatrix}^T
+  \]
+  
+  Усечённое SVD:
+  \[
+  A = U' \Sigma' (V')^T = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} 
+  \begin{pmatrix} 5 \end{pmatrix} \begin{pmatrix} -\frac{3}{5} & 
+    \frac{4}{5} \end{pmatrix}
+  \]
+  \end{enumerate}
+
+  \item[\textbf{№5}]Найдём усечённые SVD и матрицы ранга 1:
+  \begin{enumerate}
+  
+  \item[\textbf{5.1}]Матрица:  
+  \[
+  A = \begin{pmatrix}
+  3 & 2 & 4 \\
+  1 & 4 & -2
+  \end{pmatrix}
+  \]
+  Вычисляем \( A^T A \):  
+  \[
+  A^T A = \begin{pmatrix}
+  3 & 1 \\
+  2 & 4 \\
+  4 & -2
+  \end{pmatrix} \begin{pmatrix}
+  3 & 2 & 4 \\
+  1 & 4 & -2
+  \end{pmatrix} = \begin{pmatrix}
+  10 & 10 & 10 \\
+  10 & 20 & 0 \\
+  10 & 0 & 20
+  \end{pmatrix}
+  \]
+  Собственные значения \( A^T A \):  
+  \[
+  \det(A^T A - \lambda I) = -\lambda^3 + 50\lambda^2 -
+   600\lambda = 0 \implies \lambda_1 = 30, \, \lambda_2 = 10, \, \lambda_3 = 0
+  \]  
+  Сингулярные значения:  
+  \[
+  \sigma_1 = \sqrt{30}, \quad \sigma_2 = \sqrt{10}
+  \]
+  Правые сингулярные векторы \( V \):  
+  \begin{itemize}
+    \item 
+    Для \( \lambda_1 = 30 \):  
+    \[
+    (A^T A - 30I)\mathbf{v} = \begin{pmatrix}
+    -20 & 10 & 10 \\
+    10 & -10 & 0 \\
+    10 & 0 & -10
+    \end{pmatrix}\mathbf{v} = 0 \implies \mathbf{v}_1 = 
+    \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+    \]  
+    \item
+    Для \( \lambda_2 = 10 \):  
+    \[
+    (A^T A - 10I)\mathbf{v} = \begin{pmatrix}
+    0 & 10 & 10 \\
+    10 & 10 & 0 \\
+    10 & 0 & 10
+    \end{pmatrix}\mathbf{v} = 0 \implies \mathbf{v}_2 = 
+    \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}
+    \]
+  \end{itemize}
+  Левые сингулярные векторы \( U \):  
+  \[
+  \mathbf{u}_1 = \frac{1}{\sigma_1} A \mathbf{v}_1 = 
+  \frac{1}{\sqrt{30}} \begin{pmatrix} 6 \\ 3 \end{pmatrix}, 
+  \quad \mathbf{u}_2 = \frac{1}{\sigma_2} A \mathbf{v}_2 =
+   \frac{1}{\sqrt{10}} \begin{pmatrix} 1 \\ -3 \end{pmatrix}
+  \]  
+  Матрица \( U' \):  
+  \[
+  U' = \begin{pmatrix}
+  \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} \\
+  \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}}
+  \end{pmatrix}
+  \]
+  Усечённое SVD:
+  \[
+  A = U' \Sigma' (V')^T = \begin{pmatrix}
+  \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} \\
+  \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}}
+  \end{pmatrix} \begin{pmatrix}
+  \sqrt{30} & 0 \\
+  0 & \sqrt{10}
+  \end{pmatrix} \begin{pmatrix}
+  \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0
+  \end{pmatrix}
+  \]
+  Матрица \( B \) ранга 1:
+  \[
+  B = \sigma_1 \mathbf{u}_1 \mathbf{v}_1^T =
+  \sqrt{30} \cdot \frac{2}{\sqrt{5}} \cdot \frac{1}{\sqrt{3}}
+   \begin{pmatrix} 1 \\ 0.5 \end{pmatrix} \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}
+   = \begin{pmatrix}
+  12 & 12 & -6 \\
+  -6 & -6 & 3
+  \end{pmatrix}
+  \]  
+  Норма Фробениуса:  
+  \[
+  \|A - B\| = \sqrt{\sigma_2^2} = \sqrt{10}
+  \]
+
+  \item[\textbf{5.2}]
+  Вычисляем \( A^T A \):  
+  \[
+  A^T A = \begin{pmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  1 & 1 & 1
+  \end{pmatrix} \begin{pmatrix}
+  1 & 0 & 0 & 1 \\
+  0 & 1 & 0 & 1 \\
+  0 & 0 & 1 & 1
+  \end{pmatrix} = \begin{pmatrix}
+  1 & 0 & 0 & 1 \\
+  0 & 1 & 0 & 1 \\
+  0 & 0 & 1 & 1 \\
+  1 & 1 & 1 & 3
+  \end{pmatrix}
+  \]
+  Собственные значения \( A^T A \):  
+  \[
+  \lambda_1 = 4, \, \lambda_2 = 1, \, \lambda_3 = 1, \, \lambda_4 = 0
+  \]  
+  Сингулярные значения:  
+  \[
+  \sigma_1 = 2, \quad \sigma_2 = 1, \quad \sigma_3 = 1
+  \]
+  Правые сингулярные векторы \( V \):  
+  \begin{itemize}
+    \item 
+    Для \( \lambda_1 = 4 \):  
+    \[
+    \mathbf{v}_1 = \frac{1}{2} \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
+    \]  
+
+    \item
+    Для \( \lambda_2 = 1 \) и \( \lambda_3 = 1 \): векторы ортогональны 
+    \( \mathbf{v}_1 \).
+  \end{itemize}
+
+  Левые сингулярные векторы \( U \):  
+  \[
+  \mathbf{u}_1 = \frac{1}{2} A \mathbf{v}_1 = 
+  \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \quad \mathbf{u}_2 =
+   \frac{1}{1} A \mathbf{v}_2, \quad \mathbf{u}_3 = \frac{1}{1} A \mathbf{v}_3
+  \]
+  Усечённое SVD:
+  \[
+  A = U' \Sigma' (V')^T = \begin{pmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 0 & 1
+  \end{pmatrix} \begin{pmatrix}
+  2 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 0 & 1
+  \end{pmatrix} \begin{pmatrix}
+  \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+  \text{...} & \text{...} & \text{...} & \text{...}
+  \end{pmatrix}
+  \]
+  Матрица \( B \) ранга 1:
+  \[
+  B = \sigma_1 \mathbf{u}_1 \mathbf{v}_1^T = 2 \cdot
+   \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \cdot \frac{1}{2}
+    \begin{pmatrix} 1 & 1 & 1 & 1 \end{pmatrix} = \begin{pmatrix}
+  1 & 1 & 1 & 1 \\
+  1 & 1 & 1 & 1 \\
+  1 & 1 & 1 & 1
+  \end{pmatrix}
+  \]  
+  Норма Фробениуса:  
+  \[
+  \|A - B\| = \sqrt{\sigma_2^2 + \sigma_3^2} = \sqrt{1 + 1} = \sqrt{2}
+  \]
+  \end{enumerate}
 \end{enumerate}
 \end{document}
