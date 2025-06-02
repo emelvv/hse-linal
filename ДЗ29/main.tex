@@ -83,10 +83,267 @@
     где \(x' = x + 1\), \(y' = y + 1\).  
     Выражение старых координат через новые:  
     \[x = x' - 1, \quad y = y' - 1\]  
-    Тип кривой: гипербола (так как уравнение имеет вид \(\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1\)).
+    Тип кривой: гипербола (так как уравнение имеет вид \(\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1\)).\\
 
+    \item[1.2]Дано
+    \[x^2 - 2xy + y^2 - 10x - 6y + 25 = 0\]
+    Квадратичная форма: \[ x^2 - 2xy + y^2 \] 
+    Матрица квадратичной формы:  
+    \[
+    A = \begin{pmatrix}
+    1 & -1 \\
+    -1 & 1
+    \end{pmatrix}
+    \]  
+    Характеристическое уравнение:  
+    \[
+    \det(A - \lambda I) = \begin{vmatrix}
+    1 - \lambda & -1 \\
+    -1 & 1 - \lambda
+    \end{vmatrix} = (1 - \lambda)^2 - 1 = \lambda^2 - 2\lambda = 0
+    \]  
+    Собственные значения: \( \lambda_1 = 0 \), \( \lambda_2 = 2 \).
+    \begin{itemize}
+    \item Для \( \lambda_1 = 0 \):  
+    \[
+    (A - 0I)\mathbf{v} = \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}
+      \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0 \implies v_1 - v_2 =
+      0 \implies v_1 = v_2
+    \]  
+    Нормированный собственный вектор:
+      \( \mathbf{v}_1 = \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)^\top \)  
+    
+    \item Для \( \lambda_2 = 2 \):  
+    \[
+    (A - 2I)\mathbf{v} = \begin{pmatrix} -1 & -1 \\ -1 & -1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0 \implies -v_1 - v_2 = 0 \implies v_1 = -v_2.
+    \]  
+    Нормированный собственный вектор: \( \mathbf{v}_2 = \left( -\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)^\top \).  
+    \end{itemize}
+    Матрица перехода:  
+    \[
+    P = \begin{pmatrix}
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+    \end{pmatrix}
+    \]  
+    Подставляем:  
+    \[
+    \begin{pmatrix} x \\ y \end{pmatrix} = P \begin{pmatrix} x' \\ y' \end{pmatrix} \implies x = \frac{x' - y'}{\sqrt{2}}, \quad y = \frac{x' + y'}{\sqrt{2}}.
+    \]  
+    Сумма квадратичных членов:  
+    \[
+    x^2 - 2xy + y^2 = \frac{1}{2}(x'^2 - 2x'y' + y'^2) - (x'^2 - y'^2) + 
+    \frac{1}{2}(x'^2 + 2x'y' + y'^2) = 2y'^2
+    \]  
+    Исходное уравнение после подстановки:  
+    \[
+    2y'^2 + (-8\sqrt{2}  x' + 2\sqrt{2}  y') + 25 = 0 \implies 2y'^2 - 8\sqrt{2}  x' + 2\sqrt{2}  y' + 25 = 0.
+    \]  
+    Группируем члены с \( y' \):  
+    \[
+    2y'^2 + 2\sqrt{2}  y' = 8\sqrt{2}  x' - 25.
+    \]  
+    Выделяем полный квадрат для \( y' \):  
+    \[
+    2\left( y'^2 + \sqrt{2}  y' \right) = 8\sqrt{2}  x' - 25.
+    \]  
+    \[
+    y'^2 + \sqrt{2}  y' = \left( y' + \frac{\sqrt{2}}{2} \right)^2 - \left( \frac{\sqrt{2}}{2} \right)^2 = \left( y' + \frac{\sqrt{2}}{2} \right)^2 - \frac{1}{2}.
+    \]  
+    Подставляем:  
+    \[
+    2\left[ \left( y' + \frac{\sqrt{2}}{2} \right)^2 - \frac{1}{2} \right] = 8\sqrt{2}  x' - 25,
+    \]  
+    \[
+    2\left( y' + \frac{\sqrt{2}}{2} \right)^2 - 1 = 8\sqrt{2}  x' - 25,
+    \]  
+    \[
+    2\left( y' + \frac{\sqrt{2}}{2} \right)^2 - 8\sqrt{2}  x' = -24.
+    \]  
+    Переносим константу:  
+    \[
+    2\left( y' + \frac{\sqrt{2}}{2} \right)^2 = 8\sqrt{2}  x' - 24.
+    \]  
+    \[
+    \left( y' + \frac{\sqrt{2}}{2} \right)^2 = 4\sqrt{2} \left( x' - \frac{24}{8\sqrt{2}} \right) = 4\sqrt{2} \left( x' - \frac{3}{\sqrt{2}} \right) = 4\sqrt{2} \left( x' - \frac{3\sqrt{2}}{2} \right).
+    \]  
+    Из формул поворота:  
+    \[
+    x' = \frac{x + y}{\sqrt{2}}, \quad y' = -\frac{x - y}{\sqrt{2}}.
+    \]  
+    Выражаем через \( x'' \), \( y'' \):  
+    \[
+    x' = x'' + \frac{3\sqrt{2}}{2}, \quad y' = y'' - \frac{\sqrt{2}}{2}.
+    \]  
+    Подставляем в формулы поворота:  
+    \[
+    x = \frac{x' - y'}{\sqrt{2}} = \frac{ \left( x'' + \frac{3\sqrt{2}}{2} \right) - \left( y'' - \frac{\sqrt{2}}{2} \right) }{\sqrt{2}} = \frac{x'' - y'' + 2\sqrt{2}}{\sqrt{2}} = \frac{x'' - y''}{\sqrt{2}} + 2,
+    \]  
+    \[
+    y = \frac{x' + y'}{\sqrt{2}} = \frac{ \left( x'' + \frac{3\sqrt{2}}{2} \right) + \left( y'' - \frac{\sqrt{2}}{2} \right) }{\sqrt{2}} = \frac{x'' + y'' + \sqrt{2}}{\sqrt{2}} = \frac{x'' + y''}{\sqrt{2}} + 1.
+    \]  
+    Таким образом, старые координаты выражаются через новые (\( x'' \), \( y'' \)) как:  
+    \[
+    x = \frac{x'' - y''}{\sqrt{2}} + 2, \quad y = \frac{x'' + y''}{\sqrt{2}} + 1.
+    \]  
+    переобозначим новые координаты: \( x' = x'' \), \( y' = y'' \).  
 
-    \item[1.2]
+    Каноническое уравнение:  
+    \[
+    (y')^2 = 4\sqrt{2}  x'.
+    \]  
+    Тип кривой: парабола (уравнение вида \( y^2 = 4px \) с \( p = \sqrt{2} \)).
+
+    Новая система координат: старые координаты выражаются через новые (\( x', y' \)) как:  
+    \[
+    x = \frac{x' - y'}{\sqrt{2}} + 2, \quad y = \frac{x' + y'}{\sqrt{2}} + 1.
+    \]  
+  \end{enumerate}
+
+  \item[\textbf{№2}]\begin{enumerate}
+    \item[2.1]Дано 
+    \[x^2 + 4y^2 + 9z^2 - 6x + 8y - 36z = 0\]
+    Сгруппируем члены с \(x\), \(y\), \(z\):  
+    \[(x^2 - 6x) + (4y^2 + 8y) + (9z^2 - 36z) = 0\] 
+    Выделяем полные квадраты:  
+    \[(x - 3)^2 - 9 + 4(y + 1)^2 - 4 + 9(z - 2)^2 - 36 = 0\]  
+    \[(x - 3)^2 + 4(y + 1)^2 + 9(z - 2)^2 = 49\]  
+    Разделим на 49:  
+    \[\frac{(x - 3)^2}{49} + \frac{4(y + 1)^2}{49} + \frac{9(z - 2)^2}{49} = 1\]  
+    Упростим:  
+    \[\frac{(x - 3)^2}{7^2} + \frac{(y + 1)^2}{\left(\frac{7}{2}\right)^2} + \frac{(z - 2)^2}{\left(\frac{7}{3}\right)^2} = 1\]  
+    Новые координаты:  
+    \[x' = x - 3, \quad y' = y + 1, \quad z' = z - 2\]  
+    Каноническое уравнение:  
+    \[\frac{(x')^2}{49} + \frac{(y')^2}{\frac{49}{4}} + \frac{(z')^2}{\frac{49}{9}} = 1\]  
+    Тип поверхности: эллипсоид\\
+
+    \item[2.2]Дано 
+    \[2xy + 2x + 2y + 2z - 1 = 0\]
+    Квадратичная форма: \(2xy\) 
+
+    Матрица квадратичной формы:  
+    \[
+    A = \begin{pmatrix}
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 0
+    \end{pmatrix}
+    \]  
+    Характеристическое уравнение:  
+    \[
+    \det(A - \lambda I) = \begin{vmatrix}
+    -\lambda & 1 & 0 \\
+    1 & -\lambda & 0 \\
+    0 & 0 & -\lambda
+    \end{vmatrix} = -\lambda(\lambda^2 - 1) = 0
+    \]  
+    Собственные значения: \(\lambda_1 = 1\), \(\lambda_2 = -1\), \(\lambda_3 = 0\).  
+    \begin{itemize}
+      \item Для \(\lambda_1 = 1\):  
+      \[
+      (A - I)\mathbf{v} = \begin{pmatrix}
+      -1 & 1 & 0 \\
+      1 & -1 & 0 \\
+      0 & 0 & -1
+      \end{pmatrix} \mathbf{v} = 0 \implies \mathbf{v}_1 = \frac{1}{\sqrt{2}} (1, 1, 0)^\top
+      \]  
+
+      \item Для \(\lambda_2 = -1\):  
+      \[
+      (A + I)\mathbf{v} = \begin{pmatrix}
+      1 & 1 & 0 \\
+      1 & 1 & 0 \\
+      0 & 0 & 1
+      \end{pmatrix} \mathbf{v} = 0 \implies \mathbf{v}_2 = \frac{1}{\sqrt{2}} (-1, 1, 0)^\top
+      \]  
+
+      \item  Для \(\lambda_3 = 0\):  
+      \[
+      A\mathbf{v} = 0 \implies \mathbf{v}_3 = (0, 0, 1)^\top
+      \]  
+    \end{itemize}
+    Матрица перехода:  
+    \[
+    P = \begin{pmatrix}
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 \\
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+    0 & 0 & 1
+    \end{pmatrix}
+    \]  
+    Формулы поворота:  
+    \[
+    x = \frac{x' - y'}{\sqrt{2}}, \quad y = \frac{x' + y'}{\sqrt{2}}, \quad z = z'
+    \]  
+    Подставляем:  
+    \[
+    2 \left( \frac{x' - y'}{\sqrt{2}} \right) \left( \frac{x' + y'}{\sqrt{2}} \right) + 2 \left( \frac{x' - y'}{\sqrt{2}} \right) + 2 \left( \frac{x' + y'}{\sqrt{2}} \right) + 2z' - 1 = 0
+    \]  
+    Упрощаем:  
+    \[
+    2 \cdot \frac{(x')^2 - (y')^2}{2} + \sqrt{2} (x' - y') + \sqrt{2} (x' + y') + 2z' - 1 = 0
+    \]  
+    \[
+    (x')^2 - (y')^2 + 2\sqrt{2} x' + 2z' - 1 = 0
+    \]  
+    Группируем члены с \(x'\):  
+    \[
+    (x')^2 + 2\sqrt{2} x' = (x' + \sqrt{2})^2 - 2
+    \]  
+    Подставляем:  
+    \[
+    (x' + \sqrt{2})^2 - 2 - (y')^2 + 2z' - 1 = 0
+    \]  
+    \[
+    (x' + \sqrt{2})^2 - (y')^2 + 2z' = 3
+    \]  
+    Вводим новые переменные:  
+    \[
+    x'' = x' + \sqrt{2}, \quad y'' = y', \quad z'' = z'
+    \]  
+    Уравнение:  
+    \[
+    (x'')^2 - (y'')^2 + 2z'' = 3
+    \]  
+    Переносим константу:  
+    \[
+    (x'')^2 - (y'')^2 = -2z'' + 3
+    \]  
+    Чтобы убрать свободный член, сдвигаем \(z''\):  
+    \[
+    z''' = z'' - \frac{3}{2}
+    \]  
+    Тогда:  
+    \[
+    (x'')^2 - (y'')^2 = -2 \left( z''' + \frac{3}{2} \right) + 3 = -2z'''
+    \]  
+    Каноническое уравнение:  
+    \[
+    (x'')^2 - (y'')^2 = -2z'''
+    \]  
+    Из поворота:  
+    \[
+    x' = \frac{x + y}{\sqrt{2}}, \quad y' = \frac{-x + y}{\sqrt{2}}, \quad z' = z
+    \]  
+    Из сдвигов:  
+    \[
+    x'' = x' + \sqrt{2} = \frac{x + y}{\sqrt{2}} + \sqrt{2}, \quad y'' = y' = \frac{-x + y}{\sqrt{2}}, \quad z''' = z' - \frac{3}{2} = z - \frac{3}{2}
+    \]  
+    Подставляем:  
+    \[
+    x'' = \frac{x + y + 2}{\sqrt{2}}, \quad y'' = \frac{-x + y}{\sqrt{2}}, \quad z''' = z - \frac{3}{2}
+    \]  
+    Выражаем старые координаты через новые (\(x'', y'', z'''\)):  
+    \[
+    x = \frac{\sqrt{2}}{2} (x'' - y'') - 1, \quad y = \frac{\sqrt{2}}{2} (x'' + y'') - 1, \quad z = z''' + \frac{3}{2}
+    \]  
+    Каноническое уравнение:  
+    \[
+    (x'')^2 - (y'')^2 = -2z'''
+    \]  
+    Тип поверхности: гиперболический параболоид.\\
+
+    \item[2.3]
   \end{enumerate}
 \end{enumerate}
 \end{document}
