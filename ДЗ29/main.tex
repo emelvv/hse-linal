@@ -1,0 +1,92 @@
+\documentclass[a4paper]{article}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[12pt]{extsizes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\setstretch{1.3}
+
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\renewcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\dspace}{\space\space}
+\newcommand{\s}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+\newcommand{\sq}[1]{\left[ {#1} \right]}
+\newcommand{\gath}[1]{\left[ \begin{array}{@{}l@{}} #1 \end{array} \right.}
+\newcommand{\case}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\ts}{\text{\space}}
+\newcommand{\lm}[1]{\underset{#1}{\lim}}
+\newcommand{\suplm}[1]{\underset{#1}{\overline{\lim}}}
+\newcommand{\inflm}[1]{\underset{#1}{\underline{\lim}}}
+\newcommand{\Ker}[1]{\operatorname{Ker}}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\lr}{\Leftrightarrow}
+\renewcommand{\l}{\left(}
+\renewcommand{\r}{\right)}
+\newcommand{\rr}{\rightarrow}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\underline{O}}
+\newcommand{\oo}{\overline{o}}
+\renewcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\vol}{\text{vol}}
+\newcommand{\Vol}{\text{Vol}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} %
+\makeatletter                               % \abs{}
+\let\oldabs\abs                             %
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}       %
+
+\begin{document}
+
+\section*{Домашнее задание на 05.06 (Линейная алгебра)}
+{\large Емельянов Владимир, ПМИ гр №247}\\\\
+\begin{enumerate}
+  \item[\textbf{№1}]\begin{enumerate}
+    \item[1.1]Дано
+    \[6x^2 - 5y^2 + 12x - 10y + 31 = 0\]
+    Сгруппируем члены с \(x\) и \(y\):  
+    \[(6x^2 + 12x) + (-5y^2 - 10y) + 31 = 0\]  
+    Вынесем коэффициенты за скобки:  
+    \[6(x^2 + 2x) - 5(y^2 + 2y) + 31 = 0\]  
+    Дополним до полных квадратов:  
+    \[6(x^2 + 2x + 1 - 1) - 5(y^2 + 2y + 1 - 1) + 31 = 0\]  
+    \[6[(x + 1)^2 - 1] - 5[(y + 1)^2 - 1] + 31 = 0\]  
+    Раскроем скобки:  
+    \[6(x + 1)^2 - 6 - 5(y + 1)^2 + 5 + 31 = 0\]  
+    \[6(x + 1)^2 - 5(y + 1)^2 + 30 = 0\]  
+    Перенесем константу вправо:  
+    \[6(x + 1)^2 - 5(y + 1)^2 = -30\]  
+    Разделим обе части на \(-30\):  
+    \[\frac{6(x + 1)^2}{-30} - \frac{5(y + 1)^2}{-30} = 1\]  
+    Упростим:  
+    \[-\frac{(x + 1)^2}{5} + \frac{(y + 1)^2}{6} = 1\]  
+    \[\frac{(y + 1)^2}{6} - \frac{(x + 1)^2}{5} = 1\]  
+    Каноническое уравнение:  
+    \[\frac{(y')^2}{6} - \frac{(x')^2}{5} = 1\]  
+    где \(x' = x + 1\), \(y' = y + 1\).  
+    Выражение старых координат через новые:  
+    \[x = x' - 1, \quad y = y' - 1\]  
+    Тип кривой: гипербола (так как уравнение имеет вид \(\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1\)).
+
+
+    \item[1.2]
+  \end{enumerate}
+\end{enumerate}
+\end{document}
