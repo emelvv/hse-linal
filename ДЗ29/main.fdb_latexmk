@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748863534.47155 "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ29/main.tex" "main.pdf" "main" 1748863535.93675 0
+["pdflatex"] 1748952512.31519 "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ29/main.tex" "main.pdf" "main" 1748952513.74207 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -28,7 +28,9 @@
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1247596667 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1247596667 32587 65067f817f408bc71a7312f3d9828a9b ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1247596667 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1247596673 31764 459c573c03a4949a528c2cc7f557e217 ""
   "C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Program Files/MiKTeX/tex/generic/babel/babel.sty" 1704647332 150008 7a05b0fdc0167c04e192003e780ab195 ""
   "C:/Program Files/MiKTeX/tex/generic/babel/locale/ru/babel-ru.ini" 1704647337 6080 f38b5a80e1e155723c5fdec306a1777f ""
@@ -146,9 +148,9 @@
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1725547064 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1725297362 3252 3140686608bdcae603a09a7973fb9e55 ""
   "C:/Users/User/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725295917 24215268 d4b67dedada491ed68192e2dda405f64 ""
-  "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ29/main.tex" 1748863533 13482 ac05806946d93bbaa9dfc1704bef8060 ""
-  "main.aux" 1748863535 132 6143dc07d4db807a1b7fd4431ef5e6b6 "pdflatex"
-  "main.tex" 1748863533 13482 ac05806946d93bbaa9dfc1704bef8060 ""
+  "c:/Users/User/Desktop/exam/Линейная алгебра/ДЗ29/main.tex" 1748952511 23208 39816c732f8fa3d9362f63e73d0f546a ""
+  "main.aux" 1748952513 133 4cac209243383a07cb70824a53000815 "pdflatex"
+  "main.tex" 1748952511 23208 39816c732f8fa3d9362f63e73d0f546a ""
   (generated)
   "main.aux"
   "main.log"
